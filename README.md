@@ -14,6 +14,7 @@ cd $HOME
 mkdir .config
 ln -sf ~/dotfiles/git/.gitconfig ~/.gitconfig
 ln -sf ~/dotfiles/git/.gitignore_global ~/.gitignore_global
+ln -sf ~/dotfiles/git/.gitmessage ~/.gitmessage
 ln -sf ~/dotfiles/hombrew/localhost.homebrew-autoupdate.plist ~/Library/LaunchAgents/localhost.homebrew-autoupdate.plist
 ln -sf ~/dotfiles/neovim/init.vim ~/.config/nvim/init.vim
 ln -sf ~/dotfiles/starship/starship.toml ~/.config/starship.toml
