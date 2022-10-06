@@ -29,3 +29,5 @@
 	prompt = false
 [pull]
 	rebase = true
+[commit]
+	template = /Users/yuta/.gitmessage
