@@ -1,0 +1,20 @@
+---
+- block:
+  - name: install mas cli
+    homebrew:
+      name: mas
+      state: present
+
+  - name: fetch list
+    command: mas list
+    register: installed_list
+    check_mode: no
+    changed_when: no
+
+  - name: install App Store applications
+    command: "mas install {{ item.id }}"
+    when: "installed_list.stdout_lines | select('search', item.id) | list | length == 0"
+    loop: "{{ apps }}"
+
+  tags:
+    - mas

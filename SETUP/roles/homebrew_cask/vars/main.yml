@@ -1,0 +1,28 @@
+---
+packages:
+  - { name: 1password, state: present }
+  - { name: alfred, state: present }
+  - { name: appcleaner, state: present }
+  - { name: authy, state: present }
+  - { name: bartender, state: present }
+  - { name: bettertouchtool, state: present }
+  - { name: burp-suite, state: present }
+  - { name: chromium, state: present }
+  - { name: db-browser-for-sqlite, state: present }
+  - { name: discord, state: present }
+  - { name: docker, state: present }
+  - { name: dropbox, state: present }
+  - { name: firefox, state: present }
+  - { name: font-hack-nerd-font, state: present }
+  - { name: google-chrome, state: present }
+  - { name: iterm2, state: present }
+  - { name: karabiner-elements, state: present }
+  - { name: ngrok, state: present }
+  - { name: slack, state: present }
+  - { name: spectacle, state: present }
+  - { name: vagrant, state: present }
+  - { name: virtualbox, state: present }
+  - { name: virtualbox-extension-pack, state: present }
+  - { name: visual-studio-code, state: present }
+  - { name: wireshark, state: present }
+  - { name: zoom, state: present }

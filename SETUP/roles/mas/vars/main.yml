@@ -1,0 +1,15 @@
+---
+apps:
+  - { name: "Prime Video", id: "545519333" }
+  - { name: "Kindle", id: "405399194" }
+  - { name: "Trello", id: "1278508951" }
+  - { name: "Keynote", id: "409183694" }
+  - { name: "Keka", id: "470158793" }
+  - { name: "Airmail", id: "918858936" }
+  - { name: "Pages", id: "409201541" }
+  - { name: "LINE", id: "539883307" }
+  - { name: "Amphetamine", id: "937984704" }
+  - { name: "Easy Pass2", id: "1433073224" }
+  - { name: "BetterSnapTool", id: "417375580" }
+  - { name: "Yoink", id: "457622435" }
+  - { name: "Numbers", id: "409203825" }

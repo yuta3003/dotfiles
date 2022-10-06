@@ -1,0 +1,9 @@
+#!/bin/bash
+
+GRML_OSTYPE=$(uname -s)
+ 
+if [ $GRML_OSTYPE = "Darwin" ]; then
+  prefix=`ifconfig en0 inet | sed -e '1d' -e 's/^.*netmask 0x//' -e 's/ broadcast.*$//'`
+elif [ $GRML_OSTYPE = "Linux" ]; then
+  prefix=`ifconfig wlp2s0 | grep -E "netmask" | sed -e 's/^.*netmask//' -e 's/ broadcast.*$//'`
+fi

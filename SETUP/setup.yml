@@ -1,0 +1,12 @@
+---
+- name: mac setup
+  hosts: localhost
+  connection: local
+  become: no # sudo 権限を付与するか
+  gather_facts: no # サーバの情報を収集するか
+  roles:
+    - homebrew
+    - homebrew_cask
+    - mas
+    - dotfiles
+    # - anyenv
