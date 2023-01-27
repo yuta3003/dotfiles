@@ -35,7 +35,8 @@ alias rm="rm -i"
 
 #  git系
 alias gitst="git status"
-alias git-log="git log --oneline --graph --all"
+#alias git-log="git log --oneline --graph --all"
+alias git-log="git log --graph --pretty=oneline"
 alias git-root='git rev-parse --is-inside-work-tree && cd `git rev-parse --show-toplevel`'
 ## submodule
 alias git-sub-update="git submodule foreach 'git pull origin main'"
