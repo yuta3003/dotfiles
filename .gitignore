@@ -30,5 +30,22 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+### Linux ###
+*~
+
+# temporary files which can be created if a process still has a handle open of a deleted file
+.fuse_hidden*
+
+# KDE directory preferences
+.directory
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+# .nfs files are created when an open file is removed but is still being accessed
+.nfs*
+
 # tmux plugins
 Intel-mac/tmux/.tmux/plugins/
+M1-mac/tmux/.tmux/plugins/
+Archlinux/tmux/.tmux/plugins/
