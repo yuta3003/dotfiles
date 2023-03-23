@@ -1,7 +1,7 @@
 # DotFiles
 
 ## Installation
-### for OS X
+### Mac OS X(Intel)
 
 ```sh
 brew update
@@ -12,21 +12,24 @@ brew bundle
 
 cd $HOME
 mkdir .config
-ln -sf ~/dotfiles/git/.gitconfig ~/.gitconfig
-ln -sf ~/dotfiles/git/.gitignore_global ~/.gitignore_global
-ln -sf ~/dotfiles/git/.gitmessage ~/.gitmessage
-ln -sf ~/dotfiles/homebrew/localhost.homebrew-autoupdate.plist ~/Library/LaunchAgents/localhost.homebrew-autoupdate.plist
-ln -sf ~/dotfiles/neovim/init.vim ~/.config/nvim/init.vim
-ln -sf ~/dotfiles/starship/starship.toml ~/.config/starship.toml
-ln -sf ~/dotfiles/tmux/.tmux ~/.tmux
-ln -sf ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
-ln -sf ~/dotfiles/virtualbox/networks.conf /etc/vbox/networks.conf
-ln -sf ~/dotfiles/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
-ln -sf ~/dotfiles/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
-ln -sf ~/dotfiles/zsh/.zaliases ~/.zaliases
-ln -sf ~/dotfiles/zsh/.zprofile ~/.zprofile
-ln -sf ~/dotfiles/zsh/.zshrc ~/.zshrc
+ln -sf ~/dotfiles/Intel-mac/git/.gitconfig ~/.gitconfig
+ln -sf ~/dotfiles/Intel-mac/git/.gitignore_global ~/.gitignore_global
+ln -sf ~/dotfiles/Intel-mac/git/.gitmessage ~/.gitmessage
+ln -sf ~/dotfiles/Intel-mac/homebrew/localhost.homebrew-autoupdate.plist ~/Library/LaunchAgents/localhost.homebrew-autoupdate.plist
+ln -sf ~/dotfiles/Intel-mac/neovim/init.vim ~/.config/nvim/init.vim
+ln -sf ~/dotfiles/Intel-mac/starship/starship.toml ~/.config/starship.toml
+ln -sf ~/dotfiles/Intel-mac/tmux/.tmux ~/.tmux
+ln -sf ~/dotfiles/Intel-mac/tmux/.tmux.conf ~/.tmux.conf
+ln -sf ~/dotfiles/Intel-mac/virtualbox/networks.conf /etc/vbox/networks.conf
+ln -sf ~/dotfiles/Intel-mac/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
+ln -sf ~/dotfiles/Intel-mac/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
+ln -sf ~/dotfiles/Intel-mac/zsh/.zaliases ~/.zaliases
+ln -sf ~/dotfiles/Intel-mac/zsh/.zprofile ~/.zprofile
+ln -sf ~/dotfiles/Intel-mac/zsh/.zshrc ~/.zshrc
 
 launchctl load ~/Library/LaunchAgents/localhost.homebrew-autoupdate.plist
 launchctl list | grep home
 ```
+
+### Mac OS X(M1)
+### Arch Linux
