@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>customSites</key>
+	<dict>
+		<key>4BCBE7BF-C34D-4EA4-9073-868CF56A8505</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>github</string>
+			<key>text</key>
+			<string>Github</string>
+			<key>url</key>
+			<string>https://github.com/yuta3003</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>859652C9-4327-46F4-AE3A-8AEFBA6A2FF6</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>zen</string>
+			<key>text</key>
+			<string>Zenn</string>
+			<key>url</key>
+			<string>https://zenn.dev/</string>
+		</dict>
+		<key>9AD6CAF5-780E-4E12-9B32-146DC771EC4D</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>aws</string>
+			<key>text</key>
+			<string>Amazon Web Service</string>
+			<key>url</key>
+			<string>https://signin.aws.amazon.com/signin?redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3Fstate%3DhashArgs%2523%26isauthcode%3Dtrue&amp;client_id=arn%3Aaws%3Aiam%3A%3A015428540659%3Auser%2Fhomepage&amp;forceMobileApp=0&amp;code_challenge=jpPjQFnVOFdYYqRzA1X6Osgswuis4SaSfX5X9lPfDFw&amp;code_challenge_method=SHA-256#</string>
+		</dict>
+		<key>B09837C4-054F-4B08-AD44-6C1B6DD7F0F5</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>amazon</string>
+			<key>text</key>
+			<string>Amazon</string>
+			<key>url</key>
+			<string>https://www.amazon.co.jp/ref=nav_logo</string>
+		</dict>
+		<key>B4861ACA-B57B-459A-A5F0-A557D86210DE</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>deepl</string>
+			<key>text</key>
+			<string>DeepL</string>
+			<key>url</key>
+			<string>https://www.deepl.com/ja/translator</string>
+		</dict>
+		<key>F8223DAF-E332-4375-A66E-38024561F79A</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>qiita</string>
+			<key>text</key>
+			<string>Qiita</string>
+			<key>url</key>
+			<string>https://qiita.com/</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
