@@ -7,7 +7,7 @@
 fpath=(/usr/local/share/zsh-completions $fpath)
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-
+  source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
   autoload -Uz compinit
   compinit
 fi

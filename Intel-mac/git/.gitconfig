@@ -5,6 +5,7 @@
 	prune = true
 [core]
 	excludesfile = ~/.gitignore_global
+	editor = nvim
 [init]
 	defaultBranch = main
 	templatedir = ~/.git-templates/git-secrets
