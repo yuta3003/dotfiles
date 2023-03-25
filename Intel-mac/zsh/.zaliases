@@ -35,6 +35,8 @@ alias rm="rm -i"
 
 #  git系
 alias gitst="git status"
+# git checkout branchをfzfで選択
+alias co='git checkout $(git branch -a | tr -d " " |fzf --height 100% --prompt "CHECKOUT BRANCH>" --preview "git log --color=always {}" | head -n 1 | sed -e "s/^\*\s*//g" | perl -pe "s/remotes\/origin\///g")'
 #alias git-log="git log --oneline --graph --all"
 alias git-log="git log --graph --pretty=oneline"
 alias git-root='git rev-parse --is-inside-work-tree && cd `git rev-parse --show-toplevel`'
