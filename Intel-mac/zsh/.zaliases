@@ -35,10 +35,22 @@ alias rm="rm -i"
 
 #  git系
 alias gitst="git status"
+
+# 空白等の差分は無視して表示
+alias gd='git diff -b'
+
+# 現在のブランチをoriginにpushする
+alias po='git push origin $(git branch | grep "*" | sed -e "s/^\*\s*//g")'
+
+# 現在のブランチをpullする
+alias gpl='git pull --rebase origin $(git branch | grep "*" | sed -e "s/^\*\s*//g")'
+
 # git checkout branchをfzfで選択
 alias co='git checkout $(git branch -a | tr -d " " |fzf --height 100% --prompt "CHECKOUT BRANCH>" --preview "git log --color=always {}" | head -n 1 | sed -e "s/^\*\s*//g" | perl -pe "s/remotes\/origin\///g")'
-#alias git-log="git log --oneline --graph --all"
-alias git-log="git log --graph --pretty=oneline"
+
+# 全てのファイルをgit checkout
+alias gca='git checkout $(git status -s | grep -v \? |  grep -E "^.M" | perl -pe "s/(?<=^.{0}).{3}//g")'
+alias git-log="git log --oneline --graph --all"
 alias git-root='git rev-parse --is-inside-work-tree && cd `git rev-parse --show-toplevel`'
 ## submodule
 alias git-sub-update="git submodule foreach 'git pull origin main'"
@@ -75,6 +87,10 @@ alias safari='open -a Safari'
 #  ip
 alias myip="curl ifconfig.io -4"
 
+#################################################
+#
+#  Self made function
+#
 
 # dockの表示/非表示を切り替える
 alias dock='_toggle_dock'
@@ -84,4 +100,13 @@ _toggle_dock() {
     tell dock preferences to set autohide to not autohide
   end tell
 EOS
+}
+
+# terraformコマンドをfzfを用いて絞り込み
+alias terr="_terraform_execute"
+_terraform_execute() {
+  local cmd=$(terraform -help | grep '^  \S' | sed 's/  //' | fzf --with-nth=1 --preview='echo {2..}' --preview-window=up:1  | awk '{print $1}')
+  [ -z "$cmd" ] && return
+  print -s "terraform $cmd $1"
+  terraform $cmd $1
 }

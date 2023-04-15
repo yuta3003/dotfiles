@@ -14,8 +14,11 @@ fi
 
 # Setting direnv
 # Reference site: https://qiita.com/kompiro/items/5fc46089247a56243a62
-export EDITOR=vim
-eval "$(direnv hook zsh)"
+
+if [[ $(command -v direnv) ]]; then
+  export EDITOR=vim
+  eval "$(direnv hook zsh)"
+fi
 
 #################################################
 #
