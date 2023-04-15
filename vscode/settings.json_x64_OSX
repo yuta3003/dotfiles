@@ -1,0 +1,70 @@
+{
+    //----------------------------------------------------------
+    // Basic Settings
+    //----------------------------------------------------------
+
+    // editor
+    //"editor.acceptSuggestionOnEnter": "off",
+    "editor.cursorStyle": "line",
+    "editor.dragAndDrop": false,
+    "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace, 'Hack Nerd Font Mono'",
+    "editor.insertSpaces": false,
+    "editor.lineNumbers": "on",
+    "editor.renderControlCharacters": true,
+    "editor.tabSize": 4,
+    "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+    "editor.wordWrap": "off",
+
+    // explorer
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+
+    // extensions
+    "extensions.ignoreRecommendations": true,
+
+    // files
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+
+    // terminal
+    "terminal.integrated.fontFamily": "Hack Nerd Font",
+
+    // update
+    "update.showReleaseNotes": false,
+
+    // workbench
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "workbench.iconTheme": "eq-material-theme-icons",
+
+    // window
+    "window.zoomLevel": 0,
+
+    //----------------------------------------------------------
+    // Plugin Settings
+    //----------------------------------------------------------
+    // vim
+    "vim.useSystemClipboard": true, // クリップボードを使用
+    "vim.visualstar": true, // wordを* or + で検索
+
+    // キーバインド設定 インサートモード
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "j"],
+            "after": ["<Esc>"]
+        }
+    ],
+
+    //----------------------------------------------------------
+    // Language Settings
+    //----------------------------------------------------------
+    // Python
+    "[python]": {
+        "editor.rulers": [79],
+        "editor.tabSize": 4
+    },
+    "python.showStartPage": false,
+    "editor.inlineSuggest.enabled": true,
+    "workbench.colorTheme": "Ariake Dark"
+}

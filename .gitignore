@@ -49,3 +49,7 @@ Temporary Items
 Intel-mac/tmux/.tmux/plugins/
 M1-mac/tmux/.tmux/plugins/
 Archlinux/tmux/.tmux/plugins/
+
+tmux/tmux_x64_OSX/plugins/
+tmux/tmux_arm64_OSX/plugins/
+tmux/tmux_x64_OSX/plugins/

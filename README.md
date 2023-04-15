@@ -12,21 +12,21 @@ brew bundle
 
 cd $HOME
 mkdir .config
-ln -sf ~/dotfiles/Intel-mac/git/.gitconfig ~/.gitconfig
-ln -sf ~/dotfiles/Intel-mac/git/.gitignore_global ~/.gitignore_global
-ln -sf ~/dotfiles/Intel-mac/git/.gitmessage ~/.gitmessage
-ln -sf ~/dotfiles/Intel-mac/homebrew/localhost.homebrew-autoupdate.plist ~/Library/LaunchAgents/localhost.homebrew-autoupdate.plist
-ln -sf ~/dotfiles/Intel-mac/neovim/init.vim ~/.config/nvim/init.vim
-ln -sf ~/dotfiles/Intel-mac/starship/starship.toml ~/.config/starship.toml
-ln -sf ~/dotfiles/Intel-mac/ssh/config ~/.ssh/config
-ln -sf ~/dotfiles/Intel-mac/tmux/.tmux ~/.tmux
-ln -sf ~/dotfiles/Intel-mac/tmux/.tmux.conf ~/.tmux.conf
-ln -sf ~/dotfiles/Intel-mac/virtualbox/networks.conf /etc/vbox/networks.conf
-ln -sf ~/dotfiles/Intel-mac/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
-ln -sf ~/dotfiles/Intel-mac/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
-ln -sf ~/dotfiles/Intel-mac/zsh/.zaliases ~/.zaliases
-ln -sf ~/dotfiles/Intel-mac/zsh/.zprofile ~/.zprofile
-ln -sf ~/dotfiles/Intel-mac/zsh/.zshrc ~/.zshrc
+ln -sf ~/dotfiles/git/gitconfig_x64_OSX ~/.gitconfig
+ln -sf ~/dotfiles/git/gitignore_global_x64_OSX ~/.gitignore_global
+ln -sf ~/dotfiles/git/gitmessage_x64_OSX ~/.gitmessage
+ln -sf ~/dotfiles/homebrew/localhost.homebrew-autoupdate.plist_x64_OSX ~/Library/LaunchAgents/localhost.homebrew-autoupdate.plist
+ln -sf ~/dotfiles/neovim/init.vim_x64_OSX ~/.config/nvim/init.vim
+ln -sf ~/dotfiles/starship/starship.toml_x64_OSX ~/.config/starship.toml
+ln -sf ~/dotfiles/ssh/config_x64_OSX ~/.ssh/config
+ln -sf ~/dotfiles/tmux/tmux_x64_OSX ~/.tmux
+ln -sf ~/dotfiles/tmux/tmux.conf_x64_OSX ~/.tmux.conf
+ln -sf ~/dotfiles/virtualbox/networks.conf_x64_OSX /etc/vbox/networks.conf
+ln -sf ~/dotfiles/vscode/settings.json_x64_OSX ~/Library/Application\ Support/Code/User/settings.json
+ln -sf ~/dotfiles/vscode/keybindings.json_x64_OSX ~/Library/Application\ Support/Code/User/keybindings.json
+ln -sf ~/dotfiles/zsh/zaliases_x64_OSX ~/.zaliases
+ln -sf ~/dotfiles/zsh/zprofile_x64_OSX ~/.zprofile
+ln -sf ~/dotfiles/zsh/zshrc_x64_OSX ~/.zshrc
 
 launchctl load ~/Library/LaunchAgents/localhost.homebrew-autoupdate.plist
 launchctl list | grep home
