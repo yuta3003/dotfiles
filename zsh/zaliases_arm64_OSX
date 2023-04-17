@@ -11,16 +11,20 @@ alias cpu="sudo powermetrics --samplers smc |grep -i 'CPU die temperature'"
 alias brews="brew list -1"
 
 #  ls系
-#alias ls="ls -G"
-#alias la="ls -lhAG"
-
-alias ls="exa"
-alias lst="exa --icons --tree"
-alias la="exa -lha --icons"
-alias ll="exa -lh --icons"
+if [ ! type exa >/dev/null 2>&1 ]
+  then
+    alias ls="exa"
+    alias lst="exa --icons --tree"
+    alias la="exa -lha --icons"
+    alias ll="exa -lh --icons"
+  else
+    alias la="ls -lhAG"
+fi
 
 #  cat系
-alias cat="bat"
+if [ ! type bat >/dev/null 2>&1 ]; then
+  alias cat="bat"
+fi
 
 #  grep系
 alias grep="grep --color=auto"
