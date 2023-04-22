@@ -62,3 +62,9 @@ launchctl load ~/Library/LaunchAgents/localhost.homebrew-autoupdate.plist
 launchctl list | grep home
 ```
 ### Arch Linux
+
+
+
+```
+/bin/bash -c "$(curl https://raw.githubusercontent.com/yuta3003/dotfiles/main/etc/scripts/install.sh)"
+```
