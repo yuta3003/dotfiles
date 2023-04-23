@@ -27,7 +27,7 @@ fi
 cd $HOME
 
 # Install Xcode
-echo "Installing Xcode..."
+#echo "Installing Xcode..."
 #xcode-select --install
 
 # Install Homebrew
@@ -64,6 +64,9 @@ if [ ! -d ~/dotfiles ]; then
 else
   echo "dotfiles already exists."
 fi
+
+# Install Brewfile
+brew bundle --file ~/dotfiles/homebrew/Brewfile_x64_OSX
 
 # Create .config directory
 if [ ! -d ~/.config ]; then
