@@ -11,21 +11,16 @@ alias brew="PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin br
 alias brews="brew list -1"
 
 #  ls系
-if type exa >/dev/null 2>&1; then
-  alias ls="exa"
-  alias lst="exa --icons --tree"
-  alias la="exa -lha --icons"
-  alias ll="exa -lh --icons"
-else
-  alias la="ls -lhAG"
-fi
+#alias ls="ls -G"
+#alias la="ls -lhAG"
 
+alias ls="exa"
+alias lst="exa --icons --tree"
+alias la="exa -lha --icons"
+alias ll="exa -lh --icons"
 
 #  cat系
-if !(type "bat" >/dev/null 2>&1); then
-  alias cat="bat"
-fi
-
+alias cat="bat"
 
 #  grep系
 alias grep="grep --color=auto"
@@ -97,6 +92,12 @@ alias myip="curl ifconfig.io -4"
 #  Self made function
 #
 
+# cd - ls after cd
+alias cd="ls_after_cd"
+ls_after_cd() {
+  builtin cd $@ && ls;
+}
+
 # dockの表示/非表示を切り替える
 alias dock='_toggle_dock'
 _toggle_dock() {
@@ -114,4 +115,22 @@ _terraform_execute() {
   [ -z "$cmd" ] && return
   print -s "terraform $cmd $1"
   terraform $cmd $1
+}
+
+# fbr - checkout git branch (including remote branches)
+## git
+fbr() {
+  local branches branch
+  branches=$(git branch --all | grep -v HEAD) &&
+  branch=$(echo "$branches" | fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+  git switch $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
+
+# fd - cd to selected directory
+## fzf
+fd() {
+  local dir
+  dir=$(find ${1:-.} -path '*/\.*' -prune \
+                  -o -type d -print 2> /dev/null | fzf +m) &&
+  cd "$dir"
 }

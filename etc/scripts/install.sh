@@ -2,7 +2,7 @@
 
 set -eu
 
-if [ "$(uname)" == "Darwin" ] ; then
+if [ ! "$(uname)" == "Darwin" ] ; then
 	echo "Not macOS!"
 	exit 1
 fi
@@ -10,23 +10,28 @@ fi
 if [ "$(uname)" == "Darwin" ] ; then
   if [ "$(uname -m)" == "x86_64" ] ; then
   # intel Mac
+    echo "Intel Mac"
   elif [ "$(uname -m)" == "arm64" ] ; then
   # M1 Mac
+    echo "M1 Mac"
   else
     echo ""
 	  exit 1
   fi
+fi
+
 if [ "$(uname)" == "Linux" ] ; then
+  echo "Linux"
 fi
 
 cd $HOME
 
 # Install Xcode
 echo "Installing Xcode..."
-xcode-select --install
+#xcode-select --install
 
 # Install Homebrew
-if  !(type brew >/dev/null 2>&1); then
+if  [! type brew >/dev/null 2>&1 ]; then
   echo "Installing Homebrew..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
@@ -34,7 +39,7 @@ else
 fi
 
 # Install git
-if !(type git >/dev/null 2>&1);then
+if [ ! type git >/dev/null 2>&1 ];then
   echo "Installing git..."
   brew install git
 else
@@ -68,7 +73,7 @@ else
   echo ".config directory already exists."
 fi
 
-if [ ! -d ~/.tmux/plugins/tpm]; then
+if [ ! -d ~/.tmux/plugins/tpm ]; then
   echo "Installing Tmux Plugin Manager..."
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
@@ -83,7 +88,7 @@ cd dotfiles
 #make init
 
 # Macの設定を変更
-~/dotfiles/etc/scripts/defaults.sh
+#~/dotfiles/etc/scripts/defaults.sh
 
 
 echo 'Rebooting to reflect settings'
