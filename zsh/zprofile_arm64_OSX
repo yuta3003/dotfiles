@@ -1,5 +1,10 @@
 #################################################
 #
+#  Start-up Setting
+#
+
+#################################################
+#
 #  Check for SYSTEM
 #
 GRML_OSTYPE=$(uname -s)
@@ -65,6 +70,9 @@ export PYENV_ROOT="$HOME/.anyenv/envs/pyenv"
 # for poetry
 export POETRY_ROOT="$HOME/.poetry"
 
+# for asdf - node plugins
+export GAWK_ROOT="/opt/homebrew/opt/gawk"
+
 # /usr/bin/python3 -- system Python
 # /usr/local/bin/python3 -- Homebrew Python
 # /Users/yuta/.anyenv/envs/pyenv/shims/python3 -- pyenv Python
@@ -78,7 +86,7 @@ PATH="$USR_LOCAL_HOME/bin:$PATH"
 PATH="$USR_LOCAL_HOME/sbin:$PATH"
 PATH="$PYENV_ROOT/bin:$PATH"
 PATH="$POETRY_ROOT/bin:$PATH"
-
+PATH="$GAWK_ROOT/libexec/gnubin:$PATH" # gawk
 export PATH
 
 #  $PATHの重複削除
@@ -165,13 +173,29 @@ export LS_COLORS='di=01;36:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30
 #46	水色
 #47	白
 
+#################################################
+#
+#  Loading
 
+#  .zshrcを読み込む
+if [ -f "${HOME}/.zshrc" ] ; then
+  source "${HOME}/.zshrc"
+fi
+#  .zaliasesを読み込み
+if [ -f "${HOME}/.zaliases" ] ; then
+  source "${HOME}/.zaliases"
+fi
+
+if [ $SHLVL = 1 ]; then
+  tmux  # tmux起動
+fi
 #################################################
 #
 #  HOME-MADE Command Setting
 
 # cd - ls after cd
-cd(){
+alias cd="ls_after_cd"
+ls_after_cd(){
   builtin cd $@ && ls;
 }
 
@@ -193,21 +217,12 @@ fd() {
   cd "$dir"
 }
 
-#################################################
-#
-#  Start-up Setting
-#
-
-if [ $SHLVL = 1 ]; then
-  tmux  # tmux起動
-fi
-#  .zshrcを読み込む
-if [ -f "${HOME}/.zshrc" ] ; then
-  source "${HOME}/.zshrc"
-fi
-#  .zaliasesを読み込み
-if [ -f "${HOME}/.zaliases" ] ; then
-  source "${HOME}/.zaliases"
-fi
-
-
+# dockの表示/非表示を切り替える
+alias dock='_toggle_dock'
+_toggle_dock() {
+  osascript <<EOS
+  tell application "System Events"
+    tell dock preferences to set autohide to not autohide
+  end tell
+EOS
+}

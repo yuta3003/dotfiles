@@ -11,18 +11,18 @@ alias cpu="sudo powermetrics --samplers smc |grep -i 'CPU die temperature'"
 alias brews="brew list -1"
 
 #  ls系
-if [ ! type exa >/dev/null 2>&1 ]
-  then
-    alias ls="exa"
-    alias lst="exa --icons --tree"
-    alias la="exa -lha --icons"
-    alias ll="exa -lh --icons"
-  else
-    alias la="ls -lhAG"
+#if [ type exa >/dev/null 2>&1 ]; then
+if  type exa >/dev/null 2>&1; then
+  alias ls="exa"
+  alias lst="exa --icons --tree"
+  alias la="exa -lha --icons"
+  alias ll="exa -lh --icons"
+else
+  alias la="ls -lhAG"
 fi
 
 #  cat系
-if [ ! type bat >/dev/null 2>&1 ]; then
+if  type bat >/dev/null 2>&1; then
   alias cat="bat"
 fi
 
@@ -76,14 +76,3 @@ alias safari='open -a Safari'
 
 #  ip
 alias myip="curl ifconfig.io -4"
-
-
-# dockの表示/非表示を切り替える
-alias dock='_toggle_dock'
-_toggle_dock() {
-  osascript <<EOS
-  tell application "System Events"
-    tell dock preferences to set autohide to not autohide
-  end tell
-EOS
-}

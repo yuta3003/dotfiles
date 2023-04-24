@@ -13,3 +13,7 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false    # 未確認�
 defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false  # スペルの訂正を無効にする
 defaults write com.apple.finder WarnOnEmptyTrash -bool false    # ゴミ箱を空にする前の警告の無効化
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE  # .DS_Storeファイルを作らせない
+
+# VSCode vim
+defaults write com.microsoft.VSCodeInsiders ApplePressAndHoldEnabled -bool false
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false

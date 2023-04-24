@@ -12,11 +12,6 @@ if type brew &>/dev/null; then
   compinit
 fi
 
-# Setting direnv
-# Reference site: https://qiita.com/kompiro/items/5fc46089247a56243a62
-export EDITOR=vim
-eval "$(direnv hook zsh)"
-
 #################################################
 #
 #  補完機能設定
@@ -301,4 +296,10 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 #
 #  PLUGIN Setting
 
+# Setting direnv
+# Reference site: https://qiita.com/kompiro/items/5fc46089247a56243a62
+export EDITOR=vim
+eval "$(direnv hook zsh)"
 
+# for asdf setting
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
