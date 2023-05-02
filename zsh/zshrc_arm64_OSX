@@ -302,4 +302,4 @@ export EDITOR=vim
 eval "$(direnv hook zsh)"
 
 # for asdf setting
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
+#. /opt/homebrew/opt/asdf/libexec/asdf.sh

@@ -226,3 +226,13 @@ _toggle_dock() {
   end tell
 EOS
 }
+
+alias dark='_dark_mode'
+_dark_mode() {
+  osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to true'
+}
+
+alias light='_light_mode'
+_light_mode() {
+  osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to false'
+}
