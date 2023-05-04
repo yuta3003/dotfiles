@@ -9,7 +9,7 @@ Host thinkpad
   Port 22
   IdentityFile ~/.ssh/id_rsa
 
-Host github
+Host github github.com
   HostName github.com
   IdentityFile ~/.ssh/github
   User git

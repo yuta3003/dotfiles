@@ -66,7 +66,7 @@ else
 fi
 
 # Install Brewfile
-brew bundle --file ~/dotfiles/homebrew/Brewfile_x64_OSX
+brew bundle --file ~/dotfiles/homebrew/Brewfile_arm64_OSX
 
 # Create .config directory
 if [ ! -d ~/.config ]; then
