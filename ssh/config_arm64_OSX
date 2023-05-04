@@ -1,8 +1,3 @@
-Host *
-  AddKeysToAgent yes
-  UseKeychain yes
-  IdentityFile ~/.ssh/id_ed25519
-
 Host thinkpad
   HostName 192.168.11.254
   User yuta
