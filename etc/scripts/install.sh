@@ -11,6 +11,7 @@ if [ "$(uname)" == "Darwin" ] ; then
   if [ "$(uname -m)" == "x86_64" ] ; then
   # intel Mac
     echo "Intel Mac"
+    exit 1
   elif [ "$(uname -m)" == "arm64" ] ; then
   # M1 Mac
     echo "M1 Mac"
@@ -20,15 +21,11 @@ if [ "$(uname)" == "Darwin" ] ; then
   fi
 fi
 
-if [ "$(uname)" == "Linux" ] ; then
-  echo "Linux"
-fi
-
 cd $HOME
 
 # Install Xcode
-#echo "Installing Xcode..."
-#xcode-select --install
+echo "Installing Xcode..."
+xcode-select --install
 
 # Install Homebrew
 if  [! type brew >/dev/null 2>&1 ]; then
@@ -66,6 +63,8 @@ else
 fi
 
 # Install Brewfile
+brew update
+brew upgrade
 brew bundle --file ~/dotfiles/homebrew/Brewfile_arm64_OSX
 
 # Create .config directory

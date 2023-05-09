@@ -5,6 +5,7 @@
 	prune = true
 [core]
 	excludesfile = ~/.gitignore_global
+	editor = nvim
 [init]
 	defaultBranch = main
 	templatedir = ~/.git-templates/git-secrets
@@ -18,4 +19,4 @@
 [pull]
 	rebase = true
 [commit]
-	template = /Users/yuta/.gitmessage
+	template = ~/.gitmessage
