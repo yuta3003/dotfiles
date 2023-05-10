@@ -1,1 +1,1 @@
-./arm64/.zshrc
+arm64/.zshrc

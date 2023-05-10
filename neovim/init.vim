@@ -1,1 +1,1 @@
-./arm64/init.vim
+arm64/init.vim

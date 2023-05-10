@@ -1,1 +1,1 @@
-./arm64/.zprofile
+arm64/.zprofile

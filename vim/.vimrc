@@ -1,1 +1,1 @@
-./arm64/.vimrc
+arm64/.vimrc
