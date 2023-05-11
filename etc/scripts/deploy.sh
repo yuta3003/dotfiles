@@ -5,23 +5,27 @@ set -eu
 DOT_DIRECTORY="${HOME}/dotfiles"
 cd ${DOT_DIRECTORY}
 
-for f in .??*
-do
-  echo ${f}
-  [[ ${f} = "*README.md*" ]] && continue
-  [[ ${f} = ".git" ]] && continue
-  [[ ${f} = ".gitignore" ]] && continue
-  [[ ${f} = ".editorconfig" ]] && continue
-  [[ ${f} = "bash" ]] && continue
-  [[ ${f} = "arm64" ]] && continue
-  [[ ${f} = "x64" ]] && continue
-  [[ ${f} = "Iterm2" ]] && continue
-  [[ ${f} = "Alfred" ]] && continue
-  [[ ${f} = "homebrew" ]] && continue
-  [[ ${f} = "virtualbox" ]] && continue
-  [[ ${f} = "vscode" ]] && continue
-  [[ ${f} = "etc" ]] && continue
+# Deploy to HOME
+while read -r f; do
 
-  ln -snfv ${DOT_DIRECTORY}/${f} ${HOME}/${f}
-done
-echo $(tput setaf 2)Deploy dotfiles complete!. ✔︎$(tput sgr0)
+  [[ ${f} == *Alfred* ]] && continue
+  [[ ${f} == *bash* ]] && continue
+  [[ ${f} == *etc* ]] && continue
+  [[ ${f} == *homebrew* ]] && continue
+  [[ ${f} == *Iterm2* ]] && continue
+  [[ ${f} == *neovim* ]] && continue
+  [[ ${f} == *ssh* ]] && continue
+  [[ ${f} == *starship* ]] && continue
+  [[ ${f} == *virtualbox* ]] && continue
+  [[ ${f} == *vscode* ]] && continue
+  [[ ${f} == *.editorconfig ]] && continue
+  [[ ${f} == *.gitignore ]] && continue
+  [[ ${f} == *README.md* ]] && continue
+  [[ ${f} == *\.git/* ]] && continue
+  [[ ${f} == *arm64* ]] && continue
+  [[ ${f} == *x64* ]] && continue
+
+  ln -snf ${f} ${HOME}/${f##*/}
+  echo "$(tput setaf 2)✔︎$(tput sgr0)${HOME}/${f##*/}"
+
+done < <(find ${DOT_DIRECTORY} -mindepth 1 \( -type l -o -type f \))
