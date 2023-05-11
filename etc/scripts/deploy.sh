@@ -10,7 +10,6 @@ main() {
   deploy_ssh_config
 }
 
-# Deploy to HOME
 deploy_to_home() {
   # LIST
   #   - git
@@ -42,7 +41,7 @@ deploy_to_home() {
     [[ ${f} == *arm64* ]] && continue
     [[ ${f} == *x64* ]] && continue
 
-    ln -snf ${f} ${HOME}/${f##*/}
+    ln -sf ${f} ${HOME}/${f##*/}
     echo "$(tput setaf 2)✔︎$(tput sgr0)${HOME}/${f##*/}"
 
   done < <(find ${DOT_DIRECTORY} -mindepth 1 \( -type l -o -type f \))
@@ -75,7 +74,7 @@ deploy_to_dotconfig() {
     [[ ${f} == *arm64* ]] && continue
     [[ ${f} == *x64* ]] && continue
 
-    ln -snf ${f} ${HOME}/.config/${f##*/}
+    ln -sf ${f} ${HOME}/.config/${f##*/}
     echo "$(tput setaf 2)✔︎$(tput sgr0)${HOME}/.config/${f##*/}"
 
   done < <(find ${DOT_DIRECTORY} -mindepth 1 \( -type l -o -type f \))
@@ -85,7 +84,7 @@ deploy_neovim_config() {
   if [ ! -d ~/.config/nvim ]; then
     mkdir -p ~/.config/nvim
   fi
-  ln -snf \
+  ln -sf \
     ${DOT_DIRECTORY}/neovim/init.vim \
     ~/.config/nvim/init.vim
 
@@ -96,7 +95,7 @@ deploy_ssh_config() {
   if [ ! -d ~/.ssh ]; then
     mkdir ~/.ssh
   fi
-  ln -snf \
+  ln -sf \
     ${DOT_DIRECTORY}/ssh/config \
     ~/.ssh/config
 
@@ -104,7 +103,7 @@ deploy_ssh_config() {
 }
 
 deploy_homebrew_autoupdate_config() {
-  ln -snf \
+  ln -sf \
     ${DOT_DIRECTORY}/homebrew/localhost.homebrew-autoupdate.plist \
     ~/Library/LaunchAgents/localhost.homebrew-autoupdate.plist
   echo "$(tput setaf 2)✔︎$(tput sgr0)${HOME}/Library/LaunchAgents/localhost.homebrew-autoupdate.plist"
@@ -114,10 +113,10 @@ deploy_vscode_config() {
   if [ ! -d ~/Library/Application\ Support/Code/User ]; then
     mkdir -p ~/Library/Application\ Support/Code/User
   fi
-  ln -snf \
+  ln -sf \
     ~/dotfiles/vscode/settings.json \
     ~/Library/Application\ Support/Code/User/settings.json
-  ln -snf \
+  ln -sf \
     ~/dotfiles/vscode/keybindings.json \
     ~/Library/Application\ Support/Code/User/keybindings.json
   echo "$(tput setaf 2)✔︎$(tput sgr0)${HOME}/~/Library/Application\ Support/Code/User/settings.json"

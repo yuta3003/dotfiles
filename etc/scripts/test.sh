@@ -1,73 +1,25 @@
-#!/bin/bash
+#!/bin/sh
 
-set -eu
+cd ./../..
+readonly DOT_DIRECTORY="$(cd "`dirname "${0}"`"; pwd)"
 
-# DOT_DIRECTORY="${HOME}/dotfiles"
-# cd ${DOT_DIRECTORY}
+# linklist.txtのコメントを削除
+__remove_linklist_comment() {(
+    # '#'以降と空行を削除
+    sed -e 's/\s*#.*//' \
+        -e '/^\s*$/d' \
+        $1
+)}
 
-
-# Deploy to HOME
-# while read -r f; do
-
-#   [[ ${f} == *Alfred* ]] && continue
-#   [[ ${f} == *bash* ]] && continue
-#   [[ ${f} == *etc* ]] && continue
-#   [[ ${f} == *homebrew* ]] && continue
-#   [[ ${f} == *Iterm2* ]] && continue
-#   [[ ${f} == *neovim* ]] && continue
-#   [[ ${f} == *ssh* ]] && continue
-#   [[ ${f} == *starship* ]] && continue
-#   [[ ${f} == *virtualbox* ]] && continue
-#   [[ ${f} == *vscode* ]] && continue
-#   [[ ${f} == *.editorconfig ]] && continue
-#   [[ ${f} == *.gitignore ]] && continue
-#   [[ ${f} == *README.md* ]] && continue
-#   [[ ${f} == *\.git/* ]] && continue
-#   [[ ${f} == *arm64* ]] && continue
-#   [[ ${f} == *x64* ]] && continue
-
-
-#   echo ${f}
-#   echo ${f##*/}
-
-# done < <(find ${DOT_DIRECTORY} -mindepth 1 \( -type l -o -type f \))
-
-# Deploy to .config
-# while read -r f; do
-
-#   [[ ${f} == */Alfred* ]] && continue
-#   [[ ${f} == */bash* ]] && continue
-#   [[ ${f} == */etc* ]] && continue
-#   [[ ${f} == */git* ]] && continue
-#   [[ ${f} == */homebrew* ]] && continue
-#   [[ ${f} == */Iterm2* ]] && continue
-#   [[ ${f} == */neovim* ]] && continue
-#   [[ ${f} == */screen* ]] && continue
-#   [[ ${f} == */ssh* ]] && continue
-#   # [[ ${f} == */starship* ]] && continue
-#   [[ ${f} == */tmux* ]] && continue
-#   [[ ${f} == */vim* ]] && continue
-#   [[ ${f} == */virtualbox* ]] && continue
-#   [[ ${f} == */vscode* ]] && continue
-#   [[ ${f} == */zsh* ]] && continue
-#   [[ ${f} == *\.editorconfig ]] && continue
-#   [[ ${f} == *\.gitignore ]] && continue
-#   [[ ${f} == *README.md* ]] && continue
-#   [[ ${f} == *\.git/* ]] && continue
-#   [[ ${f} == *arm64* ]] && continue
-#   [[ ${f} == *x64* ]] && continue
-
-#   echo "${f} -> ${HOME}/.config/${f##*/}"
-#   # echo "$(tput setaf 2)✔︎$(tput sgr0)${HOME}/${f##*/}"
-
-# done < <(find ${DOT_DIRECTORY} -mindepth 1 \( -type l -o -type f \))
-
-echo ${DOT_DIRECTORY}
-
-
-# if [ ! -f ~/.ssh/id_rsa.pub ]; then
-#   echo "fuck"
-
-# else
-#   echo "kkkk"
-# fi
+# シンボリックリンクを作成
+cd ${DOT_DIRECTORY}
+linklist="linklist.txt"
+[ ! -r "$linklist" ] && return
+__remove_linklist_comment "$linklist" | while read target link; do
+    # ~ や環境変数を展開
+    target=$(eval echo "${PWD}/${target}")
+    link=$(eval echo "${link}")
+    # シンボリックリンクを作成
+    mkdir -p $(dirname ${link})
+    ln -fsn ${target} ${link}
+done
