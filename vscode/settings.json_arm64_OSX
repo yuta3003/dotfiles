@@ -66,5 +66,6 @@
     },
     "python.showStartPage": false,
     "editor.inlineSuggest.enabled": true,
-    "workbench.colorTheme": "Ariake Dark"
+    "workbench.colorTheme": "Ariake Dark",
+    "vsnotes.defaultNotePath": "/Users/yuta/Workspace/VSNotes"
 }

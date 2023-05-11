@@ -17,3 +17,10 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE  # 
 # VSCode vim
 defaults write com.microsoft.VSCodeInsiders ApplePressAndHoldEnabled -bool false
 defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+
+## 三本指でドラッグ
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true && \
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
+
+## terminalでUTF-8のみを使用する
+defaults write com.apple.terminal StringEncodings -array 4
