@@ -11,10 +11,10 @@
     <string>/bin/sh</string>
     <string>-c</string>
     <string>
-      /usr/local/bin/brew update &amp;&amp;
-      /usr/local/bin/brew upgrade &amp;&amp;
-      /usr/local/bin/brew cleanup &amp;&amp;
-      /usr/local/bin/terminal-notifier -title 'Homebrew' -message 'Homebrew updated!'
+      /opt/homebrew/bin/brew update &amp;&amp;
+      /opt/homebrew/bin/brew upgrade &amp;&amp;
+      /opt/homebrew/bin/brew cleanup &amp;&amp;
+      /opt/homebrew/bin/terminal-notifier -title 'Homebrew' -message 'Homebrew updated!'
     </string>
   </array>
   <key>RunAtLoad</key>

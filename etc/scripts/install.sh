@@ -2,97 +2,154 @@
 
 set -eu
 
-if [ ! "$(uname)" == "Darwin" ] ; then
-	echo "Not macOS!"
-	exit 1
-fi
 
-if [ "$(uname)" == "Darwin" ] ; then
-  if [ "$(uname -m)" == "x86_64" ] ; then
-  # intel Mac
-    echo "Intel Mac"
-  elif [ "$(uname -m)" == "arm64" ] ; then
-  # M1 Mac
-    echo "M1 Mac"
-  else
-    echo ""
-	  exit 1
+cd ./../..
+readonly DOT_DIRECTORY="$(cd "`dirname "${0}"`"; pwd)"
+
+echo ${DOT_DIRECTORY}
+
+main() {
+
+  if ! is_m1_mac; then
+    echo "Installing stoped."
+    exit 1
   fi
-fi
 
-if [ "$(uname)" == "Linux" ] ; then
-  echo "Linux"
-fi
+  install_xcode
+  install_homebrew
+  install_git
+  clone_my_dotfiles
+  install_brews
+  create_dotconfig_directory
+  install_tpm
+  install_vim_plug
 
-cd $HOME
+  #make deploy
+  source ${DOT_DIRECTORY}/etc/scripts/deploy.sh
 
-# Install Xcode
-#echo "Installing Xcode..."
-#xcode-select --install
+  #make init
 
-# Install Homebrew
-if  [! type brew >/dev/null 2>&1 ]; then
-  echo "Installing Homebrew..."
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-else
-  echo "Homebrew already installed."
-fi
+  # Macの設定を変更
+  #~/dotfiles/etc/scripts/defaults.sh
 
-# Install git
-if [ ! type git >/dev/null 2>&1 ];then
-  echo "Installing git..."
-  brew install git
-else
-  echo "git already installed."
-fi
+  echo 'Rebooting to reflect settings'
+  sudo shutdownn -r now
+}
 
-# Clone my dotfiles
-if [ ! -d ~/dotfiles ]; then
-  cd ~/.ssh
-  ssh-keygen -t rsa -f github -N ""
-  cat ~/.ssh/github.pub | pbcopy
-  echo "github.pubをクリップボードにコピーしました。"
-  echo "公開鍵をGitHubに登録しましたか？"
-  select yn in "Yes"
-    do
-      case $yn in
-        Yes ) break;;
-      esac
-    done
-    echo "Cloning dotfiles..."
-    git clone git@github.com:yuta3003/dotfiles.git
-else
-  echo "dotfiles already exists."
-fi
+has() {
+  type "$1" > /dev/null 2>&1
+}
 
-# Install Brewfile
-brew bundle --file ~/dotfiles/homebrew/Brewfile_arm64_OSX
+is_m1_mac() {
+  if [ ! "$(uname)" == "Darwin" ] ; then
+  	echo "Not macOS!"
+  	return 1
+  else
+    if [ "$(uname -m)" == "x86_64" ] ; then
+    # intel Mac
+      echo "Intel Mac"
+      return 1
+    elif [ "$(uname -m)" == "arm64" ] ; then
+    # M1 Mac
+      echo "M1 Mac"
+      return 0
+    fi
+  fi
+}
 
-# Create .config directory
-if [ ! -d ~/.config ]; then
-  echo "Creating ~/.config directory..."
-  mkdir ~/.config
-else
-  echo ".config directory already exists."
-fi
+install_xcode() {
+  # Install Xcode
+  echo "Installing Xcode..."
+  xcode-select --install
+  return 0
+}
 
-if [ ! -d ~/.tmux/plugins/tpm ]; then
-  echo "Installing Tmux Plugin Manager..."
-  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-fi
+install_homebrew() {
+  if  [! type brew >/dev/null 2>&1 ]; then
+    echo "Installing Homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  else
+    echo "Homebrew already installed."
+  fi
+  return 0
+}
 
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+install_git() {
+  if [ ! type git >/dev/null 2>&1 ];then
+    echo "Installing git..."
+    brew install git
+  else
+    echo "git already installed."
+  fi
+  return 0
+}
 
-cd dotfiles
+ask_yes_no() {
+  while true; do
+    echo -n "$* [y/n]: "
+    read ANS
+    case $ANS in
+      [Yy]*)
+        return 0
+        ;;
+      [Nn]*)
+        return 1
+        ;;
+      *)
+        echo "yまたはnを入力してください"
+        ;;
+    esac
+  done
+}
 
-#make deploy
+clone_my_dotfiles() {
+  # Clone my dotfiles
+  if [ ! -d ~/dotfiles ]; then
+    if [ ! -f ~/.ssh/github.pub ]; then
+      cd ~/.ssh
+      ssh-keygen -t rsa -f github -N ""
+    fi
+    cat ~/.ssh/github.pub | pbcopy
+    echo "github.pubをクリップボードにコピーしました。"
+    if ask_yes_no "公開鍵をGitHubに登録しましたか？"; then
+      echo "Cloning dotfiles..."
+      git clone git@github.com:yuta3003/dotfiles.git
+    else
+      exit 0
+    fi
+  else
+    echo "dotfiles already exists."
+  fi
+  return 0
+}
 
-#make init
+install_brews() {
+  brew update
+  brew upgrade
+  brew bundle --file ~/dotfiles/homebrew/Brewfile_arm64_OSX
+}
 
-# Macの設定を変更
-#~/dotfiles/etc/scripts/defaults.sh
+create_dotconfig_directory() {
+  if [ ! -d ~/.config ]; then
+    echo "Creating ~/.config directory..."
+    mkdir ~/.config
+  else
+    echo ".config directory already exists."
+  fi
+}
+
+install_tpm() {
+  if [ ! -d ~/.tmux/plugins/tpm ]; then
+    echo "Installing Tmux Plugin Manager..."
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  fi
+  return 0
+}
+
+install_vim_plug() {
+  sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim \
+    --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+}
 
 
-echo 'Rebooting to reflect settings'
-sudo shutdownn -r now
+main
