@@ -15,7 +15,7 @@ main() {
     exit 1
   fi
 
-  install_xcode
+  # install_xcode
   install_homebrew
   install_git
   clone_my_dotfiles
