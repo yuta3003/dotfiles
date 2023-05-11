@@ -123,5 +123,4 @@ deploy_vscode_config() {
   echo "$(tput setaf 2)✔︎$(tput sgr0)${HOME}/~/Library/Application\ Support/Code/User/keybindings.json"
 }
 
-
 main
