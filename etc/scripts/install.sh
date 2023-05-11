@@ -6,6 +6,8 @@ set -eu
 cd ./../..
 readonly DOT_DIRECTORY="$(cd "`dirname "${0}"`"; pwd)"
 
+echo ${DOT_DIRECTORY}
+
 main() {
 
   if ! is_m1_mac; then
