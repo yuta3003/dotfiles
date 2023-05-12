@@ -10,3 +10,6 @@ ${DOT_DIRECTORY}/starship/starship.toml,${HOME}/.config/starship.toml
 # VSCode
 ${DOT_DIRECTORY}/vscode/settings.json,${HOME}/.config/Code/User/settings.json
 ${DOT_DIRECTORY}/vscode/keybindings.json,${HOME}/.config/Code/User/keybindings.json
+
+# git
+${DOT_DIRECTORY}/git/ignore,${HOME}/.config/git/ignore

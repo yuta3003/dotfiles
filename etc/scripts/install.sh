@@ -3,6 +3,7 @@ set -eu
 
 
 DOT_DIRECTORY="${HOME}/dotfiles"
+SCRIPT_DIR="${DOT_DIRECTORY}/etc/scripts"
 
 main() {
 
@@ -33,12 +34,12 @@ main() {
 
 
   #make deploy
-  source ${DOT_DIRECTORY}/etc/scripts/deploy.sh
+  source ${SCRIPT_DIR}/deploy.sh
 
   #make init
 
   # Macの設定を変更
-  #~/dotfiles/etc/scripts/defaults.sh
+  source ${SCRIPT_DIR}/defaults.sh
 
 
   if ask_yes_no "再起動しますか？"; then

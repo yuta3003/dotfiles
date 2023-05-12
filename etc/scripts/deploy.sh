@@ -3,9 +3,11 @@ set -eu
 
 
 DOT_DIRECTORY="${HOME}/dotfiles"
+SCRIPT_DIR="${DOT_DIRECTORY}/etc/scripts"
+DEPLOY_LIST_DIR="${DOT_DIRECTORY}/etc/deploylist"
 
 main() {
-  source ${DOT_DIRECTORY}/etc/scripts/create_arm64_link.sh
+  source ${SCRIPT_DIR}/create_arm64_link.sh
   deploy_to_home
   deploy_by_list
 }
@@ -23,6 +25,7 @@ deploy_to_home() {
     [[ ${f} == */bash* ]] && continue
     [[ ${f} == */etc* ]] && continue
     # [[ ${f} == */git* ]] && continue
+    [[ ${f} == */git/ignore* ]] && continue
     [[ ${f} == */homebrew* ]] && continue
     [[ ${f} == */Iterm2* ]] && continue
     [[ ${f} == */neovim* ]] && continue
@@ -58,8 +61,8 @@ deploy_by_list() {
   tmp_file=$(mktemp)
   trap 'rm ${tmp_file}' 0
 
-  # deploylist="${DOT_DIRECTORY}/etc/deploylist/deploylist.Darwin.txt"
-  deploylist="${DOT_DIRECTORY}/etc/deploylist/deploylist.ubuntu.txt"
+  # deploylist="${DEPLOY_LIST_DIR}/deploylist.Darwin.txt"
+  deploylist="${DEPLOY_LIST_DIR}/deploylist.ubuntu.txt"
 
   if [ -f ${deploylist} ]; then
     __remove_deploylist_comment "${deploylist}" > ${tmp_file}
@@ -67,9 +70,6 @@ deploy_by_list() {
       # ~ や環境変数を展開
       src=$(eval echo "$(cut -d ',' -f 1 <<<${line})")
       dst=$(eval echo "$(cut -d ',' -f 2 <<<${line})")
-      # echo "${dst}" | sed 's/home\/z-nakazawa/~/g'
-      # echo "${dst/${HOME}/~}"
-      # echo ${dst//home/~}
 
       dst_dir=${dst%/*}
       if [ ! -d ${dst_dir} ]; then

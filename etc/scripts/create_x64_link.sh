@@ -1,12 +1,11 @@
 #!/bin/bash
 set -eu
 
-
 echo "creating git"
 cd ${DOT_DIRECTORY}/git
 ln -sf x64/.gitconfig .gitconfig
-ln -sf x64/.gitignore_global .gitignore_global
 ln -sf x64/.gitmessage .gitmessage
+ln -sf x64/ignore ignore
 
 echo "creating homebrew"
 cd ${DOT_DIRECTORY}/homebrew
