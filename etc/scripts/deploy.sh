@@ -7,9 +7,7 @@ DOT_DIRECTORY="${HOME}/dotfiles"
 main() {
   source ${DOT_DIRECTORY}/etc/scripts/create_arm64_link.sh
   deploy_to_home
-
   deploy_by_list
-
 }
 
 deploy_to_home() {
@@ -44,7 +42,7 @@ deploy_to_home() {
     [[ ${f} == *x64* ]] && continue
 
     ln -sf ${f} ${HOME}/${f##*/}
-    echo "$(tput setaf 2)✔︎$(tput sgr0)${HOME}/${f##*/}"
+    echo "$(tput setaf 2)✔︎$(tput sgr0)~/${f##*/}"
 
   done < <(find ${DOT_DIRECTORY} -mindepth 1 \( -type l -o -type f \))
 }
@@ -79,7 +77,7 @@ deploy_by_list() {
       fi
 
       ln -sf ${src} ${dst}
-      echo "$(tput setaf 2)✔︎$(tput sgr0)${dst}"
+      echo "$(tput setaf 2)✔︎$(tput sgr0)~${dst#${HOME}}"
 
     done < ${tmp_file}
   else

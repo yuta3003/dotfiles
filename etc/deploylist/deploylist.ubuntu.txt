@@ -5,7 +5,7 @@ ${DOT_DIRECTORY}/neovim/init.vim,${HOME}/.config/nvim/init.vim
 ${DOT_DIRECTORY}/starship/starship.toml,${HOME}/.config/starship.toml
 
 # ssh
-${DOT_DIRECTORY}/ssh/config,${HOME}/.ssh/config
+#${DOT_DIRECTORY}/ssh/config,${HOME}/.ssh/config
 
 # VSCode
 ${DOT_DIRECTORY}/vscode/settings.json,${HOME}/.config/Code/User/settings.json
