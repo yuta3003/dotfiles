@@ -1,5 +1,0 @@
-# neovim
-nvim                ${HOME}/.config/nvim
-
-# starship
-starship.toml       ${HOME}/.config

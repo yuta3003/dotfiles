@@ -1,0 +1,12 @@
+# neovim
+${DOT_DIRECTORY}/neovim/init.vim,${HOME}/.config/nvim/init.vim
+
+# starship
+${DOT_DIRECTORY}/starship/starship.toml,${HOME}/.config/starship.toml
+
+# ssh
+${DOT_DIRECTORY}/ssh/config,${HOME}/.ssh/config
+
+# VSCode
+${DOT_DIRECTORY}/vscode/settings.json,${HOME}/.config/Code/User/settings.json
+${DOT_DIRECTORY}/vscode/keybindings.json,${HOME}/.config/Code/User/keybindings.json

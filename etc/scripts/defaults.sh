@@ -1,6 +1,6 @@
 #!/bin/bash
-
 set -eu
+
 
 # Macの設定を変更
 echo 'Changing MacOS settings...'

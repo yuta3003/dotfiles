@@ -1,6 +1,6 @@
 #!/bin/bash
-
 set -eu
+
 
 echo "creating git"
 cd ${DOT_DIRECTORY}/git
@@ -52,3 +52,5 @@ cd ${DOT_DIRECTORY}/zsh
 ln -sf x64/.zshrc .zshrc
 ln -sf x64/.zprofile .zprofile
 ln -sf x64/.zaliases .zaliases
+
+cd ${DOT_DIRECTORY}

@@ -1,1 +1,1 @@
-arm64/.tmux
+/home/z-nakazawa/dotfiles/tmux/.tmux
