@@ -1,12 +1,11 @@
 #!/bin/bash
-
 set -eu
 
 echo "creating git"
 cd ${DOT_DIRECTORY}/git
 ln -sf x64/.gitconfig .gitconfig
-ln -sf x64/.gitignore_global .gitignore_global
 ln -sf x64/.gitmessage .gitmessage
+ln -sf x64/ignore ignore
 
 echo "creating homebrew"
 cd ${DOT_DIRECTORY}/homebrew
@@ -52,3 +51,5 @@ cd ${DOT_DIRECTORY}/zsh
 ln -sf x64/.zshrc .zshrc
 ln -sf x64/.zprofile .zprofile
 ln -sf x64/.zaliases .zaliases
+
+cd ${DOT_DIRECTORY}

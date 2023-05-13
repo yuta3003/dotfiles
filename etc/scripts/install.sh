@@ -1,12 +1,9 @@
 #!/bin/bash
-
 set -eu
 
 
-cd ./../..
-readonly DOT_DIRECTORY="$(cd "`dirname "${0}"`"; pwd)"
-
-echo ${DOT_DIRECTORY}
+DOT_DIRECTORY="${HOME}/dotfiles"
+SCRIPT_DIR="${DOT_DIRECTORY}/etc/scripts"
 
 main() {
 
@@ -15,25 +12,42 @@ main() {
     exit 1
   fi
 
-  # install_xcode
+  if ask_yes_no "XCodeをインストールしますか？"; then
+    install_xcode
+  else
+    echo "XCodeのインストールをスキップしました。"
+  fi
+
   install_homebrew
   install_git
   clone_my_dotfiles
-  # install_brews
+
+  if ask_yes_no "Brewfileをインストールしますか？"; then
+    install_brews
+  else
+    echo "brewsのインストールをスキップしました。"
+  fi
+
   create_dotconfig_directory
   install_tpm
   install_vim_plug
 
+
   #make deploy
-  source ${DOT_DIRECTORY}/etc/scripts/deploy.sh
+  source ${SCRIPT_DIR}/deploy.sh
 
   #make init
 
   # Macの設定を変更
-  #~/dotfiles/etc/scripts/defaults.sh
+  source ${SCRIPT_DIR}/defaults.sh
 
-  echo 'Rebooting to reflect settings'
-  sudo shutdown -r now
+
+  if ask_yes_no "再起動しますか？"; then
+    echo 'Rebooting to reflect settings'
+    sudo shutdown -r now
+  else
+    echo "再起動をスキップしました。"
+  fi
 }
 
 has() {
@@ -61,13 +75,15 @@ install_xcode() {
   # Install Xcode
   echo "Installing Xcode..."
   xcode-select --install
+  echo "$(tput setaf 2)✔︎$(tput sgr0)Successfully installed XCode."
   return 0
 }
 
 install_homebrew() {
-  if  [! type brew >/dev/null 2>&1 ]; then
+  if  [ ! type brew >/dev/null 2>&1 ]; then
     echo "Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo "$(tput setaf 2)✔︎$(tput sgr0)Successfully installed Homebrew."
   else
     echo "Homebrew already installed."
   fi
@@ -78,6 +94,7 @@ install_git() {
   if [ ! type git >/dev/null 2>&1 ];then
     echo "Installing git..."
     brew install git
+    echo "$(tput setaf 2)✔︎$(tput sgr0)Successfully installed git."
   else
     echo "git already installed."
   fi
@@ -114,6 +131,7 @@ clone_my_dotfiles() {
     if ask_yes_no "公開鍵をGitHubに登録しましたか？"; then
       echo "Cloning dotfiles..."
       git clone git@github.com:yuta3003/dotfiles.git
+      echo "$(tput setaf 2)✔︎$(tput sgr0)Successfully installed dotfiles"
     else
       exit 0
     fi
@@ -133,6 +151,7 @@ create_dotconfig_directory() {
   if [ ! -d ~/.config ]; then
     echo "Creating ~/.config directory..."
     mkdir ~/.config
+    echo "$(tput setaf 2)✔︎$(tput sgr0)Successfully created ~/.config"
   else
     echo ".config directory already exists."
   fi
@@ -142,13 +161,16 @@ install_tpm() {
   if [ ! -d ~/.tmux/plugins/tpm ]; then
     echo "Installing Tmux Plugin Manager..."
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    echo "$(tput setaf 2)✔︎$(tput sgr0)Successfully installed Tmux Plugin Manager..."
   fi
   return 0
 }
 
 install_vim_plug() {
+  echo "Installing vim-plug..."
   sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim \
     --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  echo "$(tput setaf 2)✔︎$(tput sgr0)Successfully installed vim-plug"
 }
 
 
