@@ -45,7 +45,7 @@ ln -sf arm64/networks.conf networks.conf
 echo "creating vscode"
 cd ${DOT_DIRECTORY}/vscode
 ln -sf arm64/keybindings.json keybindings.json
-ln -sf arm64/settings.json ssettings.json
+ln -sf arm64/settings.json settings.json
 
 echo "creating zsh"
 cd ${DOT_DIRECTORY}/zsh

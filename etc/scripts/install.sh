@@ -19,7 +19,7 @@ main() {
   install_homebrew
   install_git
   clone_my_dotfiles
-  install_brews
+  # install_brews
   create_dotconfig_directory
   install_tpm
   install_vim_plug
@@ -33,7 +33,7 @@ main() {
   #~/dotfiles/etc/scripts/defaults.sh
 
   echo 'Rebooting to reflect settings'
-  sudo shutdownn -r now
+  sudo shutdown -r now
 }
 
 has() {
