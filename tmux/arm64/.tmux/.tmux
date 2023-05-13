@@ -1,1 +1,0 @@
-/home/z-nakazawa/dotfiles/tmux/.tmux

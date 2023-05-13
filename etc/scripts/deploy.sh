@@ -61,8 +61,8 @@ deploy_by_list() {
   tmp_file=$(mktemp)
   trap 'rm ${tmp_file}' 0
 
-  # deploylist="${DEPLOY_LIST_DIR}/deploylist.Darwin.txt"
-  deploylist="${DEPLOY_LIST_DIR}/deploylist.ubuntu.txt"
+  deploylist="${DEPLOY_LIST_DIR}/deploylist.Darwin.txt"
+  # deploylist="${DEPLOY_LIST_DIR}/deploylist.ubuntu.txt"
 
   if [ -f ${deploylist} ]; then
     __remove_deploylist_comment "${deploylist}" > ${tmp_file}
