@@ -1,6 +1,8 @@
 #!/bin/bash
 set -eu
 
+DOT_DIRECTORY="${HOME}/dotfiles"
+
 echo "creating git"
 cd ${DOT_DIRECTORY}/git
 ln -sf x64/.gitconfig .gitconfig
@@ -30,6 +32,12 @@ ln -sf x64/starship.toml starship.toml
 
 echo "creating tmux"
 cd ${DOT_DIRECTORY}/tmux
+# .tmuxのシンボリックリンク存在時
+#  ln -sf x64/.tmux .tmuxを実行すると
+#  x64/.tmuxに.tmuxのリンクが作成されてしまうので
+if [ -d ${DOT_DIRECTORY}/tmux/.tmux ]; then
+  rm .tmux
+fi
 ln -sf x64/.tmux .tmux
 ln -sf x64/.tmux.conf .tmux.conf
 
@@ -44,7 +52,7 @@ ln -sf x64/networks.conf networks.conf
 echo "creating vscode"
 cd ${DOT_DIRECTORY}/vscode
 ln -sf x64/keybindings.json keybindings.json
-ln -sf x64/settings.json ssettings.json
+ln -sf x64/settings.json settings.json
 
 echo "creating zsh"
 cd ${DOT_DIRECTORY}/zsh
