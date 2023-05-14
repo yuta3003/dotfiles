@@ -1,1 +1,1 @@
-./arm64/.tmux
+arm64/.tmux

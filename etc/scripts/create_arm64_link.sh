@@ -2,6 +2,8 @@
 set -eu
 
 
+DOT_DIRECTORY="${HOME}/dotfiles"
+
 echo "$(tput setaf 2)✔︎$(tput sgr0)creating git/.gitconfig"
 echo "$(tput setaf 2)✔︎$(tput sgr0)creating git/.gitignore_global"
 echo "$(tput setaf 2)✔︎$(tput sgr0)creating git/.gitmessage"
