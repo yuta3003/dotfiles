@@ -8,6 +8,7 @@ DEPLOY_LIST_DIR="${DOT_DIRECTORY}/etc/deploylist"
 
 main() {
   source ${SCRIPT_DIR}/create_arm64_link.sh
+  # source ${SCRIPT_DIR}/create_x64_link.sh
   deploy_to_home
   deploy_by_list
 }
@@ -51,6 +52,9 @@ deploy_to_home() {
 }
 
 deploy_by_list() {
+  deploylist="${DEPLOY_LIST_DIR}/deploylist.Darwin.txt"
+  # deploylist="${DEPLOY_LIST_DIR}/deploylist.ubuntu.txt"
+
   __remove_deploylist_comment() {(
     sed \
       -e 's/\s*#.*//' \
@@ -60,9 +64,6 @@ deploy_by_list() {
 
   tmp_file=$(mktemp)
   trap 'rm ${tmp_file}' 0
-
-  deploylist="${DEPLOY_LIST_DIR}/deploylist.Darwin.txt"
-  # deploylist="${DEPLOY_LIST_DIR}/deploylist.ubuntu.txt"
 
   if [ -f ${deploylist} ]; then
     __remove_deploylist_comment "${deploylist}" > ${tmp_file}
