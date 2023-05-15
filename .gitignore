@@ -51,14 +51,14 @@ tmux/x64/.tmux/plugins/
 tmux/ubuntu/.tmux/plugins/
 
 # シンボリックリンク自体はGitから排除
-bash/
-!/bash/ubuntu/
+/bash/
+!/bash/ubuntu
 
-git/
-!/git/arm64/
-!/git/ubuntu/
-!/git/x64/
+/git/
+!/git/arm64
+!/git/ubuntu
+!/git/x64
 
-homebrew/
-!/homebrew/arm64/
-!/homebrew/x64/
+/homebrew/
+!/homebrew/arm64
+!/homebrew/x64
