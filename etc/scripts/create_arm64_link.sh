@@ -39,7 +39,7 @@ echo "$(tput setaf 2)✔︎$(tput sgr0)creating tmux/.tmux.conf"
 cd ${DOT_DIRECTORY}/tmux
 # .tmuxのシンボリックリンク存在時
 #  ln -sf arm64/.tmux .tmuxを実行すると
-#  x64/.tmuxに.tmuxのリンクが作成されてしまうので
+#  arm64/.tmuxに.tmuxのリンクが作成されてしまうので
 if [ -d ${DOT_DIRECTORY}/tmux/.tmux ]; then
   rm .tmux
 fi

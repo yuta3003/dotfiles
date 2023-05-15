@@ -71,12 +71,13 @@ deploy_by_list() {
       src=$(eval echo "$(cut -d ',' -f 1 <<<${line})")
       dst=$(eval echo "$(cut -d ',' -f 2 <<<${line})")
 
-      dst_dir=${dst%/*}
-      if [ ! -d ${dst_dir} ]; then
-        mkdir -p ${dst_dir}
+      dst_dir="${dst%/*}"
+      # 空白を含むディレクトリの対応のためにダブル区ウォーテーションを追加
+      if [ ! -d "${dst_dir}" ]; then
+        mkdir -p "${dst_dir}"
       fi
 
-      ln -sf ${src} ${dst}
+      ln -sf "${src}" "${dst}"
       echo "$(tput setaf 2)✔︎$(tput sgr0)~${dst#${HOME}}"
 
     done < ${tmp_file}

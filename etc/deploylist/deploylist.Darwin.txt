@@ -11,8 +11,8 @@ ${DOT_DIRECTORY}/ssh/config,${HOME}/.ssh/config
 ${DOT_DIRECTORY}/homebrew/localhost.homebrew-autoupdate.plist,${HOME}/Library/LaunchAgents/localhost.homebrew-autoupdate.plist
 
 # VSCode
-#${DOT_DIRECTORY}/vscode/settings.json,${HOME}/Library/Application\ Support/Code/User/settings.json
-#${DOT_DIRECTORY}/vscode/keybindings.json,${HOME}/Library/Application\ Support/Code/User/keybindings.json
+${DOT_DIRECTORY}/vscode/settings.json,${HOME}/Library/Application\ Support/Code/User/settings.json
+${DOT_DIRECTORY}/vscode/keybindings.json,${HOME}/Library/Application\ Support/Code/User/keybindings.json
 
 # git
 ${DOT_DIRECTORY}/git/ignore,${HOME}/.config/git/ignore
