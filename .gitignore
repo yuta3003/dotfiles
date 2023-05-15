@@ -51,14 +51,37 @@ tmux/x64/.tmux/plugins/
 tmux/ubuntu/.tmux/plugins/
 
 # シンボリックリンク自体はGitから排除
-/bash/
-!/bash/ubuntu
 
-/git/
-!/git/arm64
-!/git/ubuntu
-!/git/x64
+bash/.bash_aliases
+bash/.bash_profile
+bash/.bashrc
+bash/.profile
 
-/homebrew/
-!/homebrew/arm64
-!/homebrew/x64
+git/.gitconfig
+git/.gitmessage
+git/ignore
+
+homebrew/Brewfile
+homebrew/localhost.homebrew-autoupdate.plist
+
+neovim/init.vim
+
+screen/.screenrc
+
+ssh/config
+
+starship/starship.toml
+
+tmux/.tmux
+tmux/.tmux.conf
+
+vim/.vimrc
+
+virtualbox/network.conf
+
+vscode/keybindings.json
+vscode/settings.json
+
+zsh/.zaliases
+zsh/.zprofile
+zsh/.zshrc

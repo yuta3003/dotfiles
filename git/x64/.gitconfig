@@ -1,0 +1,16 @@
+[user]
+	name = yuta3003
+	email = y.nakazawa3003+github@gmail.com
+[fetch]
+	prune = true
+[core]
+	editor = nvim
+[init]
+	defaultBranch = main
+	templatedir = ~/.git-templates/git-secrets
+[pull]
+	rebase = true
+[commit]
+	template = ~/.gitmessage
+[rebase]
+	autostash = true
