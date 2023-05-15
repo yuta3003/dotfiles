@@ -47,5 +47,8 @@ Temporary Items
 
 # tmux plugins
 tmux/arm64/.tmux/plugins/
+!tmux/arm64/.tmux/plugins/.gitkeep
 tmux/x64/.tmux/plugins/
+!tmux/x64/.tmux/plugins/.gitkeep
 tmux/ubuntu/.tmux/plugins/
+!tmux/ubuntu/.tmux/plugins/.gitkeep
