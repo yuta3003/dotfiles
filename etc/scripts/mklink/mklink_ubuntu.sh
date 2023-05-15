@@ -3,9 +3,12 @@ set -eu
 
 
 DOT_DIRECTORY="${HOME}/dotfiles"
+SCRIPT_DIR="${DOT_DIRECTORY}/etc/scripts"
+MKLINK_SCRIPT_DIR="${SCRIPT_DIR}/mklink"
+DEPLOY_LIST_DIR="${DOT_DIRECTORY}/etc/deploylist"
 
 main() {
-  source rmlink.sh
+  source ${MKLINK_SCRIPT_DIR}/rmlink.sh
 
   cd ${DOT_DIRECTORY}/bash
   create_symlink bash ubuntu/.bash_aliases
