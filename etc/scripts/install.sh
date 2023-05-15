@@ -37,6 +37,7 @@ main() {
   source ${SCRIPT_DIR}/deploy.sh
 
   #make init
+  launchctl load ~/Library/LaunchAgents/localhost.homebrew-autoupdate.plist
 
   # Macの設定を変更
   source ${SCRIPT_DIR}/defaults.sh
@@ -48,10 +49,6 @@ main() {
   else
     echo "再起動をスキップしました。"
   fi
-}
-
-has() {
-  type "$1" > /dev/null 2>&1
 }
 
 is_m1_mac() {
