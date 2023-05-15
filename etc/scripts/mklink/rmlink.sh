@@ -34,6 +34,10 @@ main() {
 
   remove_symlink ${DOT_DIRECTORY}/vscode/keybindings.json
   remove_symlink ${DOT_DIRECTORY}/vscode/settings.json
+
+  remove_symlink ${DOT_DIRECTORY}/zsh/.zprofile
+  remove_symlink ${DOT_DIRECTORY}/zsh/.zaliases
+  remove_symlink ${DOT_DIRECTORY}/zsh/.zshrc
 }
 
 remove_symlink() {
