@@ -49,7 +49,3 @@ Temporary Items
 tmux/arm64/.tmux/plugins/
 tmux/x64/.tmux/plugins/
 tmux/ubuntu/.tmux/plugins/
-
-tmux/tmux_x64_OSX/plugins/
-tmux/tmux_arm64_OSX/plugins/
-tmux/tmux_x64_OSX/plugins/
