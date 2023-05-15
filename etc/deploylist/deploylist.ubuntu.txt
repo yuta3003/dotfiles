@@ -1,15 +1,8 @@
-# neovim
-${DOT_DIRECTORY}/neovim/init.vim,${HOME}/.config/nvim/init.vim
-
-# starship
-${DOT_DIRECTORY}/starship/starship.toml,${HOME}/.config/starship.toml
-
-# ssh
-#${DOT_DIRECTORY}/ssh/config,${HOME}/.ssh/config
-
+# bash
+${DOT_DIRECTORY}/bash/.bash_aliases,${HOME}/.bash_aliases
+${DOT_DIRECTORY}/bash/.bash_profile,${HOME}/.bash_profile
+${DOT_DIRECTORY}/bash/.bashrc,${HOME}/.bashrc
+${DOT_DIRECTORY}/bash/.profile,${HOME}/.profile
 # VSCode
 ${DOT_DIRECTORY}/vscode/settings.json,${HOME}/.config/Code/User/settings.json
 ${DOT_DIRECTORY}/vscode/keybindings.json,${HOME}/.config/Code/User/keybindings.json
-
-# git
-${DOT_DIRECTORY}/git/ignore,${HOME}/.config/git/ignore

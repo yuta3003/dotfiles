@@ -50,8 +50,7 @@ tmux/arm64/.tmux/plugins/
 tmux/x64/.tmux/plugins/
 tmux/ubuntu/.tmux/plugins/
 
-# シンボリックリンク自体はGitから排除
-
+# シンボリックリンクはGitから排除
 bash/.bash_aliases
 bash/.bash_profile
 bash/.bashrc
@@ -77,7 +76,7 @@ tmux/.tmux.conf
 
 vim/.vimrc
 
-virtualbox/network.conf
+virtualbox/networks.conf
 
 vscode/keybindings.json
 vscode/settings.json

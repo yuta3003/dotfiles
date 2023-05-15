@@ -1,18 +1,9 @@
-# neovim
-${DOT_DIRECTORY}/neovim/init.vim,${HOME}/.config/nvim/init.vim
-
-# starship
-${DOT_DIRECTORY}/starship/starship.toml,${HOME}/.config/starship.toml
-
-# ssh
-${DOT_DIRECTORY}/ssh/config,${HOME}/.ssh/config
-
 # Homebrew auto-update.plist
 ${DOT_DIRECTORY}/homebrew/localhost.homebrew-autoupdate.plist,${HOME}/Library/LaunchAgents/localhost.homebrew-autoupdate.plist
-
 # VSCode
 ${DOT_DIRECTORY}/vscode/settings.json,${HOME}/Library/Application\ Support/Code/User/settings.json
 ${DOT_DIRECTORY}/vscode/keybindings.json,${HOME}/Library/Application\ Support/Code/User/keybindings.json
-
-# git
-${DOT_DIRECTORY}/git/ignore,${HOME}/.config/git/ignore
+# zsh
+${DOT_DIRECTORY}/zsh/.zaliases,${HOME}/.zaliases
+${DOT_DIRECTORY}/zsh/.zprofile,${HOME}/.zprofile
+${DOT_DIRECTORY}/zsh/.zshrc,${HOME}/.zshrc

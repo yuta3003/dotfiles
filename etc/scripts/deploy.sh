@@ -4,88 +4,146 @@ set -eu
 
 DOT_DIRECTORY="${HOME}/dotfiles"
 SCRIPT_DIR="${DOT_DIRECTORY}/etc/scripts"
+MKLINK_SCRIPT_DIR="${SCRIPT_DIR}/mklink"
 DEPLOY_LIST_DIR="${DOT_DIRECTORY}/etc/deploylist"
+OS_TYPE=""
 
 main() {
+  check_os_type
   create_link
-  deploy_to_home
-  deploy_by_list
+  common_deploy
+  feature_deploy
 }
 
-create_linux_link() {
+check_mac_architecture() {
+  if [ "$(uname -m)" == "x86_64" ] ; then
+    OS_TYPE="OSX(x64)"
+  elif [ "$(uname -m)" == "arm64" ] ; then
+    OS_TYPE="OSX(arm64)"
+  else
+    echo "Unsupported Architecture"
+    return 1
+  fi
+  return 0
+}
+
+check_linux_distribution() {
   if command -v apt-get &> /dev/null; then
-    source ${SCRIPT_DIR}/create_ubuntu_link.sh
+    OS_TYPE="Ubuntu"
   elif command -v pacman &> /dev/null; then
-    source ${SCRIPT_DIR}/create_archlinux_link.sh
+    OS_TYPE="ArchLinux"
   else
     echo "Unsupported distribution"
+    return 1
   fi
+  return 0
 }
 
-create_mac_link() {
-  if [ "$(uname -m)" == "x86_64" ] ; then
-    source ${SCRIPT_DIR}/create_x64_link.sh
-  elif [ "$(uname -m)" == "arm64" ] ; then
-    source ${SCRIPT_DIR}/create_arm64_link.sh
-  fi
-}
-
-create_link() {
+check_os_type() {
   local os=$(uname -s)
   case "${os}" in
     Linux*)
-      create_linux_link
+      check_linux_distribution
       ;;
     Darwin*)
-      create_mac_link
+      check_mac_architecture
       ;;
-    *) echo "Command failed.";;
+    *)
+      echo "Command failed."
+      return 1
+      ;;
   esac
+  return 0
 }
 
-deploy_to_home() {
-  # LIST
-  #   - git
-  #   - screen
-  #   - tmux
-  #   - vim
-  #   - zsh
-
-  while read -r f; do
-    [[ ${f} == */Alfred* ]] && continue
-    [[ ${f} == */bash* ]] && continue
-    [[ ${f} == */etc* ]] && continue
-    # [[ ${f} == */git* ]] && continue
-    [[ ${f} == */git/ignore* ]] && continue
-    [[ ${f} == */homebrew* ]] && continue
-    [[ ${f} == */Iterm2* ]] && continue
-    [[ ${f} == */neovim* ]] && continue
-    # [[ ${f} == */screen* ]] && continue
-    [[ ${f} == */ssh* ]] && continue
-    [[ ${f} == */starship* ]] && continue
-    # [[ ${f} == */tmux* ]] && continue
-    # [[ ${f} == */vim* ]] && continue
-    [[ ${f} == */virtualbox* ]] && continue
-    [[ ${f} == */vscode* ]] && continue
-    # [[ ${f} == */zsh* ]] && continue
-    [[ ${f} == *\.editorconfig ]] && continue
-    [[ ${f} == *\.gitignore ]] && continue
-    [[ ${f} == *README.md* ]] && continue
-    [[ ${f} == *\.git/* ]] && continue
-
-    [[ ${f} == *arm64* ]] && continue
-    [[ ${f} == *ubuntu* ]] && continue
-    [[ ${f} == *x64* ]] && continue
-
-    ln -sf ${f} ${HOME}/${f##*/}
-    echo "$(tput setaf 2)✔︎$(tput sgr0)~/${f##*/}"
-
-  done < <(find ${DOT_DIRECTORY} -mindepth 1 \( -type l -o -type f \))
+create_link() {
+  case "${OS_TYPE}" in
+    "OSX(x64)")
+      echo "creating symlink for OSX(x64)"
+      source ${MKLINK_SCRIPT_DIR}/mklink_x64.sh
+      ;;
+    "OSX(arm64)")
+      echo "creating symlink for OSX(arm64)"
+      source ${MKLINK_SCRIPT_DIR}/mklink_arm64.sh
+      ;;
+    "Ubuntu")
+      echo "creating symlink for ubuntu"
+      source ${MKLINK_SCRIPT_DIR}/mklink_ubuntu.sh
+      ;;
+    "ArchLinux")
+      echo "creating symlink for Arch Linux"
+      source ${MKLINK_SCRIPT_DIR}/mklink_archlinux.sh
+      ;;
+    *)
+      echo "Unsupported OS type"
+      return 1
+      ;;
+  esac
+  return 0
 }
 
-deploy_by_list() {
-  deploylist="${DEPLOY_LIST_DIR}/deploylist.Darwin.txt"
-  # deploylist="${DEPLOY_LIST_DIR}/deploylist.ubuntu.txt"
+common_deploy() {
+  COMMON_DEPLOY_LIST="${DEPLOY_LIST_DIR}/deploylist.common.txt"
+
+  __remove_deploylist_comment() {(
+    sed \
+      -e 's/\s*#.*//' \
+      -e '/^\s*$/d' \
+      $1
+  )}
+
+  tmp_file=$(mktemp)
+  trap 'rm ${tmp_file}' 0
+
+  if [ -f ${COMMON_DEPLOY_LIST} ]; then
+    __remove_deploylist_comment "${COMMON_DEPLOY_LIST}" > ${tmp_file}
+    while read line; do
+      # ~ や環境変数を展開
+      src=$(eval echo "$(cut -d ',' -f 1 <<<${line})")
+      dst=$(eval echo "$(cut -d ',' -f 2 <<<${line})")
+
+      dst_dir="${dst%/*}"
+      # 空白を含むディレクトリの対応のためにダブルクウォーテーションを追加
+      if [ ! -d "${dst_dir}" ]; then
+        mkdir -p "${dst_dir}"
+      fi
+      if [ -d "${dst}" ] || [ -f "${dst}" ]; then
+        rm -rf "${dst}"
+      fi
+
+      ln -sf "${src}" "${dst}"
+      echo "$(tput setaf 2)✔︎$(tput sgr0)~${dst#${HOME}}"
+
+    done < ${tmp_file}
+  else
+    echo "No such file"
+  fi
+  return 0
+}
+
+feature_deploy() {
+  case "${OS_TYPE}" in
+    "OSX(x64)")
+      echo "feature deploy for OSX(x64)"
+      deploylist="${DEPLOY_LIST_DIR}/deploylist.Darwin.txt"
+      ;;
+    "OSX(arm64)")
+      echo "feature deploy for OSX(arm64)"
+      deploylist="${DEPLOY_LIST_DIR}/deploylist.Darwin.txt"
+      ;;
+    "Ubuntu")
+      echo "feature deploy for ubuntu"
+      deploylist="${DEPLOY_LIST_DIR}/deploylist.ubuntu.txt"
+      ;;
+    "ArchLinux")
+      echo "feature deploy for ArchLinux"
+      deploylist="${DEPLOY_LIST_DIR}/deploylist.ubuntu.txt"
+      ;;
+    *)
+      echo "Unsupported OS type"
+      return 1
+      ;;
+  esac
 
   __remove_deploylist_comment() {(
     sed \
@@ -110,6 +168,9 @@ deploy_by_list() {
         mkdir -p "${dst_dir}"
       fi
 
+      if [ -d "${dst}" ] || [ -f "${dst}" ]; then
+        rm -rf "${dst}"
+      fi
       ln -sf "${src}" "${dst}"
       echo "$(tput setaf 2)✔︎$(tput sgr0)~${dst#${HOME}}"
 
