@@ -1,1 +1,1 @@
-arm64/.tmux
+ubuntu/.tmux

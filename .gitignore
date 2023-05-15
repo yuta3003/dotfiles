@@ -46,9 +46,9 @@ Temporary Items
 .nfs*
 
 # tmux plugins
-Intel-mac/tmux/.tmux/plugins/
-M1-mac/tmux/.tmux/plugins/
-Archlinux/tmux/.tmux/plugins/
+tmux/arm64/.tmux/plugins/
+tmux/x64/.tmux/plugins/
+tmux/ubuntu/.tmux/plugins/
 
 tmux/tmux_x64_OSX/plugins/
 tmux/tmux_arm64_OSX/plugins/

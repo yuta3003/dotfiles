@@ -1,0 +1,78 @@
+#################################################
+#
+#  BASIC Setting
+#
+
+#  system系
+alias cpu="sudo powermetrics --samplers smc |grep -i 'CPU die temperature'"
+
+#  brew系
+#alias brew="PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin brew"
+alias brews="brew list -1"
+
+#  ls系
+#if [ type exa >/dev/null 2>&1 ]; then
+if  type exa >/dev/null 2>&1; then
+  alias ls="exa"
+  alias lst="exa --icons --tree"
+  alias la="exa -lha --icons"
+  alias ll="exa -lh --icons"
+else
+  alias la="ls -lhAG"
+fi
+
+#  cat系
+if  type bat >/dev/null 2>&1; then
+  alias cat="bat"
+fi
+
+#  grep系
+alias grep="grep --color=auto"
+
+#  cd系
+alias ..="cd ../"
+alias ...="cd ../../"
+
+#  rm系
+#  for security
+alias rm="rm -i"
+
+#  git系
+alias gitst="git status"
+#alias git-log="git log --oneline --graph --all"
+alias git-log="git log --graph --pretty=oneline"
+alias git-root='git rev-parse --is-inside-work-tree && cd `git rev-parse --show-toplevel`'
+## submodule
+alias git-sub-update="git submodule foreach 'git pull origin main'"
+
+#  docker系
+alias docker-compose-down="docker-compose down --rmi all --volumes --remove-orphans"
+## 誤字対策
+alias dokcer="docker"
+alias dokcer-compose="docker-compose"
+
+#  Python3
+alias python="python3"
+alias pip="pip3"
+
+#  vim系
+alias vi="nvim"
+alias vim="nvim"
+alias view="nvim -R"
+
+#  screen
+alias lstty="ls /dev/tty.*"
+
+#  Dockernize
+#シングルクォーテーションだと実行時に変数展開され、ダブルクォーテーションだとシェルのログイン時に変数展開されるためシングルクォーテーション
+#alias terraform='docker run --rm -i -v $PWD:/work -w /work -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY -e AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION hashicorp/terraform'
+
+#alias jupyter='docker run --rm -p 8888:8888 -v $PWD:/work --name JupyterLab yuta0601/jupyter-lab:latest'
+
+#  browser
+alias chrome='open -a "Google Chrome"'
+alias firefox='open -a Firefox'
+alias safari='open -a Safari'
+
+#  ip
+alias myip="curl ifconfig.io -4"

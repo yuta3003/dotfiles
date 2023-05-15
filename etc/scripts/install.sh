@@ -72,7 +72,6 @@ is_m1_mac() {
 }
 
 install_xcode() {
-  # Install Xcode
   echo "Installing Xcode..."
   xcode-select --install
   echo "$(tput setaf 2)✔︎$(tput sgr0)Successfully installed XCode."
@@ -145,6 +144,7 @@ install_brews() {
   brew update
   brew upgrade
   brew bundle --file ~/dotfiles/homebrew/Brewfile_arm64_OSX
+  return 0
 }
 
 create_dotconfig_directory() {
@@ -155,6 +155,7 @@ create_dotconfig_directory() {
   else
     echo ".config directory already exists."
   fi
+  return 0
 }
 
 install_tpm() {
@@ -171,6 +172,7 @@ install_vim_plug() {
   sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim \
     --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   echo "$(tput setaf 2)✔︎$(tput sgr0)Successfully installed vim-plug"
+  return 0
 }
 
 

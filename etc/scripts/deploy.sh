@@ -7,10 +7,40 @@ SCRIPT_DIR="${DOT_DIRECTORY}/etc/scripts"
 DEPLOY_LIST_DIR="${DOT_DIRECTORY}/etc/deploylist"
 
 main() {
-  source ${SCRIPT_DIR}/create_arm64_link.sh
-  # source ${SCRIPT_DIR}/create_x64_link.sh
+  create_link
   deploy_to_home
   deploy_by_list
+}
+
+create_linux_link() {
+  if command -v apt-get &> /dev/null; then
+    source ${SCRIPT_DIR}/create_ubuntu_link.sh
+  elif command -v pacman &> /dev/null; then
+    source ${SCRIPT_DIR}/create_archlinux_link.sh
+  else
+    echo "Unsupported distribution"
+  fi
+}
+
+create_mac_link() {
+  if [ "$(uname -m)" == "x86_64" ] ; then
+    source ${SCRIPT_DIR}/create_x64_link.sh
+  elif [ "$(uname -m)" == "arm64" ] ; then
+    source ${SCRIPT_DIR}/create_arm64_link.sh
+  fi
+}
+
+create_link() {
+  local os=$(uname -s)
+  case "${os}" in
+    Linux*)
+      create_linux_link
+      ;;
+    Darwin*)
+      create_mac_link
+      ;;
+    *) echo "Command failed.";;
+  esac
 }
 
 deploy_to_home() {
@@ -42,7 +72,9 @@ deploy_to_home() {
     [[ ${f} == *\.gitignore ]] && continue
     [[ ${f} == *README.md* ]] && continue
     [[ ${f} == *\.git/* ]] && continue
+
     [[ ${f} == *arm64* ]] && continue
+    [[ ${f} == *ubuntu* ]] && continue
     [[ ${f} == *x64* ]] && continue
 
     ln -sf ${f} ${HOME}/${f##*/}

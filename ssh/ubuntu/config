@@ -1,0 +1,12 @@
+Host thinkpad
+  HostName 192.168.11.254
+  User yuta
+  Port 22
+  IdentityFile ~/.ssh/id_rsa
+
+Host github github.com
+  HostName github.com
+  IdentityFile ~/.ssh/github
+  User git
+  IdentitiesOnly yes
+  Compression yes

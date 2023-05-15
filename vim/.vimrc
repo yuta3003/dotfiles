@@ -1,1 +1,1 @@
-arm64/.vimrc
+ubuntu/.vimrc
