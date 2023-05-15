@@ -47,8 +47,18 @@ Temporary Items
 
 # tmux plugins
 tmux/arm64/.tmux/plugins/
-!tmux/arm64/.tmux/plugins/.gitkeep
 tmux/x64/.tmux/plugins/
-!tmux/x64/.tmux/plugins/.gitkeep
 tmux/ubuntu/.tmux/plugins/
-!tmux/ubuntu/.tmux/plugins/.gitkeep
+
+# シンボリックリンク自体はGitから排除
+bash/
+!bash/ubuntu
+
+git/
+!git/arm64
+!git/ubuntu
+!git/x64
+
+homebrew/
+!homebrew/arm64
+!homebrew/x64
