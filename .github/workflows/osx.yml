@@ -9,6 +9,9 @@ on:
     branches:
       - main
 
+env:
+  - DOT_DIRECTORY: ${GITHUB_WORKSPACE}
+
 jobs:
 
   OSX-test:
