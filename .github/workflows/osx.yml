@@ -15,4 +15,4 @@ jobs:
     steps:
       uses: actions/checkout@v2
       name: Run deploy.sh
-        run: ${GITHUB_WORKSPACE}/etc/scripts/deploy.sh
+        - run: ${GITHUB_WORKSPACE}/etc/scripts/deploy.sh
