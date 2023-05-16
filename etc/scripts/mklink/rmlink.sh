@@ -2,7 +2,8 @@
 set -eu
 
 
-DOT_DIRECTORY="${HOME}/dotfiles"
+# DOT_DIRECTORY="${HOME}/dotfiles"
+DOT_DIRECTORY="./../../../"
 
 main() {
   remove_symlink ${DOT_DIRECTORY}/bash/.bash_aliases

@@ -9,17 +9,11 @@ on:
     branches:
       - main
 
-env:
-  - DOT_DIRECTORY: /Users/runner/work/dotfiles/dotfiles
-
 jobs:
-
   OSX-test:
-    runs-on: macos-latest
-
-    steps:
-    - uses: actions/checkout@v2
-
+    - runs-on: macos-latest
+    - steps:
+      - uses: actions/checkout@v2
     # Error Check
-    - name: Run deploy.sh
-      run: ${GITHUB_WORKSPACE}/etc/scripts/deploy.sh
+      - name: Run deploy.sh
+        - run: ${GITHUB_WORKSPACE}/etc/scripts/deploy.sh
