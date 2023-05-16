@@ -15,11 +15,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: write-env
-        run: |
-          CURRENT_DIR=$(pwd)
-          echo "CURRENT_DIR=${CURRENT_DIR}" >> $DOT_DIRECTORY
-
       - name: Run rmlink.sh
         run: ${GITHUB_WORKSPACE}/etc/scripts/mklink/rmlink.sh
 
