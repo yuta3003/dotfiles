@@ -9,7 +9,8 @@ SCRIPT_DIR="${DOT_DIRECTORY}/etc/scripts"
 MKLINK_SCRIPT_DIR="${SCRIPT_DIR}/mklink"
 
 main() {
-  source ${MKLINK_SCRIPT_DIR}/rmlink.sh
+  # source ${MKLINK_SCRIPT_DIR}/rmlink.sh
+  source /Users/runner/work/dotfiles/dotfiles/etc/scripts/mklink/rmlink.sh
 
   cd ${DOT_DIRECTORY}/git
   create_symlink git x64/.gitconfig
