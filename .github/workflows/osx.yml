@@ -4,7 +4,8 @@ on:
   push:
     branches:
       - main
-      - 'feature/**'
+    paths:
+      - .github/workflows/osx.yml
   pull_request:
     branches:
       - main
@@ -25,12 +26,15 @@ jobs:
         working-directory: etc/scripts/mklink
         env:
           DOT_DIRECTORY: /Users/runner/work/dotfiles/dotfiles
+          MKLINK_SCRIPT_DIR: /Users/runner/work/dotfiles/dotfiles/etc/scripts/mklink
+
 
       - name: Run mklink_arm64.sh
         run: ./mklink_arm64.sh
         working-directory: etc/scripts/mklink
         env:
           DOT_DIRECTORY: /Users/runner/work/dotfiles/dotfiles
+          MKLINK_SCRIPT_DIR: /Users/runner/work/dotfiles/dotfiles/etc/scripts/mklink
 
       - name: Run deploy.sh
         run: ./deploy.sh
