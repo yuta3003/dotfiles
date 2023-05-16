@@ -15,11 +15,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Run rmlink.sh
-        run: ${MKLINK_SCRIPT_DIR}/rmlink.sh
-        env:
-          MKLINK_SCRIPT_DIR: ${GITHUB_WORKSPACE}/etc/scripts/mklink
+      - name: write-env
+        run: |
+          CURRENT_DIR=$(pwd)
+          echo "${CURRENT_DIR}" >> $DOT_DIRECTORY
 
+      - name: Run rmlink.sh
+        run: ${GITHUB_WORKSPACE}/etc/scripts/mklink/rmlink.sh
 
       - name: Run confirm
         run: ls -la ${GITHUB_WORKSPACE}/etc/scripts
