@@ -6,10 +6,14 @@ set -eu
 DOT_DIRECTORY="./../../.."
 
 main() {
-  remove_symlink ${DOT_DIRECTORY}/bash/.bash_aliases
-  remove_symlink ${DOT_DIRECTORY}/bash/.bash_profile
-  remove_symlink ${DOT_DIRECTORY}/bash/.bashrc
-  remove_symlink ${DOT_DIRECTORY}/bash/.profile
+  # remove_symlink ${DOT_DIRECTORY}/bash/.bash_aliases
+  # remove_symlink ${DOT_DIRECTORY}/bash/.bash_profile
+  # remove_symlink ${DOT_DIRECTORY}/bash/.bashrc
+  # remove_symlink ${DOT_DIRECTORY}/bash/.profile
+  remove_symlink ./../../../bash/.bash_aliases
+  remove_symlink ./../../../bash/.bash_profile
+  remove_symlink ./../../../bash/.bashrc
+  remove_symlink ./../../../bash/.profile
 
   remove_symlink ${DOT_DIRECTORY}/git/.gitconfig
   remove_symlink ${DOT_DIRECTORY}/git/.gitmessage
