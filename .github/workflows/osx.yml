@@ -5,40 +5,15 @@ on:
     branches:
       - main
       - 'feature/**'
-    # paths:
-    #   - .github/workflows/osx.yml
   pull_request:
     branches:
       - main
 
 jobs:
-  OSX-test:
+  OSX-deploy-test:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Run rmlink.sh
-        run: ./rmlink.sh
-        working-directory: etc/scripts/mklink
-        env:
-          DOT_DIRECTORY: /Users/runner/work/dotfiles/dotfiles
-          # CURRENT_DIR: $(cd $(dirname $0); pwd)
-          # DOT_DIRECTORY: $(cd ${CURRENT_DIR};cd ./../..; pwd)
-
-      - name: Run mklink_x64.sh
-        run: ./mklink_x64.sh
-        working-directory: etc/scripts/mklink
-        env:
-          DOT_DIRECTORY: /Users/runner/work/dotfiles/dotfiles
-          MKLINK_SCRIPT_DIR: /Users/runner/work/dotfiles/dotfiles/etc/scripts/mklink
-
-
-      - name: Run mklink_arm64.sh
-        run: ./mklink_arm64.sh
-        working-directory: etc/scripts/mklink
-        env:
-          DOT_DIRECTORY: /Users/runner/work/dotfiles/dotfiles
-          MKLINK_SCRIPT_DIR: /Users/runner/work/dotfiles/dotfiles/etc/scripts/mklink
-
       - name: Run deploy.sh
         run: ./deploy.sh
-        working-directory: etc/scripts
+        working-directory: ./etc/scripts

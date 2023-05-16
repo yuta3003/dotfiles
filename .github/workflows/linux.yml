@@ -5,20 +5,15 @@ on:
     branches:
       - main
       - 'feature/**'
-    # paths:
-    #   - .github/workflows/linux.yml
   pull_request:
     branches:
       - main
 
 jobs:
-  ubuntu-test:
+  ubuntu-deploy-test:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
-
-    # Error Check
-    - name: Run deploy.sh
-      # run: ${GITHUB_WORKSPACE}/etc/scripts/deploy.sh
-      run: ls -la
+      - uses: actions/checkout@v2
+      - name: Run deploy.sh
+        run: ./deploy.sh
+        working-directory: ./etc/scripts
