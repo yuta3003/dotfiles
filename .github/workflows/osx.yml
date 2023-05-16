@@ -29,5 +29,5 @@ jobs:
       - name: Run deploy.sh
         # uses: actions/checkout@v2
         # run: ${GITHUB_WORKSPACE}/etc/scripts/deploy.sh
-        run: echo pwd
+        run: echo $(pwd)
         working-directory: etc/scripts
