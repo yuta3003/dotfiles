@@ -12,14 +12,14 @@ on:
 jobs:
   OSX-test:
     runs-on: macos-latest
+    env:
+      MKLINK_SCRIPT_DIR: ${GITHUB_WORKSPACE}/etc/scripts/mklink
     steps:
       - uses: actions/checkout@v2
 
       - name: Run rmlink.sh
         # run: ${GITHUB_WORKSPACE}/etc/scripts/mklink/rmlink.sh
         run: ${MKLINK_SCRIPT_DIR}/rmlink.sh
-        env:
-          MKLINK_SCRIPT_DIR: ${GITHUB_WORKSPACE}/etc/scripts/mklink
 
       - name: Run confirm
         run: ls -la ${GITHUB_WORKSPACE}/etc/scripts
@@ -27,5 +27,3 @@ jobs:
       - name: Run deploy.sh
         # run: ${GITHUB_WORKSPACE}/etc/scripts/deploy.sh
         run: echo ${MKLINK_SCRIPT_DIR}
-        env:
-          MKLINK_SCRIPT_DIR: ${GITHUB_WORKSPACE}/etc/scripts/mklink
