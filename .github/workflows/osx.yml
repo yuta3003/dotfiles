@@ -19,7 +19,7 @@ jobs:
 
       - name: Run rmlink.sh
         # run: ${GITHUB_WORKSPACE}/etc/scripts/mklink/rmlink.sh
-        run: ${MKLINK_SCRIPT_DIR}/rmlink.sh
+        run: `${MKLINK_SCRIPT_DIR}/rmlink.sh`
         # run: pwd
 
 
