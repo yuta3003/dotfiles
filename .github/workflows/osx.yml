@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  deploy-on-OSX(x64):
+  deploy-on-OSX-x64:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
@@ -17,7 +17,7 @@ jobs:
         run: ./deploy.sh
         working-directory: ./etc/scripts
 
-  install-on-OSX(x64):
+  install-on-OSX-x64:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
