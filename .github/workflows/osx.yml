@@ -9,6 +9,8 @@ on:
     branches:
       - main
 
+env:
+  - DOT_DIRECTORY: /Users/runner/work/dotfiles/dotfiles
 
 jobs:
 
