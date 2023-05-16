@@ -13,6 +13,8 @@ jobs:
   OSX-test:
     runs-on: macos-latest
     steps:
-      - name: Run deploy.sh
+      - name: checkout
         uses: actions/checkout@v2
+
+      - name: Run deploy.sh
         run: ${GITHUB_WORKSPACE}/etc/scripts/deploy.sh
