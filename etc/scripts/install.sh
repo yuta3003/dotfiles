@@ -68,19 +68,21 @@ install_arm64() {
 }
 
 install_x64() {
-  if ask_yes_no "XCodeをインストールしますか？"; then
-    install_xcode
-  else
-    echo "XCodeのインストールをスキップしました。"
-  fi
+  # if ask_yes_no "XCodeをインストールしますか？"; then
+  #   install_xcode
+  # else
+  #   echo "XCodeのインストールをスキップしました。"
+  # fi
+  install_xcode
   install_homebrew
   install_git
   clone_my_dotfiles
-  if ask_yes_no "Brewfileをインストールしますか？"; then
-    install_brews
-  else
-    echo "brewsのインストールをスキップしました。"
-  fi
+  install_brews
+  # if ask_yes_no "Brewfileをインストールしますか？"; then
+  #   install_brews
+  # else
+  #   echo "brewsのインストールをスキップしました。"
+  # fi
 
   create_dotconfig_directory
   install_tpm
@@ -96,12 +98,13 @@ install_x64() {
   source ${SCRIPT_DIR}/defaults.sh
 
 
-  if ask_yes_no "再起動しますか？"; then
-    echo 'Rebooting to reflect settings'
-    sudo shutdown -r now
-  else
-    echo "再起動をスキップしました。"
-  fi
+  sudo shutdown -r now
+  # if ask_yes_no "再起動しますか？"; then
+  #   echo 'Rebooting to reflect settings'
+  #   sudo shutdown -r now
+  # else
+  #   echo "再起動をスキップしました。"
+  # fi
   return 0
 }
 
