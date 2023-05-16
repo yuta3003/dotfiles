@@ -2,11 +2,11 @@
 set -eu
 
 
-CURRENT_DIR=$(cd $(dirname $0); pwd)
-DOT_DIRECTORY=$(cd ${CURRENT_DIR};cd ./../../..; pwd)
+# CURRENT_DIR=$(cd $(dirname $0); pwd)
+# DOT_DIRECTORY=$(cd ${CURRENT_DIR};cd ./../../..; pwd)
 # DOT_DIRECTORY="./../../.."
-SCRIPT_DIR="${DOT_DIRECTORY}/etc/scripts"
-MKLINK_SCRIPT_DIR="${SCRIPT_DIR}/mklink"
+# SCRIPT_DIR="${DOT_DIRECTORY}/etc/scripts"
+# MKLINK_SCRIPT_DIR="${SCRIPT_DIR}/mklink"
 
 main() {
   source ${MKLINK_SCRIPT_DIR}/rmlink.sh

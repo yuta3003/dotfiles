@@ -1,8 +1,8 @@
 #!/bin/bash
 set -eu
 
-CURRENT_DIR=$(cd $(dirname $0); pwd)
-DOT_DIRECTORY=$(cd ${CURRENT_DIR};cd ./../../..; pwd)
+# CURRENT_DIR=$(cd $(dirname $0); pwd)
+# DOT_DIRECTORY=$(cd ${CURRENT_DIR};cd ./../../..; pwd)
 # DOT_DIRECTORY="./../../.."
 # DOT_DIRECTORY="./../../.."
 
