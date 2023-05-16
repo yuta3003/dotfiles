@@ -119,7 +119,6 @@ ask_yes_no() {
 }
 
 clone_my_dotfiles() {
-  # Clone my dotfiles
   if [ ! -d ~/dotfiles ]; then
     if [ ! -f ~/.ssh/github.pub ]; then
       cd ~/.ssh

@@ -5,7 +5,6 @@ set -eu
 DOT_DIRECTORY="${HOME}/dotfiles"
 SCRIPT_DIR="${DOT_DIRECTORY}/etc/scripts"
 MKLINK_SCRIPT_DIR="${SCRIPT_DIR}/mklink"
-DEPLOY_LIST_DIR="${DOT_DIRECTORY}/etc/deploylist"
 
 main() {
   source ${MKLINK_SCRIPT_DIR}/rmlink.sh
