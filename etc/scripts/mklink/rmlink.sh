@@ -2,9 +2,8 @@
 set -eu
 
 
-DOT_DIRECTORY="${HOME}/dotfiles"
-
 main() {
+  echo "${DOT_DIRECTORY}"
   remove_symlink ${DOT_DIRECTORY}/bash/.bash_aliases
   remove_symlink ${DOT_DIRECTORY}/bash/.bash_profile
   remove_symlink ${DOT_DIRECTORY}/bash/.bashrc

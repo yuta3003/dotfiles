@@ -2,10 +2,6 @@
 set -eu
 
 
-DOT_DIRECTORY="${HOME}/dotfiles"
-SCRIPT_DIR="${DOT_DIRECTORY}/etc/scripts"
-MKLINK_SCRIPT_DIR="${SCRIPT_DIR}/mklink"
-
 main() {
   source ${MKLINK_SCRIPT_DIR}/rmlink.sh
 
@@ -13,6 +9,7 @@ main() {
   create_symlink bash ubuntu/.bash_aliases
   create_symlink bash ubuntu/.bash_profile
   create_symlink bash ubuntu/.bashrc
+  create_symlink bash ubuntu/.profile
 
   cd ${DOT_DIRECTORY}/git
   create_symlink git ubuntu/.gitconfig

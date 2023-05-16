@@ -2,7 +2,8 @@
 set -eu
 
 
-DOT_DIRECTORY="${HOME}/dotfiles"
+# DOT_DIRECTORY="${HOME}/dotfiles"
+DOT_DIRECTORY="./../.."
 SCRIPT_DIR="${DOT_DIRECTORY}/etc/scripts"
 
 main() {

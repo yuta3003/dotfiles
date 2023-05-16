@@ -1,0 +1,19 @@
+name: OSX CI
+
+on:
+  push:
+    branches:
+      - main
+      - 'feature/**'
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  deploy-on-osx:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run deploy.sh
+        run: ./deploy.sh
+        working-directory: ./etc/scripts
