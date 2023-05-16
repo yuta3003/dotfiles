@@ -10,8 +10,7 @@ on:
       - main
 
 jobs:
-  make-symlink-test:
-    # runs-on: ubuntu-latest
+  mklink-on-osx:
     runs-on: macos-latest
     env:
       DOT_DIRECTORY: /Users/runner/work/dotfiles/dotfiles
@@ -32,4 +31,25 @@ jobs:
 
       - name: Run mklink_ubuntu.sh
         run: ./mklink_ubuntu.sh
+
+  mklink-on-ubuntu:
+    runs-on: ubuntu-latest
+    env:
+      DOT_DIRECTORY: /home/runner/work/dotfiles/dotfiles
+      MKLINK_SCRIPT_DIR: /home/runner/work/dotfiles/dotfiles/etc/scripts/mklink
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run rmlink.sh
+        run: ./rmlink.sh
         working-directory: etc/scripts/mklink
+
+      - name: Run mklink_arm64.sh
+        run: ./mklink_arm64.sh
+        working-directory: etc/scripts/mklink
+
+      - name: Run mklink_x64.sh
+        run: ./mklink_x64.sh
+        working-directory: etc/scripts/mklink
+
+      - name: Run mklink_ubuntu.sh
+        run: ./mklink_ubuntu.sh

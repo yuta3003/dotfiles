@@ -10,12 +10,10 @@ on:
       - main
 
 jobs:
-  ubuntu-deploy-test:
+  deploy-on-ubuntu:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Run deploy.sh
         run: ./deploy.sh
         working-directory: ./etc/scripts
-      - name: Run deploy.sh
-        run: pwd
