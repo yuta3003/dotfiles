@@ -16,5 +16,11 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
 
+      - name: Run rmlink.sh
+        run: ${GITHUB_WORKSPACE}/etc/scripts/mklink/rmlink.sh
+
+      - name: Run confirm
+        run: ls -la ${GITHUB_WORKSPACE}/etc/scripts
+
       - name: Run deploy.sh
         run: ${GITHUB_WORKSPACE}/etc/scripts/deploy.sh
