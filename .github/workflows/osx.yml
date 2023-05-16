@@ -22,6 +22,8 @@ jobs:
         run: ./rmlink.sh
         # run: pwd
         working-directory: etc/scripts/mklink
+        env:
+          DOT_DIRECTORY: /Users/runner/work/dotfiles/dotfiles
 
 
       - name: Run confirm
