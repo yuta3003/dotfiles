@@ -1,1 +1,0 @@
-ubuntu/.bash_aliases

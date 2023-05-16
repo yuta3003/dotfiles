@@ -4,8 +4,6 @@ ${DOT_DIRECTORY}/git/.gitmessage,${HOME}/.gitmessage
 ${DOT_DIRECTORY}/git/ignore,${HOME}/.config/git/ignore
 # neovim
 ${DOT_DIRECTORY}/neovim/init.vim,${HOME}/.config/nvim/init.vim
-# screen
-${DOT_DIRECTORY}/screen/.screenrc,${HOME}/.screenrc
 # ssh
 ${DOT_DIRECTORY}/ssh/config,${HOME}/.ssh/config
 # starship
