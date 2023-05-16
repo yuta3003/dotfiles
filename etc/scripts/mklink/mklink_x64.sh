@@ -11,6 +11,8 @@ MKLINK_SCRIPT_DIR="${SCRIPT_DIR}/mklink"
 
 main() {
   source ${MKLINK_SCRIPT_DIR}/rmlink.sh
+  echo ${MKLINK_SCRIPT_DIR}
+  pwd
   # source /Users/runner/work/dotfiles/dotfiles/etc/scripts/mklink/rmlink.sh
 
   cd ${DOT_DIRECTORY}/git
