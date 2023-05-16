@@ -1,28 +1,43 @@
 #!/bin/bash
 set -eu
 
-
-# DOT_DIRECTORY="${HOME}/dotfiles"
-DOT_DIRECTORY="./../.."
+CURRENT_DIR=$(cd $(dirname $0); pwd)
+DOT_DIRECTORY=$(cd ${CURRENT_DIR};cd ./../..; pwd)
 SCRIPT_DIR="${DOT_DIRECTORY}/etc/scripts"
+MKLINK_SCRIPT_DIR="${SCRIPT_DIR}/mklink"
+DEPLOY_LIST_DIR="${DOT_DIRECTORY}/etc/deploylist"
+OS_TYPE=""
 
 main() {
+  check_os_type
+  case "${OS_TYPE}" in
+    "OSX(x64)")
+      install_x64
+      ;;
+    "OSX(arm64)")
+      install_arm64
+      ;;
+    "Ubuntu")
+      install_ubuntu
+      ;;
+    "ArchLinux")
+      ;;
+    *)
+      echo "Unsupported OS type"
+      exit
+      ;;
+  esac
+}
 
-  if ! is_m1_mac; then
-    echo "Installing stoped."
-    exit 1
-  fi
-
+install_arm64() {
   if ask_yes_no "XCodeをインストールしますか？"; then
     install_xcode
   else
     echo "XCodeのインストールをスキップしました。"
   fi
-
   install_homebrew
   install_git
   clone_my_dotfiles
-
   if ask_yes_no "Brewfileをインストールしますか？"; then
     install_brews
   else
@@ -32,7 +47,6 @@ main() {
   create_dotconfig_directory
   install_tpm
   install_vim_plug
-
 
   #make deploy
   source ${SCRIPT_DIR}/deploy.sh
@@ -50,23 +64,111 @@ main() {
   else
     echo "再起動をスキップしました。"
   fi
+  return 0
 }
 
-is_m1_mac() {
-  if [ ! "$(uname)" == "Darwin" ] ; then
-  	echo "Not macOS!"
-  	return 1
+install_x64() {
+  if ask_yes_no "XCodeをインストールしますか？"; then
+    install_xcode
   else
-    if [ "$(uname -m)" == "x86_64" ] ; then
-    # intel Mac
-      echo "Intel Mac"
-      return 1
-    elif [ "$(uname -m)" == "arm64" ] ; then
-    # M1 Mac
-      echo "M1 Mac"
-      return 0
-    fi
+    echo "XCodeのインストールをスキップしました。"
   fi
+  install_homebrew
+  install_git
+  clone_my_dotfiles
+  if ask_yes_no "Brewfileをインストールしますか？"; then
+    install_brews
+  else
+    echo "brewsのインストールをスキップしました。"
+  fi
+
+  create_dotconfig_directory
+  install_tpm
+  install_vim_plug
+
+  #make deploy
+  source ${SCRIPT_DIR}/deploy.sh
+
+  #make init
+  launchctl load ~/Library/LaunchAgents/localhost.homebrew-autoupdate.plist
+
+  # Macの設定を変更
+  source ${SCRIPT_DIR}/defaults.sh
+
+
+  if ask_yes_no "再起動しますか？"; then
+    echo 'Rebooting to reflect settings'
+    sudo shutdown -r now
+  else
+    echo "再起動をスキップしました。"
+  fi
+  return 0
+}
+
+install_ubuntu() {
+  apt-get update && \
+    echo "$(tput setaf 2)✔︎$(tput sgr0)Successfully apt-get update"
+  apt-get upgrade && \
+    echo "$(tput setaf 2)✔︎$(tput sgr0)Successfully apt-get upgrade"
+  apt-get cleanup && \
+    echo "$(tput setaf 2)✔︎$(tput sgr0)Successfully apt-get autoclean"
+  install_git
+  clone_my_dotfiles
+  create_dotconfig_directory
+  install_tpm
+  install_vim_plug
+
+  #make deploy
+  source ${SCRIPT_DIR}/deploy.sh
+
+  if ask_yes_no "再起動しますか？"; then
+    echo 'Rebooting to reflect settings'
+    sudo shutdown -r now
+  else
+    echo "再起動をスキップしました。"
+  fi
+  return 0
+}
+
+check_mac_architecture() {
+  if [ "$(uname -m)" == "x86_64" ] ; then
+    OS_TYPE="OSX(x64)"
+  elif [ "$(uname -m)" == "arm64" ] ; then
+    OS_TYPE="OSX(arm64)"
+  else
+    echo "Unsupported Architecture"
+    return 1
+  fi
+  return 0
+}
+
+check_linux_distribution() {
+  if command -v apt-get &> /dev/null; then
+    OS_TYPE="Ubuntu"
+  elif command -v pacman &> /dev/null; then
+    OS_TYPE="ArchLinux"
+  else
+    echo "Unsupported distribution"
+    return 1
+  fi
+  return 0
+}
+
+check_os_type() {
+  local os=$(uname -s)
+  case "${os}" in
+    Linux*)
+      check_linux_distribution
+      ;;
+    Darwin*)
+      check_mac_architecture
+      ;;
+    *)
+      echo "Command failed."
+      return 1
+      ;;
+  esac
+  return 0
 }
 
 install_xcode() {
@@ -88,13 +190,41 @@ install_homebrew() {
 }
 
 install_git() {
-  if [ ! type git >/dev/null 2>&1 ];then
-    echo "Installing git..."
-    brew install git
-    echo "$(tput setaf 2)✔︎$(tput sgr0)Successfully installed git."
-  else
-    echo "git already installed."
-  fi
+  case "${OS_TYPE}" in
+    "OSX(x64)")
+      if [ ! type git >/dev/null 2>&1 ];then
+        echo "Installing git..."
+        brew install git && \
+          echo "$(tput setaf 2)✔︎$(tput sgr0)Successfully installed git."
+      else
+        echo "git already installed."
+      fi
+      ;;
+    "OSX(arm64)")
+      if [ ! type git >/dev/null 2>&1 ];then
+        echo "Installing git..."
+        brew install git && \
+          echo "$(tput setaf 2)✔︎$(tput sgr0)Successfully installed git."
+      else
+        echo "git already installed."
+      fi
+      ;;
+    "Ubuntu")
+      if [ ! type git >/dev/null 2>&1 ];then
+        echo "Installing git..."
+        apt-get install git && \
+          echo "$(tput setaf 2)✔︎$(tput sgr0)Successfully installed git."
+      else
+        echo "git already installed."
+      fi
+      ;;
+    "ArchLinux")
+      ;;
+    *)
+      echo "Unsupported OS type"
+      exit
+      ;;
+  esac
   return 0
 }
 

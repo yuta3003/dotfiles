@@ -4,16 +4,23 @@ on:
   push:
     branches:
       - main
-      - 'feature/**'
   pull_request:
     branches:
       - main
 
 jobs:
-  deploy-on-osx:
+  deploy-on-OSX(x64):
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - name: Run deploy.sh
         run: ./deploy.sh
+        working-directory: ./etc/scripts
+
+  install-on-OSX(x64):
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run install.sh
+        run: ./install.sh
         working-directory: ./etc/scripts
