@@ -73,7 +73,11 @@ install_x64() {
   # else
   #   echo "XCodeのインストールをスキップしました。"
   # fi
-  install_xcode
+  if  [ ! xcode-selector -p >/dev/null 2>&1 ]; then
+    install_xcode
+  else
+    Software Update
+  fi
   install_homebrew
   install_git
   clone_my_dotfiles
