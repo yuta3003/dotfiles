@@ -16,7 +16,10 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Run rmlink.sh
-        run: ${GITHUB_WORKSPACE}/etc/scripts/mklink/rmlink.sh
+        # run: ${GITHUB_WORKSPACE}/etc/scripts/mklink/rmlink.sh
+        run: ${MKLINK_SCRIPT_DIR}/rmlink.sh
+        env:
+          MKLINK_SCRIPT_DIR: ${GITHUB_WORKSPACE}/etc/scripts/mklink
 
       - name: Run confirm
         run: ls -la ${GITHUB_WORKSPACE}/etc/scripts
