@@ -17,3 +17,5 @@ jobs:
       - name: Run deploy.sh
         run: ./deploy.sh
         working-directory: ./etc/scripts
+      - name: Run deploy.sh
+        run: pwd
