@@ -22,5 +22,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run install.sh
-        run: ./install.sh
+        # run: ./install.sh
+        run: pwd
         working-directory: ./etc/scripts

@@ -68,26 +68,27 @@ install_arm64() {
 }
 
 install_x64() {
-  # if ask_yes_no "XCodeをインストールしますか？"; then
-  #   install_xcode
-  # else
-  #   echo "XCodeのインストールをスキップしました。"
-  # fi
   if  [ ! xcode-selector -p >/dev/null 2>&1 ]; then
-    install_xcode
+    if ask_yes_no "XCodeをインストールしますか？"; then
+      install_xcode
+    else
+      echo "XCodeのインストールをスキップしました。"
+    fi
   else
-    softwareupdate --install --all
+    if ask_yes_no "SoftWare Update を行いますか？"; then
+      softwareupdate --install --all
+    else
+      echo "SoftWare Update をスキップしました。"
+    fi
   fi
   install_homebrew
   install_git
   clone_my_dotfiles
-  install_brews
-  # if ask_yes_no "Brewfileをインストールしますか？"; then
-  #   install_brews
-  # else
-  #   echo "brewsのインストールをスキップしました。"
-  # fi
-
+  if ask_yes_no "Brewfileをインストールしますか？"; then
+    install_brews
+  else
+    echo "brewsのインストールをスキップしました。"
+  fi
   create_dotconfig_directory
   install_tpm
   install_vim_plug
@@ -101,14 +102,12 @@ install_x64() {
   # Macの設定を変更
   source ${SCRIPT_DIR}/defaults.sh
 
-
-  sudo shutdown -r now
-  # if ask_yes_no "再起動しますか？"; then
-  #   echo 'Rebooting to reflect settings'
-  #   sudo shutdown -r now
-  # else
-  #   echo "再起動をスキップしました。"
-  # fi
+  if ask_yes_no "再起動しますか？"; then
+    echo 'Rebooting to reflect settings'
+    sudo shutdown -r now
+  else
+    echo "再起動をスキップしました。"
+  fi
   return 0
 }
 
