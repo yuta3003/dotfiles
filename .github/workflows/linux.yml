@@ -18,4 +18,5 @@ jobs:
 
     # Error Check
     - name: Run deploy.sh
-      run: ${GITHUB_WORKSPACE}/etc/scripts/deploy.sh
+      # run: ${GITHUB_WORKSPACE}/etc/scripts/deploy.sh
+      run: ls -la

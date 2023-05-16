@@ -13,8 +13,7 @@ jobs:
   OSX-test:
     runs-on: macos-latest
     steps:
-      - name: checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
       - name: Run rmlink.sh
         run: ${GITHUB_WORKSPACE}/etc/scripts/mklink/rmlink.sh
