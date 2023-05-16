@@ -2,7 +2,6 @@
 set -eu
 
 main() {
-
   if  [ ! xcode-selector -p >/dev/null 2>&1 ]; then
     if ask_yes_no "XCodeをインストールしますか？"; then
       install_xcode
@@ -144,8 +143,6 @@ ask_yes_no() {
   done
 }
 
-
-
 clone_my_dotfiles() {
 
   if [ ! -d ~/dotfiles ]; then
@@ -175,8 +172,6 @@ install_brews() {
   return 0
 }
 
-
-
 create_dotconfig_directory() {
   if [ ! -d ~/.config ]; then
     echo "Creating ~/.config directory..."
@@ -187,7 +182,6 @@ create_dotconfig_directory() {
   fi
   return 0
 }
-
 
 install_tpm() {
   if [ ! -d ~/.tmux/plugins/tpm ]; then
@@ -205,7 +199,6 @@ install_vim_plug() {
   echo "$(tput setaf 2)✔︎$(tput sgr0)Successfully installed vim-plug"
   return 0
 }
-
 
 
 main

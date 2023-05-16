@@ -87,7 +87,6 @@ clone_my_dotfiles() {
   return 0
 }
 
-
 ask_yes_no() {
   while true; do
     echo -n "$* [y/n]: "
@@ -137,8 +136,6 @@ create_dotconfig_directory() {
   fi
   return 0
 }
-
-
 
 install_tpm() {
   if [ ! -d ~/.tmux/plugins/tpm ]; then
