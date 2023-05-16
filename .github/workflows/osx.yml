@@ -20,7 +20,7 @@ jobs:
       - name: Run rmlink.sh
         uses: actions/checkout@v2
         # run: ${GITHUB_WORKSPACE}/etc/scripts/mklink/rmlink.sh
-        run: ${MKLINK_SCRIPT_DIR}/rmlink.sh
+        run: ./${MKLINK_SCRIPT_DIR}/rmlink.sh
         shell: bash
 
       - name: Run confirm
