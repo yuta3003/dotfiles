@@ -62,7 +62,7 @@ create_link() {
     "OSX(x64)")
       echo "creating symlink for OSX(x64)"
       # source ${MKLINK_SCRIPT_DIR}/mklink_x64.sh
-      source ./mklink/mklink_x64.sh
+      source /Users/runner/work/dotfiles/dotfiles/etc/scripts/mklink/mklink_x64.sh
       ;;
     "OSX(arm64)")
       echo "creating symlink for OSX(arm64)"
