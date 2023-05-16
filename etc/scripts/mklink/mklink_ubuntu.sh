@@ -13,6 +13,7 @@ main() {
   create_symlink bash ubuntu/.bash_aliases
   create_symlink bash ubuntu/.bash_profile
   create_symlink bash ubuntu/.bashrc
+  create_symlink bash ubuntu/.profile
 
   cd ${DOT_DIRECTORY}/git
   create_symlink git ubuntu/.gitconfig
