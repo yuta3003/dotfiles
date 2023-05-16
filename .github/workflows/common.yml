@@ -11,7 +11,8 @@ on:
 
 jobs:
   make-symlink-test:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
+    # runs-on: macos-latest
     env:
       DOT_DIRECTORY: /Users/runner/work/dotfiles/dotfiles
       MKLINK_SCRIPT_DIR: /Users/runner/work/dotfiles/dotfiles/etc/scripts/mklink
