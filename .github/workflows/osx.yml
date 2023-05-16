@@ -4,8 +4,9 @@ on:
   push:
     branches:
       - main
-    paths:
-      - .github/workflows/osx.yml
+      - 'feature/**'
+    # paths:
+    #   - .github/workflows/osx.yml
   pull_request:
     branches:
       - main

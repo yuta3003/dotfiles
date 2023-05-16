@@ -4,8 +4,9 @@ on:
   push:
     branches:
       - main
-    paths:
-      - .github/workflows/linux.yml
+      - 'feature/**'
+    # paths:
+    #   - .github/workflows/linux.yml
   pull_request:
     branches:
       - main
