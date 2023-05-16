@@ -1,0 +1,22 @@
+name: OSX CI
+
+on:
+  push:
+    branches:
+      - main
+      - 'feature/**'
+  pull_request:
+    branches:
+      - main
+
+jobs:
+
+  OSX-test:
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    # Error Check
+    - name: Run deploy.sh
+      run: ${GITHUB_WORKSPACE}/etc/scripts/deploy.sh
