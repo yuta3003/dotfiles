@@ -22,6 +22,7 @@ jobs:
         run: ls -la ${GITHUB_WORKSPACE}/etc/scripts
 
       - name: Run deploy.sh
-        run: ${GITHUB_WORKSPACE}/etc/scripts/deploy.sh
+        # run: ${GITHUB_WORKSPACE}/etc/scripts/deploy.sh
+        run: echo ${MKLINK_SCRIPT_DIR}
         env:
           MKLINK_SCRIPT_DIR: ${GITHUB_WORKSPACE}/etc/scripts/mklink
