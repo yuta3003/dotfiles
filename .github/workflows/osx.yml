@@ -24,4 +24,4 @@ jobs:
       - name: Run deploy.sh
         run: ${GITHUB_WORKSPACE}/etc/scripts/deploy.sh
         env:
-          - MKLINK_SCRIPT_DIR=${GITHUB_WORKSPACE}/etc/scripts/mklink
+          MKLINK_SCRIPT_DIR: ${GITHUB_WORKSPACE}/etc/scripts/mklink
