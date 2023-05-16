@@ -76,7 +76,7 @@ install_x64() {
   if  [ ! xcode-selector -p >/dev/null 2>&1 ]; then
     install_xcode
   else
-    Software Update
+    softwareupdate --install --all
   fi
   install_homebrew
   install_git
