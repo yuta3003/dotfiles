@@ -1,13 +1,8 @@
 #!/bin/bash
 set -eu
 
-# CURRENT_DIR=$(cd $(dirname $0); pwd)
-# DOT_DIRECTORY=$(cd ${CURRENT_DIR};cd ./../../..; pwd)
-# DOT_DIRECTORY="./../../.."
-# DOT_DIRECTORY="./../../.."
 
 main() {
-  # echo "${CURRENT_DIR}"
   echo "${DOT_DIRECTORY}"
   remove_symlink ${DOT_DIRECTORY}/bash/.bash_aliases
   remove_symlink ${DOT_DIRECTORY}/bash/.bash_profile

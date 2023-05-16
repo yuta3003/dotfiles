@@ -31,6 +31,7 @@ jobs:
 
       - name: Run mklink_ubuntu.sh
         run: ./mklink_ubuntu.sh
+        working-directory: etc/scripts/mklink
 
   mklink-on-ubuntu:
     runs-on: ubuntu-latest
@@ -53,3 +54,4 @@ jobs:
 
       - name: Run mklink_ubuntu.sh
         run: ./mklink_ubuntu.sh
+        working-directory: etc/scripts/mklink
