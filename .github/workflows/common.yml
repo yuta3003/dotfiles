@@ -11,7 +11,7 @@ on:
 
 jobs:
   make-symlink-test:
-    runs-on: macos-latest
+    - runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - name: Run rmlink.sh
@@ -34,7 +34,7 @@ jobs:
           DOT_DIRECTORY: /Users/runner/work/dotfiles/dotfiles
           MKLINK_SCRIPT_DIR: /Users/runner/work/dotfiles/dotfiles/etc/scripts/mklink
 
-    runs-on: ubuntu-latest
+    - runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Run mklink_ubuntu.sh
