@@ -22,9 +22,12 @@ jobs:
         # run: ${MKLINK_SCRIPT_DIR}/rmlink.sh
         run: pwd
 
+
       - name: Run confirm
         run: ls -la ${GITHUB_WORKSPACE}/etc/scripts
 
       - name: Run deploy.sh
+        # uses: actions/checkout@v2
         # run: ${GITHUB_WORKSPACE}/etc/scripts/deploy.sh
-        run: echo ${MKLINK_SCRIPT_DIR}
+        run: echo pwd
+        working-directory: etc/scripts
