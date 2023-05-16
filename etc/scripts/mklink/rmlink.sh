@@ -7,7 +7,7 @@ set -eu
 # DOT_DIRECTORY="./../../.."
 
 main() {
-  echo "${CURRENT_DIR}"
+  # echo "${CURRENT_DIR}"
   echo "${DOT_DIRECTORY}"
   remove_symlink ${DOT_DIRECTORY}/bash/.bash_aliases
   remove_symlink ${DOT_DIRECTORY}/bash/.bash_profile

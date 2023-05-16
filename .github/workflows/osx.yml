@@ -20,9 +20,9 @@ jobs:
         run: ./rmlink.sh
         working-directory: etc/scripts/mklink
         env:
-          # DOT_DIRECTORY: /Users/runner/work/dotfiles/dotfiles
-          CURRENT_DIR: $(cd $(dirname $0); pwd)
-          DOT_DIRECTORY: $(cd ${CURRENT_DIR};cd ./../..; pwd)
+          DOT_DIRECTORY: /Users/runner/work/dotfiles/dotfiles
+          # CURRENT_DIR: $(cd $(dirname $0); pwd)
+          # DOT_DIRECTORY: $(cd ${CURRENT_DIR};cd ./../..; pwd)
 
       - name: Run mklink_x64.sh
         run: ./mklink_x64.sh
