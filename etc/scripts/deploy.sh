@@ -3,7 +3,7 @@ set -eu
 
 
 # DOT_DIRECTORY="${HOME}/dotfiles"
-DOT_DIRECTORY="./../../"
+DOT_DIRECTORY="./../.."
 SCRIPT_DIR="${DOT_DIRECTORY}/etc/scripts"
 MKLINK_SCRIPT_DIR="${SCRIPT_DIR}/mklink"
 DEPLOY_LIST_DIR="${DOT_DIRECTORY}/etc/deploylist"
@@ -61,7 +61,8 @@ create_link() {
   case "${OS_TYPE}" in
     "OSX(x64)")
       echo "creating symlink for OSX(x64)"
-      source ${MKLINK_SCRIPT_DIR}/mklink_x64.sh
+      # source ${MKLINK_SCRIPT_DIR}/mklink_x64.sh
+      source ./mklink/mklink_x64.sh
       ;;
     "OSX(arm64)")
       echo "creating symlink for OSX(arm64)"

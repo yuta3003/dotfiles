@@ -3,7 +3,7 @@ set -eu
 
 
 # DOT_DIRECTORY="${HOME}/dotfiles"
-DOT_DIRECTORY="./../../../"
+DOT_DIRECTORY="./../../.."
 SCRIPT_DIR="${DOT_DIRECTORY}/etc/scripts"
 MKLINK_SCRIPT_DIR="${SCRIPT_DIR}/mklink"
 
