@@ -12,25 +12,26 @@ on:
 jobs:
   OSX-test:
     runs-on: macos-latest
-    env:
-      MKLINK_SCRIPT_DIR: ${GITHUB_WORKSPACE}/etc/scripts/mklink
     steps:
       - uses: actions/checkout@v2
-
       - name: Run rmlink.sh
-        # run: ${GITHUB_WORKSPACE}/etc/scripts/mklink/rmlink.sh
         run: ./rmlink.sh
-        # run: pwd
         working-directory: etc/scripts/mklink
         env:
           DOT_DIRECTORY: /Users/runner/work/dotfiles/dotfiles
 
+      - name: Run mklink_x64.sh
+        run: ./mklink_x64.sh
+        working-directory: etc/scripts/mklink
+        env:
+          DOT_DIRECTORY: /Users/runner/work/dotfiles/dotfiles
 
-      - name: Run confirm
-        run: ls -la ${GITHUB_WORKSPACE}/etc/scripts
+      - name: Run mklink_arm64.sh
+        run: ./mklink_arm64.sh
+        working-directory: etc/scripts/mklink
+        env:
+          DOT_DIRECTORY: /Users/runner/work/dotfiles/dotfiles
 
       - name: Run deploy.sh
-        # uses: actions/checkout@v2
-        # run: ${GITHUB_WORKSPACE}/etc/scripts/deploy.sh
         run: ./deploy.sh
         working-directory: etc/scripts
