@@ -11,7 +11,7 @@ on:
 
 jobs:
   make-symlink-test:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - name: Run rmlink.sh
@@ -24,19 +24,22 @@ jobs:
         run: ./mklink_arm64.sh
         working-directory: etc/scripts/mklink
         env:
-          - DOT_DIRECTORY: /Users/runner/work/dotfiles/dotfiles
-          - MKLINK_SCRIPT_DIR: /Users/runner/work/dotfiles/dotfiles/etc/scripts/mklink
-
-      - name: Run mklink_ubuntu.sh
-        run: ./mklink_ubuntu.sh
-        working-directory: etc/scripts/mklink
-        env:
-          - DOT_DIRECTORY: /Users/runner/work/dotfiles/dotfiles
-          - MKLINK_SCRIPT_DIR: /Users/runner/work/dotfiles/dotfiles/etc/scripts/mklink
+          DOT_DIRECTORY: /Users/runner/work/dotfiles/dotfiles
+          MKLINK_SCRIPT_DIR: /Users/runner/work/dotfiles/dotfiles/etc/scripts/mklink
 
       - name: Run mklink_x64.sh
         run: ./mklink_x64.sh
         working-directory: etc/scripts/mklink
         env:
-          - DOT_DIRECTORY: /Users/runner/work/dotfiles/dotfiles
-          - MKLINK_SCRIPT_DIR: /Users/runner/work/dotfiles/dotfiles/etc/scripts/mklink
+          DOT_DIRECTORY: /Users/runner/work/dotfiles/dotfiles
+          MKLINK_SCRIPT_DIR: /Users/runner/work/dotfiles/dotfiles/etc/scripts/mklink
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run mklink_ubuntu.sh
+        run: ./mklink_ubuntu.sh
+        working-directory: etc/scripts/mklink
+        env:
+          DOT_DIRECTORY: /Users/runner/work/dotfiles/dotfiles
+          MKLINK_SCRIPT_DIR: /Users/runner/work/dotfiles/dotfiles/etc/scripts/mklink
