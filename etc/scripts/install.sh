@@ -12,10 +12,10 @@ main() {
   check_os_type
   case "${OS_TYPE}" in
     "OSX(x64)")
-      source ./install/install_x64.sh
+      source ./install/install_osx_x64.sh
       ;;
     "OSX(arm64)")
-      source ./install/install_arm64.sh
+      source ./install/install_osx_arm64.sh
       ;;
     "Ubuntu")
       source ./install/install_ubuntu.sh
@@ -70,8 +70,6 @@ check_os_type() {
   return 0
 }
 
-
-
 ask_yes_no() {
   while true; do
     echo -n "$* [y/n]: "
@@ -89,9 +87,6 @@ ask_yes_no() {
     esac
   done
 }
-
-
-
 
 
 main

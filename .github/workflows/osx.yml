@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - develop
   pull_request:
     branches:
       - main
@@ -17,11 +18,10 @@ jobs:
         run: ./deploy.sh
         working-directory: ./etc/scripts
 
-  install-on-OSX-x64:
+  defaults-x64:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Run install.sh
-        # run: ./install.sh
-        run: pwd
+      - name: Run defaults.sh
+        run: ./defaults.sh
         working-directory: ./etc/scripts
