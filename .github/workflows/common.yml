@@ -22,11 +22,11 @@ jobs:
         working-directory: etc/scripts/mklink
 
       - name: Run mklink_arm64.sh
-        run: ./mklink_arm64.sh
+        run: ./mklink_osx_arm64.sh
         working-directory: etc/scripts/mklink
 
       - name: Run mklink_x64.sh
-        run: ./mklink_x64.sh
+        run: ./mklink_osx_x64.sh
         working-directory: etc/scripts/mklink
 
       - name: Run mklink_ubuntu.sh
@@ -45,11 +45,11 @@ jobs:
         working-directory: etc/scripts/mklink
 
       - name: Run mklink_arm64.sh
-        run: ./mklink_arm64.sh
+        run: ./mklink_osx_arm64.sh
         working-directory: etc/scripts/mklink
 
       - name: Run mklink_x64.sh
-        run: ./mklink_x64.sh
+        run: ./mklink_osx_x64.sh
         working-directory: etc/scripts/mklink
 
       - name: Run mklink_ubuntu.sh
