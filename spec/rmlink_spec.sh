@@ -11,7 +11,6 @@ Describe "rmlink.sh"
     ln -sf ${DOT_DIRECTORY}/zsh/x64/.zshrc ${DOT_DIRECTORY}/zsh/.zshrc
   }
   cleanup() {
-    # if [ -f "${1}" ] || [ -d "${1}" ]; then
     if [ -f ${DOT_DIRECTORY}/zsh/.zshrc ]; then
       rm "${DOT_DIRECTORY}/zsh/.zshrc" && \
         echo "$(tput setaf 2)✔︎$(tput sgr0) removing ${1}"
