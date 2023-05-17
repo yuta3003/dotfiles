@@ -182,4 +182,7 @@ feature_deploy() {
   return 0
 }
 
+
+# ShellSpec
+${__SOURCED__:+return}
 main

@@ -3,7 +3,6 @@ set -eu
 
 
 main() {
-  echo "${DOT_DIRECTORY}"
   remove_symlink ${DOT_DIRECTORY}/bash/.bash_aliases
   remove_symlink ${DOT_DIRECTORY}/bash/.bash_profile
   remove_symlink ${DOT_DIRECTORY}/bash/.bashrc
@@ -47,4 +46,6 @@ remove_symlink() {
 }
 
 
+# ShellSpec
+${__SOURCED__:+return}
 main
