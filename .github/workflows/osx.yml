@@ -32,5 +32,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: Run shellspec
         run: |
+          brew tap shellspec/shellspec
           brew install shellspec
           shellspec
