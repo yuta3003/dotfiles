@@ -18,10 +18,19 @@ jobs:
         run: ./deploy.sh
         working-directory: ./etc/scripts
 
-  defaults-x64:
+  defaults-on-OSX-x64:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - name: Run defaults.sh
         run: ./defaults.sh
         working-directory: ./etc/scripts
+
+  shellspec-on-OSX-x64:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run shellspec
+        run: |
+          brew install shellspec
+          shellspec

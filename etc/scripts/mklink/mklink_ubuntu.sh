@@ -46,4 +46,6 @@ create_symlink() {
 }
 
 
+# ShellSpec
+${__SOURCED__:+return}
 main
