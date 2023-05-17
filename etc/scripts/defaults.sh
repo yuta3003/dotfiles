@@ -18,8 +18,6 @@ main() {
   defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE  # .DS_Storeファイルを作らせない
   defaults write com.apple.dock orientation left
 
-  ## terminalでUTF-8のみを使用する
-  defaults write com.apple.terminal StringEncodings -array 4
 
   # Disable auto-capitalization
   defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
@@ -31,7 +29,10 @@ main() {
   defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 }
 
-setting_defaults() {}
+setting_defaults() {
+  ## terminalでUTF-8のみを使用する
+  defaults write com.apple.terminal StringEncodings -array 4
+}
 
 setting_key() {
   defaults write -g InitialKeyRepeat -int 12    # normal minimum is 15 (225 ms)
