@@ -26,14 +26,17 @@ jobs:
         run: ./defaults.sh
         working-directory: ./etc/scripts
 
-  # shellspec-on-OSX-x64:
-  #   runs-on: macos-latest
-  #   env:
-  #     HOME: /Users/runner/work/dotfiles
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - name: Run shellspec
-  #       run: |
-  #         brew tap shellspec/shellspec
-  #         brew install shellspec
-  #         shellspec
+  shellspec-on-OSX-x64:
+    runs-on: macos-latest
+    env:
+      HOME: /Users/runner/work/dotfiles
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run shellspec
+        run: |
+          brew update
+          brew upgrade
+          brew cleanup
+          brew tap shellspec/shellspec
+          brew install shellspec
+          shellspec
