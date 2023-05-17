@@ -9,7 +9,13 @@ Describe "rmlink.sh"
   setup() {
     ln -sf ${DOT_DIRECTORY}/zsh/x64/.zshrc ${DOT_DIRECTORY}/zsh/.zshrc
   }
-  cleanup() {}
+  cleanup() {
+    # if [ -f "${1}" ] || [ -d "${1}" ]; then
+    if [ -f ${DOT_DIRECTORY}/zsh/.zshrc ]; then
+      rm "${DOT_DIRECTORY}/zsh/.zshrc" && \
+        echo "$(tput setaf 2)✔︎$(tput sgr0) removing ${1}"
+    fi
+  }
   It "remove_symlink()"
     When call remove_symlink ${DOT_DIRECTORY}/zsh/.zshrc
     The output should equal "$(tput setaf 2)✔︎$(tput sgr0) removing ${DOT_DIRECTORY}/zsh/.zshrc"
