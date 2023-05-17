@@ -28,6 +28,8 @@ jobs:
 
   shellspec-on-OSX-x64:
     runs-on: macos-latest
+    env:
+      HOME: /Users/runner/work/dotfiles
     steps:
       - uses: actions/checkout@v2
       - name: Run shellspec
