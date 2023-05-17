@@ -7,6 +7,7 @@ Describe "rmlink.sh"
   After "cleanup"
 
   setup() {
+    echo "ln -sf ${DOT_DIRECTORY}/zsh/x64/.zshrc ${DOT_DIRECTORY}/zsh/.zshrc"
     ln -sf ${DOT_DIRECTORY}/zsh/x64/.zshrc ${DOT_DIRECTORY}/zsh/.zshrc
   }
   cleanup() {
@@ -17,6 +18,7 @@ Describe "rmlink.sh"
     fi
   }
   It "remove_symlink()"
+    echo "${DOT_DIRECTORY}/zsh/.zshrc"
     When call remove_symlink ${DOT_DIRECTORY}/zsh/.zshrc
     The output should equal "$(tput setaf 2)✔︎$(tput sgr0) removing ${DOT_DIRECTORY}/zsh/.zshrc"
   End
