@@ -14,6 +14,7 @@
 [rebase]
 	autostash = true
 [alias]
-    s = status
-    l = log --all --oneline --graph
-    sw = switch
+  b = branch
+  l = log --all --oneline --graph
+  s = status
+  sw = switch

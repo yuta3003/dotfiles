@@ -7,10 +7,14 @@
 	editor = nvim
 [init]
 	defaultBranch = main
-	templatedir = ~/.git-templates/git-secrets
 [pull]
 	rebase = true
 [commit]
 	template = ~/.gitmessage
 [rebase]
 	autostash = true
+[alias]
+  b = branch
+  l = log --all --oneline --graph
+  s = status
+  sw = switch
