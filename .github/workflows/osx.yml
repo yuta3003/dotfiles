@@ -36,8 +36,8 @@ jobs:
         run: |
           brew update
           brew install zsh
-        shell: zsh
-        working-directory: ./zsh
+        # shell: zsh
+        # working-directory: ./zsh
 
   # shellspec-on-OSX-x64:
   #   runs-on: macos-latest
