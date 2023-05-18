@@ -17,3 +17,15 @@ jobs:
       - name: Run deploy.sh
         run: ./deploy.sh -s
         working-directory: ./etc/scripts
+
+jobs:
+  source-bashrc-on-ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run source .bashrc
+        run: |
+          bash .bashrc
+          bash .bash_profile
+          bash .bash_aliases
+        working-directory: ./etc/scripts
