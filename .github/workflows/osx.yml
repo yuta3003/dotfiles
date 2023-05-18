@@ -33,10 +33,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run defaults.sh
-        run: |
-          cd ${HOME}
-          source .zshrc
+        run: source .zshrc
         shell: zsh
+        working-directory: ./zsh
 
   # shellspec-on-OSX-x64:
   #   runs-on: macos-latest
