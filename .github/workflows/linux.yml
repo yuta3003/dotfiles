@@ -18,7 +18,6 @@ jobs:
         run: ./deploy.sh -s
         working-directory: ./etc/scripts
 
-jobs:
   source-bashrc-on-ubuntu:
     runs-on: ubuntu-latest
     steps:
