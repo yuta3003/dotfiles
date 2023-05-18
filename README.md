@@ -5,6 +5,12 @@
 
 # DotFiles
 
+## Supported OS
+- macOS
+    - M1
+    - Intel
+- Ubuntu
+
 ## Installation
 
 ```sh

@@ -137,6 +137,7 @@ create_dotconfig_directory() {
   return 0
 }
 
+
 install_tpm() {
   if [ ! -d ~/.tmux/plugins/tpm ]; then
     echo "Installing Tmux Plugin Manager..."
