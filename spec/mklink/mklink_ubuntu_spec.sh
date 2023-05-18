@@ -1,6 +1,5 @@
-DOT_DIRECTORY=${HOME}/dotfiles
-
 Describe "mklink_ubuntu.sh"
+  DOT_DIRECTORY=${HOME}/dotfiles
   Include etc/scripts/mklink/mklink_ubuntu.sh
   Before "setup"
   After "cleanup"

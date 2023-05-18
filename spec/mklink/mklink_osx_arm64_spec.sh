@@ -1,6 +1,5 @@
-DOT_DIRECTORY=${HOME}/dotfiles
-
 Describe "mklink_osx_arm64.sh"
+  DOT_DIRECTORY=${HOME}/dotfiles
   Include etc/scripts/mklink/mklink_osx_arm64.sh
   Before "setup"
   After "cleanup"

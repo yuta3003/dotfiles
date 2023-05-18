@@ -31,38 +31,30 @@ main() {
   feature_deploy
 }
 
-check_mac_architecture() {
-  if [ "$(uname -m)" == "x86_64" ] ; then
-    OS_TYPE="OSX(x64)"
-  elif [ "$(uname -m)" == "arm64" ] ; then
-    OS_TYPE="OSX(arm64)"
-  else
-    echo "Unsupported Architecture"
-    return 1
-  fi
-  return 0
-}
-
-check_linux_distribution() {
-  if command -v apt-get &> /dev/null; then
-    OS_TYPE="Ubuntu"
-  elif command -v pacman &> /dev/null; then
-    OS_TYPE="ArchLinux"
-  else
-    echo "Unsupported distribution"
-    return 1
-  fi
-  return 0
-}
-
 check_os_type() {
   local os=$(uname -s)
   case "${os}" in
     Linux*)
-      check_linux_distribution
+      if command -v apt-get &> /dev/null; then
+        OS_TYPE="Ubuntu"
+      elif command -v pacman &> /dev/null; then
+        OS_TYPE="ArchLinux"
+      else
+        echo "Unsupported distribution"
+        return 1
+      fi
+      return 0
       ;;
     Darwin*)
-      check_mac_architecture
+      if [ "$(uname -m)" == "x86_64" ] ; then
+        OS_TYPE="OSX(x64)"
+      elif [ "$(uname -m)" == "arm64" ] ; then
+        OS_TYPE="OSX(arm64)"
+      else
+        echo "Unsupported Architecture"
+        return 1
+      fi
+      return 0
       ;;
     *)
       echo "Command failed."
@@ -143,12 +135,11 @@ common_deploy() {
         rm -rf "${dst}"
       fi
 
-
       if "${SILENT_MODE}"; then
         ln -sf "${src}" "${dst}"
       else
-        ln -sf "${src}" "${dst}"
-        echo "$(tput setaf 2)✔︎$(tput sgr0)~${dst#${HOME}}"
+        ln -sf "${src}" "${dst}" && \
+          echo "$(tput setaf 2)✔︎$(tput sgr0)~${dst#${HOME}}"
       fi
 
     done < ${tmp_file}

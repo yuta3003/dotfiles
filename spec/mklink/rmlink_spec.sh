@@ -1,7 +1,5 @@
-
-DOT_DIRECTORY=${HOME}/dotfiles
-
 Describe "rmlink.sh"
+  DOT_DIRECTORY=${HOME}/dotfiles
   Include etc/scripts/mklink/rmlink.sh
   Before "setup"
   After "cleanup"
