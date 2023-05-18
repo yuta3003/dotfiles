@@ -34,12 +34,11 @@ jobs:
       - uses: actions/checkout@v2
       - name: Run source .zshrc
         run: |
-          brew update
-          brew install zsh
           zsh .zshrc
         working-directory: ./zsh/x64
-        # shell: zsh
 
+          # brew update
+          # brew install zsh
   # shellspec-on-OSX-x64:
   #   runs-on: macos-latest
   #   env:
