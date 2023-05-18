@@ -32,11 +32,10 @@ jobs:
       HOME: /Users/runner/work/dotfiles
     steps:
       - uses: actions/checkout@v2
-      - name: Run defaults.sh
+      - name: Run source .zshrc
         run: |
           brew update
           brew install zsh
-          source .zshrc
         shell: zsh
         working-directory: ./zsh
 
