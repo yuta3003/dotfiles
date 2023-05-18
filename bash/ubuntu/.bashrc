@@ -125,11 +125,6 @@ if [ $SHLVL = 1 ]; then
   tmux
 fi
 
-#  .bash_aliasesを読み込み
-if [ -f "${HOME}/.bash_aliases" ] ; then
-  source "${HOME}/.bash_aliases"
-fi
-
 #################################################
 #
 #  PATH setting
@@ -137,33 +132,8 @@ fi
 
 # for starship
 export PATH="$HOME/.cargo/bin:$PATH"
-eval "$(starship init bash)"                            
-
-
-# for pyenv via anyenv
-# export PYENV_ROOT="$HOME/.anyenv/envs/pyenv"
-# export PATH="$PYENV_ROOT/bin:$PATH"
-# eval "$(pyenv init --path)"
-# if command -v pyenv 1>/dev/null 2>&1; then
-#   eval "$(pyenv init -)"
-# fi
-
-# for Kubernates
-export KUBECONFIG=/etc/kubernetes/admin.conf
-
-
-# for pyenv
-export PYENV_ROOT="$HOME/.anyenv/envs/pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
-
-# for anyenv
-export PATH="$HOME/.anyenv/bin:$PATH"
-eval "$(anyenv init -)" 
-
-
-
 eval "$(starship init bash)"
+
+# for asdf
+. "$HOME/.asdf/asdf.sh"
+. "$HOME/.asdf/completions/asdf.bash"
