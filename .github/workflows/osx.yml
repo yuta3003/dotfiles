@@ -30,12 +30,14 @@ jobs:
     runs-on: macos-latest
     env:
       HOME: /Users/runner/work/dotfiles
+      DOT_DIRECTORY: /Users/runner/work/dotfiles/dotfiles
     steps:
       - uses: actions/checkout@v2
       - name: Run source .zshrc
         run: |
           brew update
           brew install zsh
+          source ${DOT_DIRECTORY}/etc/scripts/deploy.sh
           zsh .zshrc
         working-directory: ./zsh
         # shell: zsh
