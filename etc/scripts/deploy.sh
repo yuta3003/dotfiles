@@ -8,6 +8,21 @@ SCRIPT_DIR="${DOT_DIRECTORY}/etc/scripts"
 MKLINK_SCRIPT_DIR="${SCRIPT_DIR}/mklink"
 DEPLOY_LIST_DIR="${DOT_DIRECTORY}/etc/deploylist"
 OS_TYPE=""
+SILENT_MODE=false
+
+while (( $# > 0 ))
+do
+  case $1 in
+    -s)
+      SILENT_MODE=true
+      ;;
+    -*)
+      echo "invalid option"
+      exit 1
+      ;;
+  esac
+  shift
+done
 
 main() {
   check_os_type
@@ -60,20 +75,36 @@ check_os_type() {
 create_link() {
   case "${OS_TYPE}" in
     "OSX(x64)")
-      echo "creating symlink for OSX(x64)"
-      source ${MKLINK_SCRIPT_DIR}/mklink_osx_x64.sh
+      if "${SILENT_MODE}"; then
+        source ${MKLINK_SCRIPT_DIR}/mklink_osx_x64.sh -s
+      else
+        echo "creating symlink for OSX(x64)"
+        source ${MKLINK_SCRIPT_DIR}/mklink_osx_x64.sh
+      fi
       ;;
     "OSX(arm64)")
-      echo "creating symlink for OSX(arm64)"
-      source ${MKLINK_SCRIPT_DIR}/mklink_osx_arm64.sh
+      if "${SILENT_MODE}"; then
+        source ${MKLINK_SCRIPT_DIR}/mklink_osx_arm64.sh -s
+      else
+        echo "creating symlink for OSX(arm64)"
+        source ${MKLINK_SCRIPT_DIR}/mklink_osx_arm64.sh
+      fi
       ;;
     "Ubuntu")
-      echo "creating symlink for ubuntu"
-      source ${MKLINK_SCRIPT_DIR}/mklink_ubuntu.sh
+      if "${SILENT_MODE}"; then
+        source ${MKLINK_SCRIPT_DIR}/mklink_ubuntu.sh -s
+      else
+        echo "creating symlink for ubuntu"
+        source ${MKLINK_SCRIPT_DIR}/mklink_ubuntu.sh
+      fi
       ;;
     "ArchLinux")
-      echo "creating symlink for Arch Linux"
-      source ${MKLINK_SCRIPT_DIR}/mklink_archlinux.sh
+      if "${SILENT_MODE}"; then
+        source ${MKLINK_SCRIPT_DIR}/mklink_archlinux.sh -s
+      else
+        echo "creating symlink for Arch Linux"
+        source ${MKLINK_SCRIPT_DIR}/mklink_archlinux.sh
+      fi
       ;;
     *)
       echo "Unsupported OS type"
@@ -112,8 +143,13 @@ common_deploy() {
         rm -rf "${dst}"
       fi
 
-      ln -sf "${src}" "${dst}"
-      echo "$(tput setaf 2)✔︎$(tput sgr0)~${dst#${HOME}}"
+
+      if "${SILENT_MODE}"; then
+        ln -sf "${src}" "${dst}"
+      else
+        ln -sf "${src}" "${dst}"
+        echo "$(tput setaf 2)✔︎$(tput sgr0)~${dst#${HOME}}"
+      fi
 
     done < ${tmp_file}
   else
@@ -172,8 +208,13 @@ feature_deploy() {
       if [ -d "${dst}" ] || [ -f "${dst}" ]; then
         rm -rf "${dst}"
       fi
-      ln -sf "${src}" "${dst}"
-      echo "$(tput setaf 2)✔︎$(tput sgr0)~${dst#${HOME}}"
+
+      if "${SILENT_MODE}"; then
+        ln -sf "${src}" "${dst}"
+      else
+        ln -sf "${src}" "${dst}"
+        echo "$(tput setaf 2)✔︎$(tput sgr0)~${dst#${HOME}}"
+      fi
 
     done < ${tmp_file}
   else

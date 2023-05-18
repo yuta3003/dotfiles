@@ -10,7 +10,7 @@ Describe "rmlink.sh"
     ln -sf ${DOT_DIRECTORY}/zsh/x64/.zshrc ${DOT_DIRECTORY}/zsh/.zshrc
   }
   cleanup() {
-    ${DOT_DIRECTORY}/etc/scripts/deploy.sh
+    ${DOT_DIRECTORY}/etc/scripts/deploy.sh -s
   }
   It "remove_symlink()"
     When call remove_symlink ${DOT_DIRECTORY}/zsh/.zshrc

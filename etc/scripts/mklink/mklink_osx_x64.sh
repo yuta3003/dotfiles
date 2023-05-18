@@ -6,8 +6,26 @@ set -eu
 # DOT_DIRECTORY=$(cd ${CURRENT_DIR};cd ./../..; pwd)
 # SCRIPT_DIR="${DOT_DIRECTORY}/etc/scripts"
 # MKLINK_SCRIPT_DIR="${SCRIPT_DIR}/mklink"
+SILENT_MODE=false
+
+while (( $# > 0 ))
+do
+  case $1 in
+    -s)
+      SILENT_MODE=true
+      ;;
+    -*)
+      echo "invalid option"
+      exit 1
+      ;;
+  esac
+  shift
+done
 
 main() {
+  if "${SILENT_MODE}"; then
+    disable_echo
+  fi
   source ${MKLINK_SCRIPT_DIR}/rmlink.sh
 
   cd ${DOT_DIRECTORY}/git
@@ -45,15 +63,26 @@ main() {
   create_symlink zsh x64/.zaliases
 
   cd ${DOT_DIRECTORY}
+  if "${SILENT_MODE}"; then
+    enable_echo
+  fi
 }
 
 create_symlink() {
-  # ln -sf ${2} ${2##*/} && \
-  #   echo "$(tput setaf 2)✔︎$(tput sgr0) creating ${1}/${2##*/}"
-  ln -sf ${2} ${2##*/}
+  ln -sf ${2} ${2##*/} && \
+    echo "$(tput setaf 2)✔︎$(tput sgr0) creating ${1}/${2##*/}"
   return 0
 }
 
+disable_echo() {
+  exec 3>&1
+  exec 1>/dev/null
+}
+
+enable_echo() {
+  exec 1>&3
+  exec 3>&-
+}
 
 # ShellSpec
 ${__SOURCED__:+return}

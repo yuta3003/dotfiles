@@ -35,7 +35,6 @@ jobs:
       - name: Run shellspec
         run: |
           brew update
-          brew upgrade
           brew cleanup
           brew tap shellspec/shellspec
           brew install shellspec

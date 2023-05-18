@@ -7,10 +7,10 @@ Describe "mklink_ubuntu.sh"
 
   setup() {
     cd ${DOT_DIRECTORY}/zsh
-    DOT_DIRECTORY=${HOME}/dotfiles ${DOT_DIRECTORY}/etc/scripts/mklink/rmlink.sh
+    DOT_DIRECTORY=${HOME}/dotfiles ${DOT_DIRECTORY}/etc/scripts/mklink/rmlink.sh -s
   }
   cleanup() {
-    ${DOT_DIRECTORY}/etc/scripts/deploy.sh
+    ${DOT_DIRECTORY}/etc/scripts/deploy.sh -s
   }
   It "mklink_ubuntu"
     When call create_symlink zsh ubuntu/.zshrc

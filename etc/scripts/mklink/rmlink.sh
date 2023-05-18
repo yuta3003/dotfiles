@@ -4,7 +4,21 @@ set -eu
 
 # CURRENT_DIR=$(cd $(dirname $0); pwd)
 # DOT_DIRECTORY=$(cd ${CURRENT_DIR};cd ./../../..; pwd)
+SILENT_MODE=false
 
+while (( $# > 0 ))
+do
+  case $1 in
+    -s)
+      SILENT_MODE=true
+      ;;
+    -*)
+      echo "invalid option"
+      exit 1
+      ;;
+  esac
+  shift
+done
 
 main() {
   local filepath_array=(
@@ -32,8 +46,24 @@ main() {
   )
 
   for i in "${!filepath_array[@]}"; do
-    remove_symlink "${DOT_DIRECTORY}/${filepath_array[$i]}"
+    if "${SILENT_MODE}"; then
+      disable_echo
+      remove_symlink "${DOT_DIRECTORY}/${filepath_array[$i]}"
+      enable_echo
+    else
+      remove_symlink "${DOT_DIRECTORY}/${filepath_array[$i]}"
+    fi
   done
+}
+
+disable_echo() {
+  exec 3>&1
+  exec 1>/dev/null
+}
+
+enable_echo() {
+  exec 1>&3
+  exec 3>&-
 }
 
 remove_symlink() {
@@ -42,7 +72,6 @@ remove_symlink() {
       echo "$(tput setaf 2)✔︎$(tput sgr0) removing ${1}"
   fi
 }
-
 
 # ShellSpec
 ${__SOURCED__:+return}
