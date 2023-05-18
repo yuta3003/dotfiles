@@ -48,8 +48,9 @@ main() {
 }
 
 create_symlink() {
-  ln -sf ${2} ${2##*/} && \
-    echo "$(tput setaf 2)✔︎$(tput sgr0) creating ${1}/${2##*/}"
+  # ln -sf ${2} ${2##*/} && \
+  #   echo "$(tput setaf 2)✔︎$(tput sgr0) creating ${1}/${2##*/}"
+  ln -sf ${2} ${2##*/}
   return 0
 }
 

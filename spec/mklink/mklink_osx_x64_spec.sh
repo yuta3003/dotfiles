@@ -7,9 +7,13 @@ Describe "mklink_osx_x64.sh"
 
   setup() {
     cd ${DOT_DIRECTORY}/zsh
+    echo "setup: "
+    pwd
     DOT_DIRECTORY=${HOME}/dotfiles ${DOT_DIRECTORY}/etc/scripts/mklink/rmlink.sh
   }
   cleanup() {
+    echo "cleanup: "
+    pwd
     ${DOT_DIRECTORY}/etc/scripts/deploy.sh
   }
   It "mklink_osx_x64"
