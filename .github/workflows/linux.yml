@@ -27,4 +27,4 @@ jobs:
           bash .bashrc
           bash .bash_profile
           bash .bash_aliases
-        working-directory: ./etc/scripts
+        working-directory: ./bash/ubuntu
