@@ -1,4 +1,4 @@
-[![common CI](https://github.com/yuta3003/dotfiles/actions/workflows/common.yml/badge.svg)](https://github.com/yuta3003/dotfiles/actions/workflows/common.yml)
+https://img.shields.io/badge/Author-yuta3003-blue
 [![OSX CI](https://github.com/yuta3003/dotfiles/actions/workflows/osx.yml/badge.svg)](https://github.com/yuta3003/dotfiles/actions/workflows/osx.yml)
 [![linux CI](https://github.com/yuta3003/dotfiles/actions/workflows/linux.yml/badge.svg)](https://github.com/yuta3003/dotfiles/actions/workflows/linux.yml)
 
