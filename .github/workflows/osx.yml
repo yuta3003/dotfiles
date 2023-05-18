@@ -33,7 +33,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run defaults.sh
-        run: source .zshrc
+        run: |
+          brew update
+          brew install zsh
+          source .zshrc
         shell: zsh
         working-directory: ./zsh
 
