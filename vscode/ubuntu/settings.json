@@ -6,6 +6,7 @@
     // editor
     //"editor.acceptSuggestionOnEnter": "off",
     "editor.cursorStyle": "line",
+    "editor.cursorBlinking": "smooth", //カーソルの点滅をヌルヌルにする
     "editor.dragAndDrop": false,
     "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace, 'Hack Nerd Font Mono'",
     "editor.insertSpaces": false,

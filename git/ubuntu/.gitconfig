@@ -17,4 +17,5 @@
   b = branch
   l = log --all --oneline --graph
   s = status
+  sb = show-branch
   sw = switch
