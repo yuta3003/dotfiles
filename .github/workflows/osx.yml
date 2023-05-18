@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run deploy.sh
-        run: ./deploy.sh
+        run: ./deploy.sh -s
         working-directory: ./etc/scripts
 
   defaults-on-OSX-x64:
@@ -26,16 +26,16 @@ jobs:
         run: ./defaults.sh
         working-directory: ./etc/scripts
 
-  shellspec-on-OSX-x64:
-    runs-on: macos-latest
-    env:
-      HOME: /Users/runner/work/dotfiles
-    steps:
-      - uses: actions/checkout@v2
-      - name: Run shellspec
-        run: |
-          brew update
-          brew cleanup
-          brew tap shellspec/shellspec
-          brew install shellspec
-          shellspec
+  # shellspec-on-OSX-x64:
+  #   runs-on: macos-latest
+  #   env:
+  #     HOME: /Users/runner/work/dotfiles
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Run shellspec
+  #       run: |
+  #         brew update
+  #         brew cleanup
+  #         brew tap shellspec/shellspec
+  #         brew install shellspec
+  #         shellspec

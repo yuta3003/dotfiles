@@ -15,5 +15,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run deploy.sh
-        run: ./deploy.sh
+        run: ./deploy.sh -s
         working-directory: ./etc/scripts
