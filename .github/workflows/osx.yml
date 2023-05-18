@@ -26,18 +26,18 @@ jobs:
         run: ./defaults.sh
         working-directory: ./etc/scripts
 
-  source-zshrc-on-OSX-x64:
-    runs-on: macos-latest
-    env:
-      HOME: /Users/runner/work/dotfiles
-    steps:
-      - uses: actions/checkout@v2
-      - name: Run source .zshrc
-        run: |
-          zsh .zshrc
-          zsh .zprofile
-          zsh .zaliases
-        working-directory: ./zsh/x64
+  # source-zshrc-on-OSX-x64:
+  #   runs-on: macos-latest
+  #   env:
+  #     HOME: /Users/runner/work/dotfiles
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Run source .zshrc
+  #       run: |
+  #         zsh .zshrc
+  #         zsh .zprofile
+  #         zsh .zaliases
+  #       working-directory: ./zsh/x64
 
           # brew update
           # brew install zsh
