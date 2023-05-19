@@ -17,7 +17,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
       - name: Run deploy.sh
         run: ./deploy.sh -s
         working-directory: ./etc/scripts
@@ -25,7 +24,8 @@ jobs:
   defaults-on-OSX-x64:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: Run defaults.sh
         run: ./defaults.sh
         working-directory: ./etc/scripts
