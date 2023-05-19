@@ -157,8 +157,6 @@ check_install_xcode() {
   fi
 }
 
-download_ubuntu() {}
-
 install_xcode() {
   echo "Installing Xcode..."
   xcode-select --install
