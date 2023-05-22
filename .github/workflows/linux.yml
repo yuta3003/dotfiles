@@ -25,15 +25,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Setup
+      - name: Setup Starship
         run: curl -fsSL https://starship.rs/install.sh | sh /dev/stdin -f
-      - name: Setup
+      - name: Setup asdf
         run: |
           sudo apt-get install curl git
           git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.3
       - name: Run source .bashrc
-        run: |
-          bash .bashrc
-          bash .bash_profile
-          bash .bash_aliases
+        run: bash .bashrc
+        working-directory: ./bash/ubuntu
+      - name: Run source .bash_profile
+        run: bash .bash_profile
+        working-directory: ./bash/ubuntu
+      - name: Run source .bash_aliases
+        run: bash .bash_aliases
         working-directory: ./bash/ubuntu
