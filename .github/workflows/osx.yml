@@ -42,6 +42,7 @@ jobs:
       - name: Install zsh-completions
         run: |
           brew install zsh-completions
+          autoload -U compinit
           rm -f ~/.zcompdump; compinit
       - name: Install zsh-autosuggestions
         run: brew install zsh-autosuggestions
