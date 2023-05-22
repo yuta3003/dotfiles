@@ -88,19 +88,6 @@ PATH="$PYENV_ROOT/bin:$PATH"
 PATH="$POETRY_ROOT/bin:$PATH"
 PATH="$GAWK_ROOT/libexec/gnubin:$PATH" # gawk
 
-# path=(
-#   "$OPENSSL/bin:$PATH"(N-/)
-#   "$TMUX_ROOT/bin:$PATH"(N-/)
-#   "$GIT_ROOT/bin:$PATH"(N-/)
-#   "$CURL_ROOT/bin:$PATH"(N-/)
-#   "$SQLITE_ROOT/bin:$PATH"(N-/)
-#   "$USR_LOCAL_HOME/bin:$PATH"(N-/)
-#   "$USR_LOCAL_HOME/sbin:$PATH"(N-/)
-#   "$PYENV_ROOT/bin:$PATH"(N-/)
-#   "$POETRY_ROOT/bin:$PATH"(N-/)
-#   "$GAWK_ROOT/libexec/gnubin:$PATH"(N-/) # gawk
-# )
-
 export PATH
 
 #  $PATHの重複削除
