@@ -45,6 +45,10 @@ jobs:
         run: brew install zsh-autosuggestions
       - name: Install starship
         run: brew install starship
+      - name: Install anyenv
+        run: brew install anyenv
+      - name: Install pyenv
+        run: anyenv install pyenv
       - name: Run source .zshrc
         run: zsh .zshrc
         working-directory: ./zsh/x64
