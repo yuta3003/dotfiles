@@ -20,13 +20,13 @@ jobs:
         run: ./deploy.sh -s
         working-directory: ./etc/scripts
 
-  source-bashrc-on-ubuntu:
+  source-bashrc-on-ubunutu:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      # - name: Setup
-      #   run: ./deploy.sh -s
+      - name: Setup
+        run: curl -sS https://starship.rs/install.sh | sh
       - name: Run source .bashrc
         run: |
           bash .bashrc
