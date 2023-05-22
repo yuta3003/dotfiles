@@ -42,10 +42,7 @@ jobs:
       - name: Install zsh
         run: brew install zsh
       - name: Install zsh-completions
-        run: |
-          brew install zsh-completions
-          rm -f ~/.zcompdump; compinit
-        shell: zsh {0}
+        run: brew install zsh-completions
       - name: Install zsh-autosuggestions
         run: brew install zsh-autosuggestions
       - name: Install starship
@@ -63,6 +60,7 @@ jobs:
       - name: Run source .zaliases
         run: zsh .zaliases
         working-directory: ./zsh/x64
+
 
           # brew update
           # brew install zsh
