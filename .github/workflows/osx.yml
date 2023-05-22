@@ -42,7 +42,8 @@ jobs:
       - name: Install zsh-completions
         run: |
           brew install zsh-completions
-          rm -f ~/.zcompdump; zsh compinit
+          rm -f ~/.zcompdump; compinit
+        shell: zsh{0}
       - name: Install zsh-autosuggestions
         run: brew install zsh-autosuggestions
       - name: Install starship
