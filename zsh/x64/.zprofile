@@ -84,15 +84,19 @@ export POETRY_ROOT="$HOME/.poetry"
 # /usr/local/bin/python3 -- Homebrew Python
 # /Users/yuta/.anyenv/envs/pyenv/shims/python3 -- pyenv Python
 
-PATH="$OPENSSL/bin:$PATH"
-PATH="$TMUX_ROOT/bin:$PATH"
-PATH="$GIT_ROOT/bin:$PATH"
-PATH="$CURL_ROOT/bin:$PATH"
-PATH="$SQLITE_ROOT/bin:$PATH"
-PATH="$USR_LOCAL_HOME/bin:$PATH"
-PATH="$USR_LOCAL_HOME/sbin:$PATH"
-PATH="$PYENV_ROOT/bin:$PATH"
-PATH="$POETRY_ROOT/bin:$PATH"
+
+path=(
+  "$OPENSSL/bin:$PATH"(N-/)
+  "$TMUX_ROOT/bin:$PATH"(N-/)
+  "$GIT_ROOT/bin:$PATH"(N-/)
+  "$CURL_ROOT/bin:$PATH"(N-/)
+  "$SQLITE_ROOT/bin:$PATH"(N-/)
+  "$USR_LOCAL_HOME/bin:$PATH"(N-/)
+  "$USR_LOCAL_HOME/sbin:$PATH"(N-/)
+  "$PYENV_ROOT/bin:$PATH"(N-/)
+  "$POETRY_ROOT/bin:$PATH"(N-/)
+)
+
 
 export PATH
 
@@ -185,14 +189,13 @@ export LS_COLORS='di=01;36:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30
 #
 #  HOME-MADE Command Setting
 
-
-# fbr - checkout git branch (including remote branches)
+# fbr - switch git branch
 ## git
 fbr() {
   local branches branch
-  branches=$(git branch --all | grep -v HEAD) &&
-  branch=$(echo "$branches" | fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
-  git switch $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+  branches=$(git branch -vv) &&
+  branch=$(echo "$branches" | fzf +m) &&
+  git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
 }
 
 # fd - cd to selected directory
