@@ -29,7 +29,7 @@ jobs:
         run: curl -fsSL https://starship.rs/install.sh | sh /dev/stdin -f
       - name: Setup
         run: |
-          apt-get install curl git
+          sudo apt-get install curl git
           git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.3
       - name: Run source .bashrc
         run: |
