@@ -22,6 +22,7 @@ jobs:
 
   source-bashrc-on-ubunutu:
     runs-on: ubuntu-latest
+    working-directory: ./bash/ubuntu
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -33,10 +34,7 @@ jobs:
           git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.3
       - name: Run source .bashrc
         run: bash .bashrc
-        working-directory: ./bash/ubuntu
       - name: Run source .bash_profile
         run: bash .bash_profile
-        working-directory: ./bash/ubuntu
       - name: Run source .bash_aliases
         run: bash .bash_aliases
-        working-directory: ./bash/ubuntu
