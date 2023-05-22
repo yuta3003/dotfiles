@@ -48,7 +48,9 @@ jobs:
       - name: Install starship
         run: brew install starship
       - name: Install anyenv
-        run: brew install anyenv
+        run: |
+          brew install anyenv
+          anyenv install --init
       - name: Install pyenv
         run: anyenv install pyenv
       - name: Run source .zshrc
