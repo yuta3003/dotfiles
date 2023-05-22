@@ -39,11 +39,13 @@ jobs:
         uses: actions/checkout@v2
       - name: Homebrew UPDATE
         run: brew update
+      - name: Install zsh
+        run: brew install zsh
       - name: Install zsh-completions
         run: |
           brew install zsh-completions
           rm -f ~/.zcompdump; compinit
-        shell: zsh {0}
+        shell: /usr/local/bin/zsh {0}
       - name: Install zsh-autosuggestions
         run: brew install zsh-autosuggestions
       - name: Install starship
