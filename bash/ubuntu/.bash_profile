@@ -32,11 +32,7 @@ fi
 
 # for starship
 export PATH="$HOME/.cargo/bin:$PATH"
-eval "$(starship init bash)"                            
-
-# for anyenv
-export PATH="$HOME/.anyenv/bin:$PATH"
-eval "$(anyenv init -)" 
+eval "$(starship init bash)"
 
 # for pyenv via anyenv
 # export PYENV_ROOT="$HOME/.anyenv/envs/pyenv"
