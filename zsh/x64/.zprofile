@@ -84,7 +84,6 @@ export POETRY_ROOT="$HOME/.poetry"
 # /usr/local/bin/python3 -- Homebrew Python
 # /Users/yuta/.anyenv/envs/pyenv/shims/python3 -- pyenv Python
 
-
 path=(
   "$OPENSSL/bin:$PATH"(N-/)
   "$TMUX_ROOT/bin:$PATH"(N-/)
@@ -96,7 +95,6 @@ path=(
   "$PYENV_ROOT/bin:$PATH"(N-/)
   "$POETRY_ROOT/bin:$PATH"(N-/)
 )
-
 
 export PATH
 
