@@ -40,7 +40,9 @@ jobs:
       - name: Homebrew UPDATE
         run: brew update
       - name: Install zsh-completions
-        run: brew install zsh-completions
+        run: |
+          brew install zsh-completions
+          rm -f ~/.zcompdump; compinit
       - name: Install zsh-autosuggestions
         run: brew install zsh-autosuggestions
       - name: Install starship
