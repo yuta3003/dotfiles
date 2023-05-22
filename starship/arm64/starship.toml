@@ -47,7 +47,7 @@ error_symbol = "[❯❯❯](bold red)"
 
 [username]
 format = "[${user} ]($style)"
-style_user = "blue bold"
+style_user = "bold blue"
 show_always = true
 
 #  -----------------------------------
@@ -67,6 +67,7 @@ style = "bold cyan"
 
 [git_branch]
 format = "[❯ ${symbol}${branch} ]($style)"
+symbol = " "
 style = "bold purple"
 
 [git_commit]
