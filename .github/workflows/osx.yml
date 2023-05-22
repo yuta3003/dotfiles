@@ -42,8 +42,7 @@ jobs:
       - name: Install zsh-completions
         run: |
           brew install zsh-completions
-          autoload -U compinit
-          rm -f ~/.zcompdump; compinit
+          rm -f ~/.zcompdump; zsh compinit
       - name: Install zsh-autosuggestions
         run: brew install zsh-autosuggestions
       - name: Install starship
@@ -64,6 +63,7 @@ jobs:
 
           # brew update
           # brew install zsh
+          # zsh autoload -U compinit
   # shellspec-on-OSX-x64:
   #   runs-on: macos-latest
   #   env:
