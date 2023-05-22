@@ -50,6 +50,7 @@ jobs:
       - name: Install anyenv
         run: |
           brew install anyenv
+          anyenv init
           exec $SHELL -l
           anyenv install --init
       - name: Install pyenv
