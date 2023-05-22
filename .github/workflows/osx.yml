@@ -37,11 +37,20 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Homebrew UPDATE
+        run: brew update
+      - name: Install zsh-completions
+        run: brew install zsh-completions
+      - name: Install starship
+        run: brew install starship
       - name: Run source .zshrc
-        run: |
-          zsh .zshrc
-          zsh .zprofile
-          zsh .zaliases
+        run: zsh .zshrc
+        working-directory: ./zsh/x64
+      - name: Run source .zprofile
+        run: zsh .zprofile
+        working-directory: ./zsh/x64
+      - name: Run source .zaliases
+        run: zsh .zaliases
         working-directory: ./zsh/x64
 
           # brew update
