@@ -41,6 +41,8 @@ jobs:
         run: brew update
       - name: Install zsh-completions
         run: brew install zsh-completions
+      - name: Install zsh-autosuggestions
+        run: brew install zsh-autosuggestions
       - name: Install starship
         run: brew install starship
       - name: Run source .zshrc
