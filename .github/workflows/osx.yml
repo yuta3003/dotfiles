@@ -45,7 +45,7 @@ jobs:
         run: |
           brew install zsh-completions
           rm -f ~/.zcompdump; compinit
-        shell: /usr/local/bin/zsh
+        shell: /usr/local/bin/zsh {0}
       - name: Install zsh-autosuggestions
         run: brew install zsh-autosuggestions
       - name: Install starship
