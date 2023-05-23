@@ -3,6 +3,10 @@
 #  Start-up Setting
 #
 
+export LANG=ja_JP.UTF-8
+export LESSCHARSET=utf-8
+
+export EDITOR=vim
 #################################################
 #
 #  PATH setting
@@ -39,36 +43,25 @@ export POETRY_ROOT="${HOME}/.poetry"
 export GAWK_ROOT="/opt/homebrew/opt/gawk"
 
 # /usr/bin/python3 -- system Python
-# /usr/local/bin/python3 -- Homebrew Python
+# brew --prefix python -v -- Homebrew Python
 # /Users/yuta/.anyenv/envs/pyenv/shims/python3 -- pyenv Python
 
-PATH="$OPENSSL/bin:$PATH"
-PATH="$TMUX_ROOT/bin:$PATH"
-PATH="$GIT_ROOT/bin:$PATH"
-PATH="$CURL_ROOT/bin:$PATH"
-PATH="$SQLITE_ROOT/bin:$PATH"
-PATH="$USR_LOCAL_HOME/bin:$PATH"
-PATH="$USR_LOCAL_HOME/sbin:$PATH"
-PATH="$PYENV_ROOT/bin:$PATH"
-PATH="$POETRY_ROOT/bin:$PATH"
-PATH="$GAWK_ROOT/libexec/gnubin:$PATH"
+path=(
+  "$OPENSSL/bin"(N-/)
+  "$TMUX_ROOT/bin"(N-/)
+  "$GIT_ROOT/bin"(N-/)
+  "$CURL_ROOT/bin"(N-/)
+  "$SQLITE_ROOT/bin"(N-/)
+  "$USR_LOCAL_HOME/bin"(N-/)
+  "$USR_LOCAL_HOME/sbin"(N-/)
+  "$PYENV_ROOT/bin"(N-/)
+  "$POETRY_ROOT/bin"(N-/)
+  "$GAWK_ROOT/libexec/gnubin"(N-/)
+  "$path[@]"
+)
 
-# path=(
-#   "$OPENSSL/bin:$PATH"(N-/)
-#   "$TMUX_ROOT/bin:$PATH"(N-/)
-#   "$GIT_ROOT/bin:$PATH"(N-/)
-#   "$CURL_ROOT/bin:$PATH"(N-/)
-#   "$SQLITE_ROOT/bin:$PATH"(N-/)
-#   "$USR_LOCAL_HOME/bin:$PATH"(N-/)
-#   "$USR_LOCAL_HOME/sbin:$PATH"(N-/)
-#   "$PYENV_ROOT/bin:$PATH"(N-/)
-#   "$POETRY_ROOT/bin:$PATH"(N-/)
-#   "$path[@]"
-# )
 
-export PATH
-
-# pathの重複排除
+# pathの重複排除: ユニーク属性を追加
 typeset -U path cdpath fpath manpath
 
 #################################################

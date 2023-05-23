@@ -10,4 +10,4 @@ ${DOT_DIRECTORY}/vscode/keybindings.json,${HOME}/Library/Application\ Support/Co
 ${DOT_DIRECTORY}/zsh/.zaliases,${HOME}/.zaliases
 ${DOT_DIRECTORY}/zsh/.zprofile,${HOME}/.zprofile
 ${DOT_DIRECTORY}/zsh/.zshrc,${HOME}/.zshrc
-${DOT_DIRECTORY}/zsh/.zshrc,${HOME}/.zshenv
+#${DOT_DIRECTORY}/zsh/.zshrc,${HOME}/.zshenv
