@@ -3,28 +3,6 @@
 #  Start-up Setting
 #
 
-#################################################
-#
-#  Check for SYSTEM
-#
-GRML_OSTYPE=$(uname -s)
-
-function isdarwin () {
-#  [[ $GRML_OSTYPE == "Darwin" ]]
-  if [ $GRML_OSTYPE = "Darwin" ]; then
-    return true
-  fi
-  return false
-}
-
-function islinux () {
-#  [[ $GRML_OSTYPE == "Linux" ]]
-  if [ $GRML_OSTYPE = "Linux" ]; then
-    return true
-  fi
-  return false
-}
-
 
 #################################################
 #
@@ -62,13 +40,13 @@ export SQLITE_ROOT="/usr/local/opt/sqlite"
 
 # for GoLang
 # To use "go mod init hoge"
-export GO111MODULE=on
+# export GO111MODULE=on
 
 # for pyenv
-export PYENV_ROOT="$HOME/.anyenv/envs/pyenv"
+export PYENV_ROOT="${HOME}/.anyenv/envs/pyenv"
 
 # for poetry
-export POETRY_ROOT="$HOME/.poetry"
+export POETRY_ROOT="${HOME}/.poetry"
 
 # for asdf - node plugins
 export GAWK_ROOT="/opt/homebrew/opt/gawk"
@@ -86,7 +64,7 @@ PATH="$USR_LOCAL_HOME/bin:$PATH"
 PATH="$USR_LOCAL_HOME/sbin:$PATH"
 PATH="$PYENV_ROOT/bin:$PATH"
 PATH="$POETRY_ROOT/bin:$PATH"
-PATH="$GAWK_ROOT/libexec/gnubin:$PATH" # gawk
+PATH="$GAWK_ROOT/libexec/gnubin:$PATH"
 
 export PATH
 

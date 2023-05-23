@@ -290,7 +290,10 @@ zstyle ':completion:*:descriptions' format '%F{cyan}Completing %B%d%b%f'$DEFAULT
 
 #  マッチ種別を別々に表示
 zstyle ':completion:*' group-name ''
-eval "$(/opt/homebrew/bin/brew shellenv)"
+
+
+# .zprofileに同じ表記があるので動作確認後削除予定
+# eval "$(/opt/homebrew/bin/brew shellenv)"
 
 #################################################
 #
