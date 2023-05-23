@@ -71,28 +71,6 @@ bindkey '^S' history-incremental-pattern-search-forward
 # https://starship.rs/ja-JP
 eval "$(starship init zsh)"
 
-# %M    ホスト名
-# %m    ホスト名
-# %d    カレントディレクトリ(フルパス)
-# %~    カレントディレクトリ(フルパス2)
-# %C    カレントディレクトリ(相対パス)
-# %c    カレントディレクトリ(相対パス)
-# %n    ユーザ名
-# %#    ユーザ種別
-# %?    直前のコマンドの戻り値
-# %D    日付(yy-mm-dd)
-# %W    日付(yy/mm/dd)
-# %w    日付(day dd)
-# %*    時間(hh:flag_mm:ss)
-# %T    時間(hh:mm)
-# %t    時間(hh:mm(am/pm))
-
-#  PROMPT   コマンドを入力する左側の表示。デフォルトではユーザー名が表示される場所
-#  PROMPT2  ２行以上のプロンプトで表示される。パイプ時とか。
-#  SPROMPT  入力したコマンドが、打ち間違いなどで見つからない時に表示される「もしかして」の表示
-#  RPROMPT  画面の右側の表示。上記の例ではカレントを表示になる。
-
-#  https://github.com/ryanoasis/nerd-fonts のフォントを使用
 
 autoload -Uz promptinit
 colors
@@ -267,16 +245,6 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 
-#  zsh Git
-# autoload -Uz vcs_info
-# zstyle ":vcs_info:*" enable git
-# zstyle ':vcs_info:git:*' check-for-changes true
-# zstyle ':vcs_info:git:*' stagedstr "+"
-# zstyle ':vcs_info:git:*' unstagedstr "-"
-# zstyle ':vcs_info:git:*' actionformats '%F{5}[%f%s%F{5}]%F{3}%F{5}[%f%r%F{5}]%F{3}%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f%F{1}%u%f%F{6}%c%f'
-# zstyle ':vcs_info:git:*' formats       '%F{5}[%f%s%F{5}]%F{3}%F{5}[%f%r%F{5}]%F{3}%F{5}[%F{2}%b%F{5}]%F{1}%u%f%F{6}%c%f'
-# precmd() { vcs_info }
-
 REPORTTIME=3
 
 #  補完関数の表示を強化する
@@ -291,17 +259,12 @@ zstyle ':completion:*:descriptions' format '%F{cyan}Completing %B%d%b%f'$DEFAULT
 #  マッチ種別を別々に表示
 zstyle ':completion:*' group-name ''
 
-
-# .zprofileに同じ表記があるので動作確認後削除予定
-# eval "$(/opt/homebrew/bin/brew shellenv)"
-
 #################################################
 #
 #  PLUGIN Setting
 
 # Setting direnv
 # Reference site: https://qiita.com/kompiro/items/5fc46089247a56243a62
-export EDITOR=vim
 eval "$(direnv hook zsh)"
 
 # for asdf setting

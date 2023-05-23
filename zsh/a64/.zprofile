@@ -3,8 +3,6 @@
 #  Start-up Setting
 #
 
-
-
 #################################################
 #
 #  PATH setting
@@ -30,10 +28,6 @@ export CURL_ROOT="/usr/local/opt/curl"
 
 #  for SQLite to using Python3
 export SQLITE_ROOT="/usr/local/opt/sqlite"
-
-# for GoLang
-# To use "go mod init hoge"
-# export GO111MODULE=on
 
 # for pyenv
 export PYENV_ROOT="${HOME}/.anyenv/envs/pyenv"
