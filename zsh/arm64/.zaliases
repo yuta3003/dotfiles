@@ -7,7 +7,6 @@
 alias cpu="sudo powermetrics --samplers smc |grep -i 'CPU die temperature'"
 
 #  brew系
-#alias brew="PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin brew"
 alias brews="brew list -1"
 
 #  ls系
