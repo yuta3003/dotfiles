@@ -94,6 +94,7 @@ path=(
   "$USR_LOCAL_HOME/sbin:$PATH"(N-/)
   "$PYENV_ROOT/bin:$PATH"(N-/)
   "$POETRY_ROOT/bin:$PATH"(N-/)
+  "$path[@]"
 )
 
 export PATH
