@@ -4,6 +4,7 @@ ${DOT_DIRECTORY}/homebrew/localhost.homebrew-autoupdate.plist,${HOME}/Library/La
 ${DOT_DIRECTORY}/vscode/settings.json,${HOME}/Library/Application\ Support/Code/User/settings.json
 ${DOT_DIRECTORY}/vscode/keybindings.json,${HOME}/Library/Application\ Support/Code/User/keybindings.json
 # zsh
-${DOT_DIRECTORY}/zsh/.zaliases,${HOME}/.zaliases
-${DOT_DIRECTORY}/zsh/.zprofile,${HOME}/.zprofile
-${DOT_DIRECTORY}/zsh/.zshrc,${HOME}/.zshrc
+${DOT_DIRECTORY}/zsh/.zaliases,${HOME}/.config/zsh/.zaliases
+${DOT_DIRECTORY}/zsh/.zprofile,${HOME}/.config/zsh/.zprofile
+${DOT_DIRECTORY}/zsh/.zshrc,${HOME}/.config/zsh/.zshrc
+${DOT_DIRECTORY}/zsh/.zshrc,${HOME}/.zshenv

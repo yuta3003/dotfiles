@@ -59,6 +59,7 @@ main() {
 
   cd ${DOT_DIRECTORY}/zsh
   create_symlink zsh arm64/.zshrc
+  create_symlink zsh arm64/.zshenv
   create_symlink zsh arm64/.zprofile
   create_symlink zsh arm64/.zaliases
 
