@@ -3,7 +3,7 @@ set -eu
 
 
 # CURRENT_DIR=$(cd $(dirname $0); pwd)
-# DOT_DIRECTORY=$(cd ${CURRENT_DIR};cd ./../..; pwd)
+# DOT_DIRECTORY=$(cd ${CURRENT_DIR};cd ./../../..; pwd)
 # SCRIPT_DIR="${DOT_DIRECTORY}/etc/scripts"
 # MKLINK_SCRIPT_DIR="${SCRIPT_DIR}/mklink"
 SILENT_MODE=false
@@ -29,39 +29,39 @@ main() {
   source ${MKLINK_SCRIPT_DIR}/rmlink.sh
 
   cd ${DOT_DIRECTORY}/git
-  create_symlink git arm64/.gitconfig
-  create_symlink git arm64/.gitmessage
-  create_symlink git arm64/ignore
+  create_symlink git a64/.gitconfig
+  create_symlink git a64/.gitmessage
+  create_symlink git a64/ignore
 
   cd ${DOT_DIRECTORY}/homebrew
-  create_symlink homebrew arm64/Brewfile
-  create_symlink homebrew arm64/localhost.homebrew-autoupdate.plist
+  create_symlink homebrew a64/Brewfile
+  create_symlink homebrew a64/localhost.homebrew-autoupdate.plist
 
   cd ${DOT_DIRECTORY}/neovim
-  create_symlink neovim arm64/init.vim
+  create_symlink neovim a64/init.vim
 
   cd ${DOT_DIRECTORY}/ssh
-  create_symlink ssh arm64/config
+  create_symlink ssh a64/config
 
   cd ${DOT_DIRECTORY}/starship
-  create_symlink starship arm64/starship.toml
+  create_symlink starship a64/starship.toml
 
   cd ${DOT_DIRECTORY}/tmux
-  create_symlink tmux arm64/.tmux
-  create_symlink tmux arm64/.tmux.conf
+  create_symlink tmux a64/.tmux
+  create_symlink tmux a64/.tmux.conf
 
   cd ${DOT_DIRECTORY}/vim
-  create_symlink vim arm64/.vimrc
+  create_symlink vim a64/.vimrc
 
   cd ${DOT_DIRECTORY}/vscode
-  create_symlink vscode arm64/keybindings.json
-  create_symlink vscode arm64/settings.json
+  create_symlink vscode a64/keybindings.json
+  create_symlink vscode a64/settings.json
 
   cd ${DOT_DIRECTORY}/zsh
-  create_symlink zsh arm64/.zshrc
-  create_symlink zsh arm64/.zshenv
-  create_symlink zsh arm64/.zprofile
-  create_symlink zsh arm64/.zaliases
+  create_symlink zsh a64/.zshrc
+  create_symlink zsh a64/.zshenv
+  create_symlink zsh a64/.zprofile
+  create_symlink zsh a64/.zaliases
 
   cd ${DOT_DIRECTORY}
   if "${SILENT_MODE}"; then
