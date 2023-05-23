@@ -43,6 +43,7 @@ main() {
     zsh/.zprofile
     zsh/.zaliases
     zsh/.zshrc
+    zsh/.zshenv
   )
 
   for i in "${!filepath_array[@]}"; do
