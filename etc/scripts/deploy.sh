@@ -49,7 +49,7 @@ check_os_type() {
       if [ "$(uname -m)" == "x86_64" ] ; then
         OS_TYPE="OSX(x64)"
       elif [ "$(uname -m)" == "arm64" ] ; then
-        OS_TYPE="OSX(arm64)"
+        OS_TYPE="OSX(a64)"
       else
         echo "Unsupported Architecture"
         return 1
@@ -74,12 +74,12 @@ create_link() {
         source ${MKLINK_SCRIPT_DIR}/mklink_osx_x64.sh
       fi
       ;;
-    "OSX(arm64)")
+    "OSX(a64)")
       if "${SILENT_MODE}"; then
-        source ${MKLINK_SCRIPT_DIR}/mklink_osx_arm64.sh -s
+        source ${MKLINK_SCRIPT_DIR}/mklink_osx_a64.sh -s
       else
         echo "creating symlink for OSX(arm64)"
-        source ${MKLINK_SCRIPT_DIR}/mklink_osx_arm64.sh
+        source ${MKLINK_SCRIPT_DIR}/mklink_osx_a64.sh
       fi
       ;;
     "Ubuntu")
@@ -155,8 +155,8 @@ feature_deploy() {
       echo "feature deploy for OSX(x64)"
       deploylist="${DEPLOY_LIST_DIR}/deploylist.Darwin.txt"
       ;;
-    "OSX(arm64)")
-      echo "feature deploy for OSX(arm64)"
+    "OSX(a64)")
+      echo "feature deploy for OSX(a64)"
       deploylist="${DEPLOY_LIST_DIR}/deploylist.Darwin.txt"
       ;;
     "Ubuntu")

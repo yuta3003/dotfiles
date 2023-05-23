@@ -23,8 +23,8 @@ jobs:
         run: ./rmlink.sh -s
         working-directory: etc/scripts/mklink
 
-      - name: Run mklink_arm64.sh
-        run: ./mklink_osx_arm64.sh -s
+      - name: Run mklink_a64.sh
+        run: ./mklink_osx_a64.sh -s
         working-directory: etc/scripts/mklink
 
       - name: Run mklink_x64.sh
@@ -46,8 +46,8 @@ jobs:
         run: ./rmlink.sh
         working-directory: etc/scripts/mklink
 
-      - name: Run mklink_arm64.sh
-        run: ./mklink_osx_arm64.sh -s
+      - name: Run mklink_a64.sh
+        run: ./mklink_osx_a64.sh -s
         working-directory: etc/scripts/mklink
 
       - name: Run mklink_x64.sh

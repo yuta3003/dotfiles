@@ -32,7 +32,7 @@ main() {
         echo "再起動をスキップしました。"
       fi
       ;;
-    "OSX(arm64)")
+    "OSX(a64)")
       check_install_xcode
       install_homebrew
       install_git
@@ -86,7 +86,7 @@ check_mac_architecture() {
   if [ "$(uname -m)" == "x86_64" ] ; then
     OS_TYPE="OSX(x64)"
   elif [ "$(uname -m)" == "arm64" ] ; then
-    OS_TYPE="OSX(arm64)"
+    OS_TYPE="OSX(a64)"
   else
     echo "Unsupported Architecture"
     return 1
@@ -186,7 +186,7 @@ install_git() {
         echo "git already installed."
       fi
       ;;
-    "OSX(arm64)")
+    "OSX(a64)")
       if [ ! type git >/dev/null 2>&1 ];then
         echo "Installing git..."
         brew install git && \
