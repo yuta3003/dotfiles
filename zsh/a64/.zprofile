@@ -84,8 +84,8 @@ eval "$(anyenv init -)"
 #  setting COLOR
 #
 
-export LSCOLORS=Gxfxcxdxbxegedabagacad
-# LSCOLORS=exfxcxdxbxegedabagacad(the default)
+#export LSCOLORS=Gxfxcxdxbxegedabagacad
+# export LSCOLORS=exfxcxdxbxegedabagacad(the default)
 #a     black
 #b     red
 #c     green
@@ -116,7 +116,16 @@ export LSCOLORS=Gxfxcxdxbxegedabagacad
 #10.  directory writable to others, with sticky bit
 #11.  directory writable to others, without sticky bit
 
-export LS_COLORS='di=01;36:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30'
+#export LS_COLORS='di=01;36:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30'
+# https://github.com/sharkdp/vivid
+export LS_COLORS="$(vivid generate jellybeans)"
+
+#for theme in $(vivid themes); do
+#    echo "Theme: $theme"
+#    LS_COLORS=$(vivid generate $theme)
+#    ls
+#    echo
+#done
 
 #文字効果コード
 #コード	効果
@@ -161,50 +170,3 @@ fi
 if [ $SHLVL = 1 ]; then
   tmux  # tmux起動
 fi
-#################################################
-#
-#  HOME-MADE Command Setting
-
-# cd - ls after cd
-alias cd="ls_after_cd"
-ls_after_cd(){
-  builtin cd $@ && ls;
-}
-
-# fbr - switch git branch
-## git
-fbr() {
-  local branches branch
-  branches=$(git branch -vv) &&
-  branch=$(echo "$branches" | fzf +m) &&
-  git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
-}
-
-# fd - cd to selected directory
-## fzf
-fd() {
-  local dir
-  dir=$(find ${1:-.} -path '*/\.*' -prune \
-                  -o -type d -print 2> /dev/null | fzf +m) &&
-  cd "$dir"
-}
-
-# dockの表示/非表示を切り替える
-alias dock='_toggle_dock'
-_toggle_dock() {
-  osascript <<EOS
-  tell application "System Events"
-    tell dock preferences to set autohide to not autohide
-  end tell
-EOS
-}
-
-alias dark='_dark_mode'
-_dark_mode() {
-  osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to true'
-}
-
-alias light='_light_mode'
-_light_mode() {
-  osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to false'
-}
