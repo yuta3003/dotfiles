@@ -43,8 +43,8 @@ export POETRY_ROOT="${HOME}/.poetry"
 export GAWK_ROOT="/opt/homebrew/opt/gawk"
 
 # /usr/bin/python3 -- system Python
-# brew --prefix python -v -- Homebrew Python
-# /Users/yuta/.anyenv/envs/pyenv/shims/python3 -- pyenv Python
+# $(brew --prefix) python -v -- Homebrew Python
+# ${HOME}/.anyenv/envs/pyenv/shims/python3 -- pyenv Python
 
 path=(
   "$OPENSSL/bin"(N-/)
@@ -52,14 +52,13 @@ path=(
   "$GIT_ROOT/bin"(N-/)
   "$CURL_ROOT/bin"(N-/)
   "$SQLITE_ROOT/bin"(N-/)
-  "$USR_LOCAL_HOME/bin"(N-/)
-  "$USR_LOCAL_HOME/sbin"(N-/)
+  "$USR_LOCAL_HOME/bin"
+  "$USR_LOCAL_HOME/sbin"
   "$PYENV_ROOT/bin"(N-/)
   "$POETRY_ROOT/bin"(N-/)
   "$GAWK_ROOT/libexec/gnubin"(N-/)
   "$path[@]"
 )
-
 
 # pathの重複排除: ユニーク属性を追加
 typeset -U path cdpath fpath manpath
