@@ -43,3 +43,8 @@ eval "$(starship init bash)"
 # fi
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+if type vivid >/dev/null 2>&1; then
+  # https://github.com/sharkdp/vivid
+  export LS_COLORS="$(vivid generate snazzy)"
+fi
