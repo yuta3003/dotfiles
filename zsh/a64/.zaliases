@@ -11,7 +11,7 @@ alias brews="brew list -1"
 
 #  ls系
 #if [ type exa >/dev/null 2>&1 ]; then
-if  type exa >/dev/null 2>&1; then
+if type exa >/dev/null 2>&1; then
   alias ls="exa"
   alias lst="exa --icons --tree"
   alias la="exa -lha --icons"
@@ -21,7 +21,7 @@ else
 fi
 
 #  cat系
-if  type bat >/dev/null 2>&1; then
+if type bat >/dev/null 2>&1; then
   alias cat="bat"
 fi
 

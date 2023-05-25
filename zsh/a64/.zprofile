@@ -85,14 +85,14 @@ eval "$(anyenv init -)"
 #  setting COLOR
 #
 
-if  [ type vivid >/dev/null 2>&1 ]; then
+if type vivid >/dev/null 2>&1; then
   # https://github.com/sharkdp/vivid
   export LS_COLORS="$(vivid generate jellybeans)"
 fi
-
 #################################################
 #
 #  Loading
+#
 
 #  .zshrcを読み込む
 if [ -f "${HOME}/.zshrc" ] ; then
