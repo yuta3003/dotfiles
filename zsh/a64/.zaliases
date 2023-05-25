@@ -10,12 +10,20 @@ alias cpu="sudo powermetrics --samplers smc |grep -i 'CPU die temperature'"
 alias brews="brew list -1"
 
 #  ls系
-#if [ type exa >/dev/null 2>&1 ]; then
 if type exa >/dev/null 2>&1; then
-  alias ls="exa"
+  alias e="exa --icons --git"
+  alias ls="e"
   alias lst="exa --icons --tree"
-  alias la="exa -lha --icons"
-  alias ll="exa -lh --icons"
+
+  alias ll="exa -ahl --icons --git"
+
+  alias ee='exa -aahl --icons --git'
+  alias la=ee
+
+  alias et='exa -T -L 3 -a -I "node_modules|.git|.cache" --icons'
+  alias lt=et
+  alias eta='exa -T -a -I "node_modules|.git|.cache" --color=always --icons | less -r'
+  alias lta=eta
 else
   alias la="ls -lhAG"
 fi
@@ -79,6 +87,7 @@ alias myip="curl ifconfig.io -4"
 #################################################
 #
 #  HOME-MADE Command Setting
+#
 
 # cd - ls after cd
 alias cd="ls_after_cd"
