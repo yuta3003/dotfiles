@@ -89,6 +89,7 @@ if type vivid >/dev/null 2>&1; then
   # https://github.com/sharkdp/vivid
   export LS_COLORS="$(vivid generate jellybeans)"
 fi
+
 #################################################
 #
 #  Loading
