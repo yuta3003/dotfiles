@@ -30,6 +30,15 @@ jobs:
         run: ./defaults.sh
         working-directory: ./etc/scripts
 
+  brew-bundle-on-OSX-x64:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Run brew bundle
+        run: brew bundle
+        working-directory: ./homebrew/x64
+
   source-zshrc-on-OSX-x64:
     runs-on: macos-latest
     env:
