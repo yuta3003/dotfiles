@@ -15,7 +15,7 @@
 	autostash = true
 [alias]
   b = branch
-  l = log --all --oneline --graph
+  l = log --all --oneline --graph --color
   s = status
   sb = show-branch
   sw = switch
