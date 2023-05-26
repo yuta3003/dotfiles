@@ -48,4 +48,3 @@ cask "spectacle"
 cask "visual-studio-code"
 cask "wireshark"
 cask "zoom"
-mas "Xcode", id: 497799835
