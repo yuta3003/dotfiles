@@ -20,7 +20,7 @@
 [pull]
 	rebase = true
 [commit]
-	template = ~/.config/git/.gitmessage
+	template = ~/.config/git/message
 [rebase]
 	autostash = true
 [alias]
