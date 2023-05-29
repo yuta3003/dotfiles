@@ -2,8 +2,8 @@
 set -eu
 
 
-CURRENT_DIR=$(cd $(dirname $0); pwd)
-DOT_DIRECTORY=$(cd ${CURRENT_DIR};cd ./../..; pwd)
+CURRENT_DIR=$(cd "$(dirname "${0}")"; pwd)
+DOT_DIRECTORY=$(cd "${CURRENT_DIR}";cd ./../..; pwd)
 SCRIPT_DIR="${DOT_DIRECTORY}/etc/scripts"
 MKLINK_SCRIPT_DIR="${SCRIPT_DIR}/mklink"
 DEPLOY_LIST_DIR="${DOT_DIRECTORY}/etc/deploylist"
@@ -12,7 +12,7 @@ SILENT_MODE=false
 
 while (( $# > 0 ))
 do
-  case $1 in
+  case "${1}" in
     -s)
       SILENT_MODE=true
       ;;
@@ -32,7 +32,9 @@ main() {
 }
 
 check_os_type() {
-  local os=$(uname -s)
+  local os
+  os=$(uname -s)
+
   case "${os}" in
     Linux*)
       if command -v apt-get &> /dev/null; then
@@ -68,34 +70,34 @@ create_link() {
   case "${OS_TYPE}" in
     "OSX(x64)")
       if "${SILENT_MODE}"; then
-        source ${MKLINK_SCRIPT_DIR}/mklink_osx_x64.sh -s
+        source "${MKLINK_SCRIPT_DIR}/mklink_osx_x64.sh" -s
       else
         echo "creating symlink for OSX(x64)"
-        source ${MKLINK_SCRIPT_DIR}/mklink_osx_x64.sh
+        source "${MKLINK_SCRIPT_DIR}/mklink_osx_x64.sh"
       fi
       ;;
     "OSX(a64)")
       if "${SILENT_MODE}"; then
-        source ${MKLINK_SCRIPT_DIR}/mklink_osx_a64.sh -s
+        source "${MKLINK_SCRIPT_DIR}/mklink_osx_a64.sh" -s
       else
         echo "creating symlink for OSX(arm64)"
-        source ${MKLINK_SCRIPT_DIR}/mklink_osx_a64.sh
+        source "${MKLINK_SCRIPT_DIR}/mklink_osx_a64.sh"
       fi
       ;;
     "Ubuntu")
       if "${SILENT_MODE}"; then
-        source ${MKLINK_SCRIPT_DIR}/mklink_ubuntu.sh -s
+        source "${MKLINK_SCRIPT_DIR}/mklink_ubuntu.sh" -s
       else
         echo "creating symlink for ubuntu"
-        source ${MKLINK_SCRIPT_DIR}/mklink_ubuntu.sh
+        source "${MKLINK_SCRIPT_DIR}/mklink_ubuntu.sh"
       fi
       ;;
     "ArchLinux")
       if "${SILENT_MODE}"; then
-        source ${MKLINK_SCRIPT_DIR}/mklink_archlinux.sh -s
+        source "${MKLINK_SCRIPT_DIR}/mklink_archlinux.sh" -s
       else
         echo "creating symlink for Arch Linux"
-        source ${MKLINK_SCRIPT_DIR}/mklink_archlinux.sh
+        source "${MKLINK_SCRIPT_DIR}/mklink_archlinux.sh"
       fi
       ;;
     *)
@@ -113,18 +115,18 @@ common_deploy() {
     sed \
       -e 's/\s*#.*//' \
       -e '/^\s*$/d' \
-      $1
+      "${1}"
   )}
 
   tmp_file=$(mktemp)
   trap 'rm ${tmp_file}' 0
 
-  if [ -f ${COMMON_DEPLOY_LIST} ]; then
-    __remove_deploylist_comment "${COMMON_DEPLOY_LIST}" > ${tmp_file}
-    while read line; do
+  if [ -f "${COMMON_DEPLOY_LIST}" ]; then
+    __remove_deploylist_comment "${COMMON_DEPLOY_LIST}" > "${tmp_file}"
+    while read -r line; do
       # ~ や環境変数を展開
-      src=$(eval echo "$(cut -d ',' -f 1 <<<${line})")
-      dst=$(eval echo "$(cut -d ',' -f 2 <<<${line})")
+      src=$(eval echo "$(cut -d ',' -f 1 <<<"${line}")")
+      dst=$(eval echo "$(cut -d ',' -f 2 <<<"${line}")")
 
       dst_dir="${dst%/*}"
       # 空白を含むディレクトリの対応のためにダブルクウォーテーションを追加
@@ -139,10 +141,10 @@ common_deploy() {
         ln -sf "${src}" "${dst}"
       else
         ln -sf "${src}" "${dst}" && \
-          echo "$(tput setaf 2)✔︎$(tput sgr0)~${dst#${HOME}}"
+          echo "$(tput setaf 2)✔︎$(tput sgr0)~${dst#"${HOME}"}"
       fi
 
-    done < ${tmp_file}
+    done < "${tmp_file}"
   else
     echo "No such file"
   fi
@@ -177,18 +179,18 @@ feature_deploy() {
     sed \
       -e 's/\s*#.*//' \
       -e '/^\s*$/d' \
-      $1
+      "${1}"
   )}
 
   tmp_file=$(mktemp)
   trap 'rm ${tmp_file}' 0
 
-  if [ -f ${deploylist} ]; then
-    __remove_deploylist_comment "${deploylist}" > ${tmp_file}
-    while read line; do
+  if [ -f "${deploylist}" ]; then
+    __remove_deploylist_comment "${deploylist}" > "${tmp_file}"
+    while read -r line; do
       # ~ や環境変数を展開
-      src=$(eval echo "$(cut -d ',' -f 1 <<<${line})")
-      dst=$(eval echo "$(cut -d ',' -f 2 <<<${line})")
+      src=$(eval echo "$(cut -d ',' -f 1 <<<"${line}")")
+      dst=$(eval echo "$(cut -d ',' -f 2 <<<"${line}")")
 
       dst_dir="${dst%/*}"
       # 空白を含むディレクトリの対応のためにダブル区ウォーテーションを追加
@@ -204,10 +206,10 @@ feature_deploy() {
         ln -sf "${src}" "${dst}"
       else
         ln -sf "${src}" "${dst}"
-        echo "$(tput setaf 2)✔︎$(tput sgr0)~${dst#${HOME}}"
+        echo "$(tput setaf 2)✔︎$(tput sgr0)~${dst#"${HOME}"}"
       fi
 
-    done < ${tmp_file}
+    done < "${tmp_file}"
   else
     echo "No such file"
   fi
