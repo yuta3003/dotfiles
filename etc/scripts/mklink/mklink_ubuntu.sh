@@ -34,8 +34,8 @@ main() {
   create_symlink bash ubuntu/.profile
 
   cd "${DOT_DIRECTORY}/git"
-  create_symlink git ubuntu/.gitconfig
-  create_symlink git ubuntu/.gitmessage
+  create_symlink git ubuntu/config
+  create_symlink git ubuntu/message
   create_symlink git ubuntu/ignore
 
   cd "${DOT_DIRECTORY}/neovim"

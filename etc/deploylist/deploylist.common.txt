@@ -1,6 +1,6 @@
 # git
-${DOT_DIRECTORY}/git/.gitconfig,${HOME}/.gitconfig
-${DOT_DIRECTORY}/git/.gitmessage,${HOME}/.gitmessage
+${DOT_DIRECTORY}/git/config,${HOME}/.config/git/config
+${DOT_DIRECTORY}/git/message,${HOME}/.config/git/message
 ${DOT_DIRECTORY}/git/ignore,${HOME}/.config/git/ignore
 # neovim
 ${DOT_DIRECTORY}/neovim/init.vim,${HOME}/.config/nvim/init.vim
