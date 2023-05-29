@@ -142,7 +142,7 @@ ask_yes_no() {
 }
 
 check_install_xcode() {
-  if  [ ! xcode-selector -p >/dev/null 2>&1 ]; then
+  if [ ! xcode-selector -p >/dev/null 2>&1 ]; then
     if ask_yes_no "XCodeをインストールしますか？"; then
       install_xcode
     else

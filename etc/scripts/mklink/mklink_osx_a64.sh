@@ -26,51 +26,51 @@ main() {
   if "${SILENT_MODE}"; then
     disable_echo
   fi
-  source ${MKLINK_SCRIPT_DIR}/rmlink.sh
+  source "${MKLINK_SCRIPT_DIR}/rmlink.sh"
 
-  cd ${DOT_DIRECTORY}/git
+  cd "${DOT_DIRECTORY}/git"
   create_symlink git a64/.gitconfig
   create_symlink git a64/.gitmessage
   create_symlink git a64/ignore
 
-  cd ${DOT_DIRECTORY}/homebrew
+  cd "${DOT_DIRECTORY}/homebrew"
   create_symlink homebrew a64/Brewfile
   create_symlink homebrew a64/localhost.homebrew-autoupdate.plist
 
-  cd ${DOT_DIRECTORY}/neovim
+  cd "${DOT_DIRECTORY}/neovim"
   create_symlink neovim a64/init.vim
 
-  cd ${DOT_DIRECTORY}/ssh
+  cd "${DOT_DIRECTORY}/ssh"
   create_symlink ssh a64/config
 
-  cd ${DOT_DIRECTORY}/starship
+  cd "${DOT_DIRECTORY}/starship"
   create_symlink starship a64/starship.toml
 
-  cd ${DOT_DIRECTORY}/tmux
+  cd "${DOT_DIRECTORY}/tmux"
   create_symlink tmux a64/.tmux
   create_symlink tmux a64/.tmux.conf
 
-  cd ${DOT_DIRECTORY}/vim
+  cd "${DOT_DIRECTORY}/vim"
   create_symlink vim a64/.vimrc
 
-  cd ${DOT_DIRECTORY}/vscode
+  cd "${DOT_DIRECTORY}/vscode"
   create_symlink vscode a64/keybindings.json
   create_symlink vscode a64/settings.json
 
-  cd ${DOT_DIRECTORY}/zsh
+  cd "${DOT_DIRECTORY}/zsh"
   create_symlink zsh a64/.zshrc
   create_symlink zsh a64/.zshenv
   create_symlink zsh a64/.zprofile
   create_symlink zsh a64/.zaliases
 
-  cd ${DOT_DIRECTORY}
+  cd "${DOT_DIRECTORY}"
   if "${SILENT_MODE}"; then
     enable_echo
   fi
 }
 
 create_symlink() {
-  ln -sf ${2} ${2##*/} && \
+  ln -sf "${2}" "${2##*/}" && \
     echo "$(tput setaf 2)✔︎$(tput sgr0) creating ${1}/${2##*/}"
   return 0
 }
