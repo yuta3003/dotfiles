@@ -23,6 +23,9 @@ jobs:
       - name: Run ShellCheck deploy.sh
         run: shellcheck -e SC1091 deploy.sh
         working-directory: ./etc/scripts
+      - name: Run ShellCheck defaults.sh
+        run: shellcheck defaults.sh
+        working-directory: ./etc/scripts
       - name: Run ShellCheck install.sh
         run: shellcheck -e SC1091 -e SC2002 -e SC2034 install.sh
         working-directory: ./etc/scripts
