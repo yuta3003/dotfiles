@@ -25,6 +25,7 @@ jobs:
 
       - name: Run ShellCheck deploy.sh
         run: shellcheck -e SC1091 deploy.sh
+        working-directory: ./etc/scripts
 
   # defaults-on-OSX-x64:
   #   runs-on: macos-latest
