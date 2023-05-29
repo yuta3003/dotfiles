@@ -27,16 +27,16 @@ jobs:
         run: shellcheck -e SC1091 deploy.sh
         working-directory: ./etc/scripts
 
-  # defaults-on-OSX-x64:
-  #   runs-on: macos-latest
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v2
+  defaults-on-OSX-x64:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
-  #     - name: Install ShellCheck
-  #       run: |
-  #         brew update
-  #         brew install shellcheck
+      - name: Install ShellCheck
+        run: |
+          brew update
+          brew install shellcheck
 
-  #     - name: Run ShellCheck install.sh
-  #       run: shellcheck install.sh
+      - name: Run ShellCheck install.sh
+        run: shellcheck install.sh
