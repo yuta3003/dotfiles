@@ -29,8 +29,8 @@ main() {
   source "${MKLINK_SCRIPT_DIR}/rmlink.sh"
 
   cd "${DOT_DIRECTORY}/git"
-  create_symlink git a64/.gitconfig
-  create_symlink git a64/.gitmessage
+  create_symlink git a64/config
+  create_symlink git a64/message
   create_symlink git a64/ignore
 
   cd "${DOT_DIRECTORY}/homebrew"
