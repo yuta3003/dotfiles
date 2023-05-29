@@ -56,8 +56,8 @@ bash/.bash_profile
 bash/.bashrc
 bash/.profile
 
-git/.gitconfig
-git/.gitmessage
+git/config
+git/message
 git/ignore
 
 homebrew/Brewfile
