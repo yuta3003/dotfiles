@@ -1,8 +1,8 @@
 #!/bin/bash
 set -eu
 
-CURRENT_DIR=$(cd $(dirname $0); pwd)
-DOT_DIRECTORY=$(cd ${CURRENT_DIR};cd ./../..; pwd)
+CURRENT_DIR=$(cd "$(dirname "${0}")"; pwd)
+DOT_DIRECTORY=$(cd "${CURRENT_DIR}";cd ./../..; pwd)
 SCRIPT_DIR="${DOT_DIRECTORY}/etc/scripts"
 MKLINK_SCRIPT_DIR="${SCRIPT_DIR}/mklink"
 DEPLOY_LIST_DIR="${DOT_DIRECTORY}/etc/deploylist"
@@ -12,7 +12,6 @@ main() {
   check_os_type
   case "${OS_TYPE}" in
     "OSX(x64)")
-      check_install_xcode
       install_homebrew
       install_git
       clone_my_dotfiles
@@ -20,11 +19,11 @@ main() {
       install_tpm
       install_vim_plug
       #make deploy
-      source ${SCRIPT_DIR}/deploy.sh
+      source "${SCRIPT_DIR}/deploy.sh"
       #make init
       launchctl load ~/Library/LaunchAgents/localhost.homebrew-autoupdate.plist
       # Macの設定を変更
-      source ${SCRIPT_DIR}/defaults.sh
+      source "${SCRIPT_DIR}/defaults.sh"
       if ask_yes_no "再起動しますか？"; then
         echo 'Rebooting to reflect settings'
         sudo shutdown -r now
@@ -41,11 +40,11 @@ main() {
       install_tpm
       install_vim_plug
       #make deploy
-      source ${SCRIPT_DIR}/deploy.sh
+      source "${SCRIPT_DIR}/deploy.sh"
       #make init
       launchctl load ~/Library/LaunchAgents/localhost.homebrew-autoupdate.plist
       # Macの設定を変更
-      source ${SCRIPT_DIR}/defaults.sh
+      source "${SCRIPT_DIR}/defaults.sh"
       if ask_yes_no "再起動しますか？"; then
         echo 'Rebooting to reflect settings'
         sudo shutdown -r now
@@ -65,7 +64,7 @@ main() {
       create_dotconfig_directoryyy
       install_tpm
       install_vim_plug
-      source ${SCRIPT_DIR}/deploy.sh
+      source "${SCRIPT_DIR}/deploy.sh"
       if ask_yes_no "再起動しますか？"; then
         echo 'Rebooting to reflect settings'
         sudo shutdown -r now
@@ -107,7 +106,8 @@ check_linux_distribution() {
 }
 
 check_os_type() {
-  local os=$(uname -s)
+  local os
+  os=$(uname -s)
   case "${os}" in
     Linux*)
       check_linux_distribution
@@ -126,7 +126,7 @@ check_os_type() {
 ask_yes_no() {
   while true; do
     echo -n "$* [y/n]: "
-    read ANS
+    read -r ANS
     case $ANS in
       [Yy]*)
         return 0
@@ -141,31 +141,8 @@ ask_yes_no() {
   done
 }
 
-check_install_xcode() {
-  if [ ! xcode-selector -p >/dev/null 2>&1 ]; then
-    if ask_yes_no "XCodeをインストールしますか？"; then
-      install_xcode
-    else
-      echo "XCodeのインストールをスキップしました。"
-    fi
-  else
-    if ask_yes_no "SoftWare Update を行いますか？"; then
-      softwareupdate --install --all
-    else
-      echo "SoftWare Update をスキップしました。"
-    fi
-  fi
-}
-
-install_xcode() {
-  echo "Installing Xcode..."
-  xcode-select --install
-  echo "$(tput setaf 2)✔︎$(tput sgr0)Successfully installed XCode."
-  return 0
-}
-
 install_homebrew() {
-  if  [ ! type brew >/dev/null 2>&1 ]; then
+  if ! (type brew > /dev/null 2>&1); then
     echo "Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     echo "$(tput setaf 2)✔︎$(tput sgr0)Successfully installed Homebrew."
@@ -178,7 +155,7 @@ install_homebrew() {
 install_git() {
   case "${OS_TYPE}" in
     "OSX(x64)")
-      if [ ! type git >/dev/null 2>&1 ];then
+      if ! (type git > /dev/null 2>&1); then
         echo "Installing git..."
         brew install git && \
           echo "$(tput setaf 2)✔︎$(tput sgr0)Successfully installed git."
@@ -187,7 +164,7 @@ install_git() {
       fi
       ;;
     "OSX(a64)")
-      if [ ! type git >/dev/null 2>&1 ];then
+      if ! (type git > /dev/null 2>&1); then
         echo "Installing git..."
         brew install git && \
           echo "$(tput setaf 2)✔︎$(tput sgr0)Successfully installed git."
@@ -196,7 +173,7 @@ install_git() {
       fi
       ;;
     "Ubuntu")
-      if [ ! type git >/dev/null 2>&1 ];then
+      if ! (type git > /dev/null 2>&1); then
         echo "Installing git..."
         apt-get install git && \
           echo "$(tput setaf 2)✔︎$(tput sgr0)Successfully installed git."
