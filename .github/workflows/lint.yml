@@ -40,3 +40,4 @@ jobs:
 
       - name: Run ShellCheck install.sh
         run: shellcheck install.sh
+        working-directory: ./etc/scripts
