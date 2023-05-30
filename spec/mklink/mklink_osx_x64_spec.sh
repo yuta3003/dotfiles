@@ -5,7 +5,7 @@ Describe "mklink_osx_x64.sh"
   After "cleanup"
 
   setup() {
-    cd ${DOT_DIRECTORY}/zsh
+    cd ${DOT_DIRECTORY}/config/zsh
     DOT_DIRECTORY=${HOME}/dotfiles ${DOT_DIRECTORY}/etc/scripts/mklink/rmlink.sh -s
   }
   cleanup() {

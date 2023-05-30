@@ -1,8 +1,8 @@
 # bash
-${DOT_DIRECTORY}/bash/.bash_aliases,${HOME}/.bash_aliases
-${DOT_DIRECTORY}/bash/.bash_profile,${HOME}/.bash_profile
-${DOT_DIRECTORY}/bash/.bashrc,${HOME}/.bashrc
-${DOT_DIRECTORY}/bash/.profile,${HOME}/.profile
+${DOT_DIRECTORY}/config/bash/.bash_aliases,${HOME}/.bash_aliases
+${DOT_DIRECTORY}/config/bash/.bash_profile,${HOME}/.bash_profile
+${DOT_DIRECTORY}/config/bash/.bashrc,${HOME}/.bashrc
+${DOT_DIRECTORY}/config/bash/.profile,${HOME}/.profile
 # VSCode
-${DOT_DIRECTORY}/vscode/settings.json,${HOME}/.config/Code/User/settings.json
-${DOT_DIRECTORY}/vscode/keybindings.json,${HOME}/.config/Code/User/keybindings.json
+${DOT_DIRECTORY}/config/vscode/settings.json,${HOME}/.config/Code/User/settings.json
+${DOT_DIRECTORY}/config/vscode/keybindings.json,${HOME}/.config/Code/User/keybindings.json
