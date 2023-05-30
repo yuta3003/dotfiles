@@ -51,6 +51,9 @@ export LESSCHARSET=utf-8
 #  PATH setting
 #
 
+export XDG_CONFIG_HOME="$HOME/.config"
+# export ZDOTDIR="$XDG_CONFIG_HOME/zsh" # .zshrc や .zprofile が ~/.config/zsh から読み込まれるようになる
+
 #  Default
 export USR_LOCAL_HOME="/usr/local"
 

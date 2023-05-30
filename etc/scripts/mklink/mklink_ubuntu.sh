@@ -49,7 +49,7 @@ main() {
 
   cd "${DOT_DIRECTORY}/config/tmux"
   create_symlink tmux ubuntu/.tmux
-  create_symlink tmux ubuntu/.tmux.conf
+  create_symlink tmux ubuntu/tmux.conf
 
   cd "${DOT_DIRECTORY}/config/vim"
   create_symlink vim ubuntu/.vimrc
