@@ -30,6 +30,8 @@ export LESSCHARSET=utf-8
 #  PATH setting
 #
 
+export XDG_CONFIG_HOME="$HOME/.config"
+
 # for starship
 export PATH="$HOME/.cargo/bin:$PATH"
 eval "$(starship init bash)"
