@@ -65,7 +65,7 @@ config/screen/.screenrc
 config/ssh/config
 config/starship/starship.toml
 config/tmux/.tmux
-config/tmux/.tmux.conf
+config/tmux/tmux.conf
 config/vim/.vimrc
 config/virtualbox/networks.conf
 config/vscode/keybindings.json

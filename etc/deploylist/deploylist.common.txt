@@ -9,7 +9,7 @@ ${DOT_DIRECTORY}/config/ssh/config,${HOME}/.ssh/config
 # starship
 ${DOT_DIRECTORY}/config/starship/starship.toml,${HOME}/.config/starship.toml
 # tmux
-${DOT_DIRECTORY}/config/tmux/.tmux,${HOME}/.tmux
-${DOT_DIRECTORY}/config/tmux/.tmux.conf,${HOME}/.tmux.conf
+${DOT_DIRECTORY}/config/tmux/.tmux,${HOME}/.config/tmux/.tmux
+${DOT_DIRECTORY}/config/tmux/tmux.conf,${HOME}/.config/tmux/tmux.conf
 # vim
 ${DOT_DIRECTORY}/config/vim/.vimrc,${HOME}/.vimrc
