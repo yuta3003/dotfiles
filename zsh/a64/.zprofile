@@ -15,25 +15,11 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 #  PATH setting
 #
 
-
 #  Default
 export USR_LOCAL_HOME="/usr/local"
 
-#  for tmux (openssl@1.1)
-export TMUX_ROOT="/usr/local/opt/ncurses"
-
 # for openssl
-#export OPENSSL="/usr/local/opt/openssl@1.1"
 export OPENSSL="$(brew --prefix openssl)"
-
-#  for git
-export GIT_ROOT="/usr/local/opt/gettext"
-
-#  for curl
-export CURL_ROOT="/usr/local/opt/curl"
-
-#  for SQLite to using Python3
-export SQLITE_ROOT="/usr/local/opt/sqlite"
 
 # for pyenv
 export PYENV_ROOT="${HOME}/.anyenv/envs/pyenv"
@@ -50,10 +36,6 @@ export GAWK_ROOT="/opt/homebrew/opt/gawk"
 
 path=(
   "$OPENSSL/bin"(N-/)
-  "$TMUX_ROOT/bin"(N-/)
-  "$GIT_ROOT/bin"(N-/)
-  "$CURL_ROOT/bin"(N-/)
-  "$SQLITE_ROOT/bin"(N-/)
   "$USR_LOCAL_HOME/bin"
   "$USR_LOCAL_HOME/sbin"
   "$PYENV_ROOT/bin"(N-/)
