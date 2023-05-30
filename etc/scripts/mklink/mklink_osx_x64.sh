@@ -28,36 +28,36 @@ main() {
   fi
   source "${MKLINK_SCRIPT_DIR}/rmlink.sh"
 
-  cd "${DOT_DIRECTORY}/git"
+  cd "${DOT_DIRECTORY}/config/git"
   create_symlink git x64/config
   create_symlink git x64/message
   create_symlink git x64/ignore
 
-  cd "${DOT_DIRECTORY}/homebrew"
+  cd "${DOT_DIRECTORY}/config/homebrew"
   create_symlink homebrew x64/Brewfile
   create_symlink homebrew x64/localhost.homebrew-autoupdate.plist
 
-  cd "${DOT_DIRECTORY}/neovim"
+  cd "${DOT_DIRECTORY}/config/neovim"
   create_symlink neovim x64/init.vim
 
-  cd "${DOT_DIRECTORY}/ssh"
+  cd "${DOT_DIRECTORY}/config/ssh"
   create_symlink ssh x64/config
 
-  cd "${DOT_DIRECTORY}/starship"
+  cd "${DOT_DIRECTORY}/config/starship"
   create_symlink starship x64/starship.toml
 
-  cd "${DOT_DIRECTORY}/tmux"
+  cd "${DOT_DIRECTORY}/config/tmux"
   create_symlink tmux x64/.tmux
-  create_symlink tmux x64/.tmux.conf
+  create_symlink tmux x64/tmux.conf
 
-  cd "${DOT_DIRECTORY}/vim"
+  cd "${DOT_DIRECTORY}/config/vim"
   create_symlink vim x64/.vimrc
 
-  cd "${DOT_DIRECTORY}/vscode"
+  cd "${DOT_DIRECTORY}/config/vscode"
   create_symlink vscode x64/keybindings.json
   create_symlink vscode x64/settings.json
 
-  cd "${DOT_DIRECTORY}/zsh"
+  cd "${DOT_DIRECTORY}/config/zsh"
   create_symlink zsh x64/.zshrc
   create_symlink zsh x64/.zshenv
   create_symlink zsh x64/.zprofile

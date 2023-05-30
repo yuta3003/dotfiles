@@ -1,15 +1,15 @@
 # git
-${DOT_DIRECTORY}/git/config,${HOME}/.config/git/config
-${DOT_DIRECTORY}/git/message,${HOME}/.config/git/message
-${DOT_DIRECTORY}/git/ignore,${HOME}/.config/git/ignore
+${DOT_DIRECTORY}/config/git/config,${HOME}/.config/git/config
+${DOT_DIRECTORY}/config/git/message,${HOME}/.config/git/message
+${DOT_DIRECTORY}/config/git/ignore,${HOME}/.config/git/ignore
 # neovim
-${DOT_DIRECTORY}/neovim/init.vim,${HOME}/.config/nvim/init.vim
+${DOT_DIRECTORY}/config/neovim/init.vim,${HOME}/.config/nvim/init.vim
 # ssh
-${DOT_DIRECTORY}/ssh/config,${HOME}/.ssh/config
+${DOT_DIRECTORY}/config/ssh/config,${HOME}/.ssh/config
 # starship
-${DOT_DIRECTORY}/starship/starship.toml,${HOME}/.config/starship.toml
+${DOT_DIRECTORY}/config/starship/starship.toml,${HOME}/.config/starship.toml
 # tmux
-${DOT_DIRECTORY}/tmux/.tmux,${HOME}/.tmux
-${DOT_DIRECTORY}/tmux/.tmux.conf,${HOME}/.tmux.conf
+${DOT_DIRECTORY}/config/tmux/.tmux,${HOME}/.config/tmux/.tmux
+${DOT_DIRECTORY}/config/tmux/tmux.conf,${HOME}/.config/tmux/tmux.conf
 # vim
-${DOT_DIRECTORY}/vim/.vimrc,${HOME}/.vimrc
+${DOT_DIRECTORY}/config/vim/.vimrc,${HOME}/.vimrc

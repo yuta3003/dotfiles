@@ -5,13 +5,13 @@ Describe "rmlink.sh"
   After "cleanup"
 
   setup() {
-    ln -sf ${DOT_DIRECTORY}/zsh/x64/.zshrc ${DOT_DIRECTORY}/zsh/.zshrc
+    ln -sf ${DOT_DIRECTORY}/config/zsh/x64/.zshrc ${DOT_DIRECTORY}/config/zsh/.zshrc
   }
   cleanup() {
     ${DOT_DIRECTORY}/etc/scripts/deploy.sh -s
   }
   It "remove_symlink()"
-    When call remove_symlink ${DOT_DIRECTORY}/zsh/.zshrc
-    The output should equal "$(tput setaf 2)✔︎$(tput sgr0) removing ${DOT_DIRECTORY}/zsh/.zshrc"
+    When call remove_symlink ${DOT_DIRECTORY}/config/zsh/.zshrc
+    The output should equal "$(tput setaf 2)✔︎$(tput sgr0) removing ${DOT_DIRECTORY}/config/zsh/.zshrc"
   End
 End

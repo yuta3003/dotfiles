@@ -2,12 +2,11 @@ name: Ubuntu
 
 on:
   push:
-    branches:
-      - main
-      - develop
+    paths:
+      - 'config/**'
   pull_request:
-    branches:
-      - main
+    paths:
+      - 'config/**'
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -33,10 +32,10 @@ jobs:
           git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.3
       - name: Run source .bashrc
         run: bash .bashrc
-        working-directory: ./bash/ubuntu
+        working-directory: ./config/bash/ubuntu
       - name: Run source .bash_profile
         run: bash .bash_profile
-        working-directory: ./bash/ubuntu
+        working-directory: ./config/bash/ubuntu
       - name: Run source .bash_aliases
         run: bash .bash_aliases
-        working-directory: ./bash/ubuntu
+        working-directory: ./config/bash/ubuntu

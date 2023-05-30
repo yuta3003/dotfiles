@@ -27,34 +27,34 @@ main() {
     disable_echo
   fi
   source "${MKLINK_SCRIPT_DIR}/rmlink.sh"
-  cd "${DOT_DIRECTORY}/bash"
+  cd "${DOT_DIRECTORY}/config/bash"
   create_symlink bash ubuntu/.bash_aliases
   create_symlink bash ubuntu/.bash_profile
   create_symlink bash ubuntu/.bashrc
   create_symlink bash ubuntu/.profile
 
-  cd "${DOT_DIRECTORY}/git"
+  cd "${DOT_DIRECTORY}/config/git"
   create_symlink git ubuntu/config
   create_symlink git ubuntu/message
   create_symlink git ubuntu/ignore
 
-  cd "${DOT_DIRECTORY}/neovim"
+  cd "${DOT_DIRECTORY}/config/neovim"
   create_symlink neovim ubuntu/init.vim
 
-  cd "${DOT_DIRECTORY}/ssh"
+  cd "${DOT_DIRECTORY}/config/ssh"
   create_symlink ssh ubuntu/config
 
-  cd "${DOT_DIRECTORY}/starship"
+  cd "${DOT_DIRECTORY}/config/starship"
   create_symlink starship ubuntu/starship.toml
 
-  cd "${DOT_DIRECTORY}/tmux"
+  cd "${DOT_DIRECTORY}/config/tmux"
   create_symlink tmux ubuntu/.tmux
-  create_symlink tmux ubuntu/.tmux.conf
+  create_symlink tmux ubuntu/tmux.conf
 
-  cd "${DOT_DIRECTORY}/vim"
+  cd "${DOT_DIRECTORY}/config/vim"
   create_symlink vim ubuntu/.vimrc
 
-  cd "${DOT_DIRECTORY}/vscode"
+  cd "${DOT_DIRECTORY}/config/vscode"
   create_symlink vscode ubuntu/keybindings.json
   create_symlink vscode ubuntu/settings.json
 
