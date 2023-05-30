@@ -1,13 +1,13 @@
 # Homebrew auto-update.plist
-${DOT_DIRECTORY}/homebrew/localhost.homebrew-autoupdate.plist,${HOME}/Library/LaunchAgents/localhost.homebrew-autoupdate.plist
+${DOT_DIRECTORY}/config/homebrew/localhost.homebrew-autoupdate.plist,${HOME}/Library/LaunchAgents/localhost.homebrew-autoupdate.plist
 # VSCode
-${DOT_DIRECTORY}/vscode/settings.json,${HOME}/Library/Application\ Support/Code/User/settings.json
-${DOT_DIRECTORY}/vscode/keybindings.json,${HOME}/Library/Application\ Support/Code/User/keybindings.json
+${DOT_DIRECTORY}/config/vscode/settings.json,${HOME}/Library/Application\ Support/Code/User/settings.json
+${DOT_DIRECTORY}/config/vscode/keybindings.json,${HOME}/Library/Application\ Support/Code/User/keybindings.json
 # zsh
-#${DOT_DIRECTORY}/zsh/.zaliases,${HOME}/.config/zsh/.zaliases
-#${DOT_DIRECTORY}/zsh/.zprofile,${HOME}/.config/zsh/.zprofile
-#${DOT_DIRECTORY}/zsh/.zshrc,${HOME}/.config/zsh/.zshrc
-${DOT_DIRECTORY}/zsh/.zaliases,${HOME}/.zaliases
-${DOT_DIRECTORY}/zsh/.zprofile,${HOME}/.zprofile
-${DOT_DIRECTORY}/zsh/.zshrc,${HOME}/.zshrc
-#${DOT_DIRECTORY}/zsh/.zshrc,${HOME}/.zshenv
+#${DOT_DIRECTORY}/config/zsh/.zaliases,${HOME}/.config/zsh/.zaliases
+#${DOT_DIRECTORY}/config/zsh/.zprofile,${HOME}/.config/zsh/.zprofile
+#${DOT_DIRECTORY}/config/zsh/.zshrc,${HOME}/.config/zsh/.zshrc
+${DOT_DIRECTORY}/config/zsh/.zaliases,${HOME}/.zaliases
+${DOT_DIRECTORY}/config/zsh/.zprofile,${HOME}/.zprofile
+${DOT_DIRECTORY}/config/zsh/.zshrc,${HOME}/.zshrc
+#${DOT_DIRECTORY}/config/zsh/.zshrc,${HOME}/.zshenv

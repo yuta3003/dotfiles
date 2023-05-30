@@ -22,28 +22,28 @@ done
 
 main() {
   local filepath_array=(
-    bash/.bash_aliases
-    bash/.bash_profile
-    bash/.bashrc
-    bash/.profile
-    git/.gitconfig
-    git/.gitmessage
-    git/ignore
-    homebrew/Brewfile
-    homebrew/localhost.homebrew-autoupdate.plist
-    neovim/init.vim
-    ssh/config
-    starship/starship.toml
-    tmux/.tmux
-    tmux/.tmux.conf
-    vim/.vimrc
-    virtualbox/networks.conf
-    vscode/keybindings.json
-    vscode/settings.json
-    zsh/.zprofile
-    zsh/.zaliases
-    zsh/.zshrc
-    zsh/.zshenv
+    config/bash/.bash_aliases
+    config/bash/.bash_profile
+    config/bash/.bashrc
+    config/bash/.profile
+    config/git/.gitconfig
+    config/git/.gitmessage
+    config/git/ignore
+    config/homebrew/Brewfile
+    config/homebrew/localhost.homebrew-autoupdate.plist
+    config/neovim/init.vim
+    config/ssh/config
+    config/starship/starship.toml
+    config/tmux/.tmux
+    config/tmux/.tmux.conf
+    config/vim/.vimrc
+    config/virtualbox/networks.conf
+    config/vscode/keybindings.json
+    config/vscode/settings.json
+    config/zsh/.zprofile
+    config/zsh/.zaliases
+    config/zsh/.zshrc
+    config/zsh/.zshenv
   )
 
   for i in "${!filepath_array[@]}"; do
