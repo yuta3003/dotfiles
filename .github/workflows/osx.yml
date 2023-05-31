@@ -45,24 +45,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Homebrew UPDATE
-        run: brew update
-      - name: Install zsh
-        run: brew install zsh
-      - name: Install zsh-completions
-        run: brew install zsh-completions
-      - name: Install zsh-autosuggestions
-        run: brew install zsh-autosuggestions
-      - name: Install starship
-        run: brew install starship
-      - name: Run source .zshrc
-        run: zsh .zshrc
-        working-directory: ./config/zsh/x64
-      - name: Run source .zprofile
-        run: zsh .zprofile
-        working-directory: ./config/zsh/x64
-      - name: Run source .zaliases
-        run: zsh .zaliases
+      - name: Setup
+        run: |
+          brew update
+          brew install zsh
+          brew install zsh-completions
+          brew install zsh-autosuggestions
+          brew install starship
+      - name: Run source zshrc files
+        run: |
+          zsh .zshrc
+          zsh .zprofile
+          zsh .zaliases
         working-directory: ./config/zsh/x64
 
 
