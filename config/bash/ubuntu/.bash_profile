@@ -4,7 +4,7 @@
 #
 
 if [ $SHLVL = 1 ]; then
-  tmux
+  tmux new-session -A -s local-session
 fi
 
 #  .bashrcを読み込む
