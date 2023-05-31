@@ -46,7 +46,7 @@ Temporary Items
 .nfs*
 
 # tmux plugins
-tmux/arm64/.tmux/plugins/
+tmux/a64/.tmux/plugins/
 tmux/x64/.tmux/plugins/
 tmux/ubuntu/.tmux/plugins/
 
