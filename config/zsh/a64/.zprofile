@@ -90,5 +90,5 @@ if [ -f "${HOME}/.zaliases" ] ; then
 fi
 
 if [ $SHLVL = 1 ]; then
-  tmux  # tmux起動
+  tmux new-session -A -s local-session
 fi
