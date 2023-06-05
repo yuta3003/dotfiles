@@ -45,11 +45,6 @@ Temporary Items
 # .nfs files are created when an open file is removed but is still being accessed
 .nfs*
 
-# tmux plugins
-tmux/a64/.tmux/plugins/
-tmux/x64/.tmux/plugins/
-tmux/ubuntu/.tmux/plugins/
-
 # シンボリックリンクはGitから排除
 config/bash/.bash_aliases
 config/bash/.bash_profile
@@ -74,3 +69,8 @@ config/zsh/.zaliases
 config/zsh/.zprofile
 config/zsh/.zshrc
 config/zsh/.zshenv
+
+# tmux plugins
+tmux/a64/.tmux/plugins/
+tmux/x64/.tmux/plugins/
+tmux/ubuntu/.tmux/plugins/
