@@ -13,9 +13,6 @@ if type brew &>/dev/null; then
   compinit
 fi
 
-if [ $SHLVL = 1 ]; then
-  tmux new-session -A -s local-session
-fi
 #################################################
 #
 #  補完機能設定
