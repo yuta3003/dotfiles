@@ -20,16 +20,12 @@ export XDG_CONFIG_HOME="$HOME/.config"
 
 #  Default
 export USR_LOCAL_HOME="/usr/local"
-
 # for openssl
 export OPENSSL="$(brew --prefix openssl)"
-
 # for pyenv
 export PYENV_ROOT="${HOME}/.anyenv/envs/pyenv"
-
 # for poetry
 export POETRY_ROOT="${HOME}/.poetry"
-
 # for asdf - node plugins
 export GAWK_ROOT="/opt/homebrew/opt/gawk"
 
