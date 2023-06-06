@@ -72,7 +72,6 @@ bindkey '^S' history-incremental-pattern-search-forward
 # https://starship.rs/ja-JP
 eval "$(starship init zsh)"
 
-
 autoload -Uz promptinit
 colors
 
