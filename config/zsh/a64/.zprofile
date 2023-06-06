@@ -15,8 +15,9 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 #  PATH setting
 #
 
-export XDG_CONFIG_HOME="$HOME/.config"
-# export ZDOTDIR="$XDG_CONFIG_HOME/zsh" # .zshrc や .zprofile が ~/.config/zsh から読み込まれるようになる
+export XDG_CONFIG_HOME="${HOME}/.config"
+export ZDOTDIR="${HOME}/zsh" # .zshrc や .zprofile が ~/.config/zsh から読み込まれるようになる
+# export ZDOTDIR="${XDG_CONFIG_HOME}/zsh" # .zshrc や .zprofile が ~/.config/zsh から読み込まれるようになる
 
 #  Default
 export USR_LOCAL_HOME="/usr/local"
@@ -77,12 +78,12 @@ fi
 #
 
 #  .zshrcを読み込む
-if [ -f "${HOME}/.zshrc" ] ; then
-  source "${HOME}/.zshrc"
+if [ -f "${ZDOTDIR}/.zshrc" ] ; then
+  source "${ZDOTDIR}/.zshrc"
 fi
 #  .zaliasesを読み込み
-if [ -f "${HOME}/.zaliases" ] ; then
-  source "${HOME}/.zaliases"
+if [ -f "${ZDOTDIR}/.zaliases" ] ; then
+  source "${ZDOTDIR}/.zaliases"
 fi
 
 if [ $SHLVL = 1 ]; then
