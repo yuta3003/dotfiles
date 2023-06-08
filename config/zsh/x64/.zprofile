@@ -73,6 +73,8 @@ export CURL_ROOT="/usr/local/opt/curl"
 #  for SQLite to using Python3
 export SQLITE_ROOT="/usr/local/opt/sqlite"
 
+# for starship
+export STARSHIP_CONFIG="${HOME}/.config/starship/starship.toml"
 # for GoLang
 # To use "go mod init hoge"
 export GO111MODULE=on

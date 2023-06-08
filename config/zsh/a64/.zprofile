@@ -29,7 +29,8 @@ export PYENV_ROOT="${HOME}/.anyenv/envs/pyenv"
 export POETRY_ROOT="${HOME}/.poetry"
 # for asdf - node plugins
 export GAWK_ROOT="/opt/homebrew/opt/gawk"
-
+# for starship
+export STARSHIP_CONFIG="${HOME}/.config/starship/starship.toml"
 # /usr/bin/python3 -- system Python
 # $(brew --prefix) python -v -- Homebrew Python
 # ${HOME}/.anyenv/envs/pyenv/shims/python3 -- pyenv Python
