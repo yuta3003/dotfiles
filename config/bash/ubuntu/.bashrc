@@ -123,6 +123,7 @@ fi
 
 # for starship
 export PATH="$HOME/.cargo/bin:$PATH"
+export STARSHIP_CONFIG="${HOME}/.config/starship/starship.toml"
 eval "$(starship init bash)"
 
 # for asdf
