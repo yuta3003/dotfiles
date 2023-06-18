@@ -11,9 +11,14 @@
 - Ubuntu
 
 ## Installation
-
-- XCodeをダウンロードする
+設定ファイルのシンボリックリンクを作成しデプロイします。
 
 ```sh
-/bin/bash -c "$(curl https://raw.githubusercontent.com/yuta3003/dotfiles/main/etc/scripts/install.sh)"
+git clone https://github.com/yuta3003/dotfiles.git
+cd ./dotfiles/etc/scripts
+./deploy.sh
 ```
+<!--
+```sh
+/bin/bash -c "$(curl https://raw.githubusercontent.com/yuta3003/dotfiles/main/etc/scripts/install.sh)"
+``` -->
