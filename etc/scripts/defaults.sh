@@ -18,7 +18,6 @@ main() {
   defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE  # .DS_Storeファイルを作らせない
   defaults write com.apple.dock orientation left
 
-
   # Disable auto-capitalization
   defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 
