@@ -16,7 +16,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 #
 
 export XDG_CONFIG_HOME="${HOME}/.config"
-export ZDOTDIR="${HOME}/zsh" # .zshrc や .zprofile が ~/.config/zsh から読み込まれるようになる
+export ZDOTDIR="${HOME}" # .zshrc や .zprofile が ~/.config/zsh から読み込まれるようになる
 # export ZDOTDIR="${XDG_CONFIG_HOME}/zsh" # .zshrc や .zprofile が ~/.config/zsh から読み込まれるようになる
 
 #  Default
