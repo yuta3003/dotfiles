@@ -13,6 +13,7 @@
 ## Installation
 設定ファイルのシンボリックリンクを作成しデプロイします。
 
+
 ```sh
 git clone https://github.com/yuta3003/dotfiles.git ~/dotfiles
 cd ~/dotfiles/etc/scripts
