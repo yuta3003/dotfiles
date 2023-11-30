@@ -89,6 +89,9 @@ alias safari='open -a Safari'
 #  ip
 alias myip="curl ifconfig.io -4"
 
+# kubenetis
+alias kubectl="microk8s kubectl"
+
 #################################################
 #
 #  HOME-MADE Command Setting
