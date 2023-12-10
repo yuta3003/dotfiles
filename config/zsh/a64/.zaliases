@@ -92,6 +92,10 @@ alias myip="curl ifconfig.io -4"
 # kubenetis
 alias kubectl="microk8s kubectl"
 
+# Bluetooth
+alias conncetmk2="BluetoothConnector 28-FF-3C-E6-07-4F --notify" # Magic Keyboard 2
+alias connecthhkb="BluetoothConnector FB-B3-EF-03-26-FB --notify" # HHKB
+
 #################################################
 #
 #  HOME-MADE Command Setting
