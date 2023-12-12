@@ -3,48 +3,53 @@ name: Lint
 on:
   push:
     paths:
-      - 'etc/scripts/**'
+    - 'etc/scripts/**'
   pull_request:
     paths:
-      - 'etc/scripts/**'
+    - 'etc/scripts/**'
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+
+defaults:
+  run:
+    working-directory: ./etc/scripts
 
 jobs:
   lint:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Install ShellCheck
-        run: sudo apt install -y shellcheck
-      - name: Run ShellCheck deploy.sh
-        run: shellcheck -e SC1091 deploy.sh
-        working-directory: ./etc/scripts
-      - name: Run ShellCheck install.sh
-        run: shellcheck -e SC1091 -e SC2002 -e SC2034 install.sh
-        working-directory: ./etc/scripts
-      - name: Run ShellCheck mklink_osx_a64.sh
-        run: shellcheck -e SC1091 mklink_osx_a64.sh
-        working-directory: ./etc/scripts/mklink
-      - name: Run ShellCheck mklink_osx_x64.sh
-        run: shellcheck -e SC1091 mklink_osx_x64.sh
-        working-directory: ./etc/scripts/mklink
-      - name: Run ShellCheck mklink_ubuntu.sh
-        run: shellcheck -e SC1091 mklink_ubuntu.sh
-        working-directory: ./etc/scripts/mklink
-  # defaults-on-OSX-x64:
-  #   runs-on: macos-latest
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v2
 
-  #     - name: Install ShellCheck
-  #       run: |
-  #         brew update
-  #         brew install shellcheck
+    - name: Install ShellCheck
+      run: sudo apt install -y shellcheck
 
-  #     - name: Run ShellCheck install.sh
-  #       run: shellcheck install.sh
-  #       working-directory: ./etc/scripts
+    - name: Run ShellCheck mklink_ubuntu.sh
+      run: shellcheck -e SC1091 mklink_ubuntu.sh
+      working-directory: ./etc/scripts/mklink
+
+    - name: Run ShellCheck deploy.sh
+      run: shellcheck -e SC1091 deploy.sh
+
+  defaults-on-OSX-x64:
+    runs-on: macos-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Install ShellCheck
+      run: |
+        brew update
+        brew install shellcheck
+
+    - name: Run ShellCheck mklink_osx_a64.sh
+      run: shellcheck -e SC1091 mklink_osx_a64.sh
+      working-directory: ./etc/scripts/mklink
+
+    - name: Run ShellCheck mklink_osx_x64.sh
+      run: shellcheck -e SC1091 mklink_osx_x64.sh
+      working-directory: ./etc/scripts/mklink
+
+    - name: Run ShellCheck deploy.sh
+      run: shellcheck -e SC1091 deploy.sh
