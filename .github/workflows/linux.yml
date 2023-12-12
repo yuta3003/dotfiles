@@ -3,10 +3,10 @@ name: Ubuntu
 on:
   push:
     paths:
-      - 'config/**'
+    - 'config/**'
   pull_request:
     paths:
-      - 'config/**'
+    - 'config/**'
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -14,28 +14,33 @@ jobs:
   deploy-on-ubuntu:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Run deploy.sh
-        run: ./deploy.sh -s
-        working-directory: ./etc/scripts
+    - uses: actions/checkout@v2
+    - name: Run deploy.sh
+      run: ./deploy.sh -s
+      working-directory: ./etc/scripts
 
   source-bashrc-on-ubunutu:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Setup Starship
-        run: curl -fsSL https://starship.rs/install.sh | sh /dev/stdin -f
-      - name: Setup asdf
-        run: |
-          sudo apt-get install curl git
-          git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.3
-      - name: Run source .bashrc
-        run: bash .bashrc
-        working-directory: ./config/bash/ubuntu
-      - name: Run source .bash_profile
-        run: bash .bash_profile
-        working-directory: ./config/bash/ubuntu
-      - name: Run source .bash_aliases
-        run: bash .bash_aliases
-        working-directory: ./config/bash/ubuntu
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup Starship
+      run: curl -fsSL https://starship.rs/install.sh | sh /dev/stdin -f
+
+    - name: Setup asdf
+      run: |
+        sudo apt-get install curl git
+        git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.3
+
+    - name: Run source .bashrc
+      run: bash .bashrc
+      working-directory: ./config/bash/ubuntu
+
+    - name: Run source .bash_profile
+      run: bash .bash_profile
+      working-directory: ./config/bash/ubuntu
+
+    - name: Run source .bash_aliases
+      run: bash .bash_aliases
+      working-directory: ./config/bash/ubuntu

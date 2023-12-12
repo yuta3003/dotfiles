@@ -3,10 +3,10 @@ name: OSX
 on:
   push:
     paths:
-      - 'config/**'
+    - 'config/**'
   pull_request:
     paths:
-      - 'config/**'
+    - 'config/**'
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -14,41 +14,45 @@ jobs:
   deploy-on-OSX-x64:
     runs-on: macos-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Run deploy.sh
-        run: ./deploy.sh -s
-        working-directory: ./etc/scripts
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Run deploy.sh
+      run: ./deploy.sh -s
+      working-directory: ./etc/scripts
 
   brew-bundle-on-OSX-x64:
     runs-on: macos-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Run brew bundle
-        run: brew bundle
-        working-directory: ./config/homebrew/x64
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Run brew bundle
+      run: brew bundle
+      working-directory: ./config/homebrew/x64
 
   source-zshrc-on-OSX-x64:
     runs-on: macos-latest
     env:
       HOME: /Users/runner/work/dotfiles
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Setup
-        run: |
-          brew update
-          brew install zsh
-          brew install zsh-completions
-          brew install zsh-autosuggestions
-          brew install starship
-      - name: Run source zshrc files
-        run: |
-          zsh .zshrc
-          zsh .zprofile
-          zsh .zaliases
-        working-directory: ./config/zsh/x64
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup
+      run: |
+        brew update
+        brew install zsh
+        brew install zsh-completions
+        brew install zsh-autosuggestions
+        brew install starship
+
+    - name: Run source zshrc files
+      run: |
+        zsh .zshrc
+        zsh .zprofile
+        zsh .zaliases
+      working-directory: ./config/zsh/x64
 
 
           # brew update
