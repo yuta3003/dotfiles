@@ -63,7 +63,6 @@ check_os_type() {
       return 1
       ;;
   esac
-  return 0
 }
 
 create_link() {
