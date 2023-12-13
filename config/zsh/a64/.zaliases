@@ -90,7 +90,9 @@ alias safari='open -a Safari'
 alias myip="curl ifconfig.io -4"
 
 # kubenetis
-alias kubectl="microk8s kubectl"
+#alias kubectl="microk8s kubectl"
+
+alias dot-reload="source ${HOME}/.zshrc"
 
 # Bluetooth
 alias connectmk2="BluetoothConnector 28-FF-3C-E6-07-4F --notify" # Magic Keyboard 2
