@@ -3,11 +3,11 @@ name: common
 on:
   push:
     branches:
-      - main
-      - develop
+    - main
+    - develop
   pull_request:
     branches:
-      - main
+    - main
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -18,22 +18,22 @@ jobs:
       DOT_DIRECTORY: /Users/runner/work/dotfiles/dotfiles
       MKLINK_SCRIPT_DIR: /Users/runner/work/dotfiles/dotfiles/etc/scripts/mklink
     steps:
-      - uses: actions/checkout@v2
-      - name: Run rmlink.sh
-        run: ./rmlink.sh -s
-        working-directory: etc/scripts/mklink
+    - uses: actions/checkout@v2
+    - name: Run rmlink.sh
+      run: ./rmlink.sh -s
+      working-directory: etc/scripts/mklink
 
-      - name: Run mklink_a64.sh
-        run: ./mklink_osx_a64.sh -s
-        working-directory: etc/scripts/mklink
+    - name: Run mklink_a64.sh
+      run: ./mklink_osx_a64.sh -s
+      working-directory: etc/scripts/mklink
 
-      - name: Run mklink_x64.sh
-        run: ./mklink_osx_x64.sh -s
-        working-directory: etc/scripts/mklink
+    - name: Run mklink_x64.sh
+      run: ./mklink_osx_x64.sh -s
+      working-directory: etc/scripts/mklink
 
-      - name: Run mklink_ubuntu.sh
-        run: ./mklink_ubuntu.sh -s
-        working-directory: etc/scripts/mklink
+    - name: Run mklink_ubuntu.sh
+      run: ./mklink_ubuntu.sh -s
+      working-directory: etc/scripts/mklink
 
   mklink-on-ubuntu:
     runs-on: ubuntu-latest
@@ -41,19 +41,19 @@ jobs:
       DOT_DIRECTORY: /home/runner/work/dotfiles/dotfiles
       MKLINK_SCRIPT_DIR: /home/runner/work/dotfiles/dotfiles/etc/scripts/mklink
     steps:
-      - uses: actions/checkout@v2
-      - name: Run rmlink.sh -s
-        run: ./rmlink.sh
-        working-directory: etc/scripts/mklink
+    - uses: actions/checkout@v2
+    - name: Run rmlink.sh -s
+      run: ./rmlink.sh
+      working-directory: etc/scripts/mklink
 
-      - name: Run mklink_a64.sh
-        run: ./mklink_osx_a64.sh -s
-        working-directory: etc/scripts/mklink
+    - name: Run mklink_a64.sh
+      run: ./mklink_osx_a64.sh -s
+      working-directory: etc/scripts/mklink
 
-      - name: Run mklink_x64.sh
-        run: ./mklink_osx_x64.sh -s
-        working-directory: etc/scripts/mklink
+    - name: Run mklink_x64.sh
+      run: ./mklink_osx_x64.sh -s
+      working-directory: etc/scripts/mklink
 
-      - name: Run mklink_ubuntu.sh
-        run: ./mklink_ubuntu.sh -s
-        working-directory: etc/scripts/mklink
+    - name: Run mklink_ubuntu.sh
+      run: ./mklink_ubuntu.sh -s
+      working-directory: etc/scripts/mklink
