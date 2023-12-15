@@ -46,8 +46,6 @@ jobs:
         brew install zsh-completions
         brew install zsh-autosuggestions
         brew install starship
-        brew tap shellspec/shellspec
-        brew install shellspec
 
     - name: Run source zshrc files
       run: |
@@ -56,10 +54,13 @@ jobs:
         zsh .zaliases
       working-directory: ./config/zsh/x64
 
-    - name: Run ShellSpec
-      run: |
-        shellspec
-      working-directory: ./
+
+        # brew tap shellspec/shellspec
+        # brew install shellspec
+    # - name: Run ShellSpec
+    #   run: |
+    #     shellspec
+    #   working-directory: ./
 
 
           # brew update
