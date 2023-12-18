@@ -57,20 +57,24 @@ alias git-root='git rev-parse --is-inside-work-tree && cd `git rev-parse --show-
 ## submodule
 alias git-sub-update="git submodule foreach 'git pull origin main'"
 
-#  docker系
-alias docker-compose-down="docker-compose down --rmi all --volumes --remove-orphans"
-## 誤字対策
-alias dokcer="docker"
-alias dokcer-compose="docker-compose"
+if type docker >/dev/null 2>&1; then
+  #  docker系
+  alias docker-compose-down="docker-compose down --rmi all --volumes --remove-orphans"
+  ## 誤字対策
+  alias dokcer="docker"
+  alias dokcer-compose="docker-compose"
+fi
 
 #  Python3
 alias python="python3"
 alias pip="pip3"
 
-#  vim系
-alias vi="nvim"
-alias vim="nvim"
-alias view="nvim -R"
+if type nvim >/dev/null 2>&1; then
+  #  vim系
+  alias vi="nvim"
+  alias vim="nvim"
+  alias view="nvim -R"
+fi
 
 #  screen
 alias lstty="ls /dev/tty.*"
@@ -94,9 +98,11 @@ alias myip="curl ifconfig.io -4"
 
 alias dot-reload="source ${HOME}/.zshrc"
 
-# Bluetooth
-alias connectmk2="BluetoothConnector 28-FF-3C-E6-07-4F --notify" # Magic Keyboard 2
-alias connecthhkb="BluetoothConnector FB-B3-EF-03-26-FB --notify" # HHKB
+if type BluetoothConnector >/dev/null 2>&1; then
+  # Bluetooth
+  alias connectmk2="BluetoothConnector 28-FF-3C-E6-07-4F --notify" # Magic Keyboard 2
+  alias connecthhkb="BluetoothConnector FB-B3-EF-03-26-FB --notify" # HHKB
+fi
 
 #################################################
 #

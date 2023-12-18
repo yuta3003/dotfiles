@@ -60,6 +60,14 @@ jobs:
         working-directory: ./config/zsh/x64
 
 
+        # brew tap shellspec/shellspec
+        # brew install shellspec
+    # - name: Run ShellSpec
+    #   run: |
+    #     shellspec
+    #   working-directory: ./
+
+
           # brew update
           # brew install zsh
           # zsh autoload -U compinit
