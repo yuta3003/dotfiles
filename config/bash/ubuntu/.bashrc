@@ -126,6 +126,3 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export STARSHIP_CONFIG="${HOME}/.config/starship/starship.toml"
 eval "$(starship init bash)"
 
-# for asdf
-. "$HOME/.asdf/asdf.sh"
-. "$HOME/.asdf/completions/asdf.bash"

@@ -32,20 +32,6 @@ export LESSCHARSET=utf-8
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
-# for starship
-export PATH="$HOME/.cargo/bin:$PATH"
-eval "$(starship init bash)"
-
-# for pyenv via anyenv
-# export PYENV_ROOT="$HOME/.anyenv/envs/pyenv"
-# export PATH="$PYENV_ROOT/bin:$PATH"
-# eval "$(pyenv init --path)"
-# if command -v pyenv 1>/dev/null 2>&1; then
-#   eval "$(pyenv init -)"
-# fi
-
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
 if type vivid >/dev/null 2>&1; then
   # https://github.com/sharkdp/vivid
   export LS_COLORS="$(vivid generate snazzy)"
