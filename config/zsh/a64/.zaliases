@@ -10,23 +10,23 @@ alias cpu="sudo powermetrics --samplers smc |grep -i 'CPU die temperature'"
 alias brews="brew list -1"
 
 #  ls系
-if type exa >/dev/null 2>&1; then
-  alias e="exa --icons --git"
+if type eza >/dev/null 2>&1; then
+  alias e="eza --icons --git"
   alias ls="e"
 
-  alias et="exa --icons --tree --git"
+  alias et="eza --icons --tree --git"
   alias lst="et | less -R"
 
-  alias el="exa -hl --icons --git"
+  alias el="eza -hl --icons --git"
   alias ll=el
 
-  alias ee='exa -aahl --icons --git'
+  alias ee='eza -aahl --icons --git'
   alias la=ee
 
-  alias et='exa -T -L 3 -a -I "node_modules|.git|.cache" --icons'
+  alias et='eza -T -L 3 -a -I "node_modules|.git|.cache" --icons'
   alias lt=et
 
-  alias eta='exa -T -a -I "node_modules|.git|.cache" --color=always --icons | less -r'
+  alias eta='eza -T -a -I "node_modules|.git|.cache" --color=always --icons | less -r'
   alias lta=eta
 else
   alias la="ls -lhAG"
@@ -60,9 +60,6 @@ alias git-sub-update="git submodule foreach 'git pull origin main'"
 if type docker >/dev/null 2>&1; then
   #  docker系
   alias docker-compose-down="docker-compose down --rmi all --volumes --remove-orphans"
-  ## 誤字対策
-  alias dokcer="docker"
-  alias dokcer-compose="docker-compose"
 fi
 
 #  Python3

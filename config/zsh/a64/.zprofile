@@ -35,6 +35,9 @@ export STARSHIP_CONFIG="${HOME}/.config/starship/starship.toml"
 # $(brew --prefix) python -v -- Homebrew Python
 # ${HOME}/.anyenv/envs/pyenv/shims/python3 -- pyenv Python
 
+# for binuitls
+export BINUTIL_ROOT="${HOMEBREW_PREFIX}/opt/binutils"
+
 path=(
   "$OPENSSL/bin"(N-/)
   "$USR_LOCAL_HOME/bin"
@@ -42,6 +45,7 @@ path=(
   "$PYENV_ROOT/bin"(N-/)
   "$POETRY_ROOT/bin"(N-/)
   "$GAWK_ROOT/libexec/gnubin"(N-/)
+  "$BINUTIL_ROOT/bin"(N-/)
   "$path[@]"
 )
 

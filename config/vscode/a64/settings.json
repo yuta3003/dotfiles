@@ -33,9 +33,6 @@
 
     // update
     "update.showReleaseNotes": false,
-
-    // workbench
-    "workbench.editor.enablePreview": false,
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "workbench.iconTheme": "eq-material-theme-icons-darker",
 
