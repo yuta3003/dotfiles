@@ -67,7 +67,6 @@ alias python="python3"
 alias pip="pip3"
 
 if type nvim >/dev/null 2>&1; then
-  #  vim系
   alias vi="nvim"
   alias vim="nvim"
   alias view="nvim -R"
