@@ -269,3 +269,4 @@ eval "$(direnv hook zsh)"
 
 # for asdf setting
 #. /opt/homebrew/opt/asdf/libexec/asdf.sh
+export DOCKER_HOST=unix://$HOME/.lima/docker/sock/docker.sock

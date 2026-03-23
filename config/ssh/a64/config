@@ -1,12 +1,15 @@
-Host thinkpad
-  HostName 192.168.11.254
-  User yuta
-  Port 22
-  IdentityFile ~/.ssh/id_rsa
-
-Host github github.com
+Host github.com.main # メインアカウント
   HostName github.com
-  IdentityFile ~/.ssh/github
   User git
+  Port 22
+  IdentityFile ~/.ssh/github_main_ed25519
+  TCPKeepAlive yes
   IdentitiesOnly yes
-  Compression yes
+
+Host github.com.sub # サブアカウント
+  HostName github.com
+  User git
+  Port 22
+  IdentityFile ~/.ssh/github_sub_ed25519
+  TCPKeepAlive yes
+  IdentitiesOnly yes

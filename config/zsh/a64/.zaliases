@@ -147,3 +147,9 @@ alias light='_light_mode'
 _light_mode() {
   osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to false'
 }
+
+alias awsotp='oathtool --totp --base32 "GVCS3YDEFFDRNDJ7QCBPF5D3BVZ6QJRGCJ4DF7Q7QXXSBDPPYF7KMYSQ6NX4NIH7" | pbcopy && echo "ワンタイムパスワードがコピーされました"'
+
+
+
+alias awsotp1='oathtool --totp --base32 "Q2DMZ6GTVAIURQXFTZIROG4YAH6XK6VQQ35FGUDOKNTVSF6WUZ6GP5QWU73OCXUF" | pbcopy && echo "ワンタイムパスワードがコピーされました"'

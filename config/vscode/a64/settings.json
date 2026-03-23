@@ -65,5 +65,15 @@
     "python.showStartPage": false,
     "editor.inlineSuggest.enabled": true,
     "workbench.colorTheme": "Ariake Dark",
-    "vsnotes.defaultNotePath": "/Users/yuta/Workspace/VSNotes"
+    "vsnotes.defaultNotePath": "/Users/yuta/Workspace/VSNotes",
+    "security.workspace.trust.untrustedFiles": "open",
+    "markdown.preview.breaks": true,
+    "markdown-pdf.breaks": true,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "files.autoSave": "onFocusChange",
+    "files.associations": {
+        "*.json": "json"
+    },
+    "explorer.confirmPasteNative": false
 }
