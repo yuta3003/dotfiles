@@ -5,23 +5,23 @@
 ----------------------------------------------------
 -- WezTerm トグル（Ctrl+I）
 ----------------------------------------------------
-hs.hotkey.bind({"ctrl"}, "i", function()
-  local app = hs.application.find("WezTerm")
-  if app == nil then
-    hs.application.launchOrFocus("WezTerm")
-    return
-  end
-  if app:isFrontmost() then
-    app:hide()
-  else
-    app:activate()
-    local win = app:mainWindow()
-    if win then
-      win:unminimize()
-      win:focus()
-    end
-  end
-end)
+-- hs.hotkey.bind({"ctrl"}, "i", function()
+--   local app = hs.application.find("WezTerm")
+--   if app == nil then
+--     hs.application.launchOrFocus("WezTerm")
+--     return
+--   end
+--   if app:isFrontmost() then
+--     app:hide()
+--   else
+--     app:activate()
+--     local win = app:mainWindow()
+--     if win then
+--       win:unminimize()
+--       win:focus()
+--     end
+--   end
+-- end)
 
 ----------------------------------------------------
 -- プレフィックスモード定義
