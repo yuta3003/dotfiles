@@ -1,0 +1,22 @@
+# フォント
+font-family = HackGen Console NF
+font-size = 14
+
+# 背景透過
+background-opacity = 0.7
+
+# 閉じる確認を無効化
+confirm-close-surface = false
+
+# 起動時に通常ウィンドウを開かない
+initial-window = false
+
+# Dock・Cmd+Tab から隠す
+macos-hidden = always
+
+# Quick Terminal
+keybind = global:ctrl+i=toggle_quick_terminal
+quick-terminal-position = center
+quick-terminal-size = 97%,100%
+quick-terminal-animation-duration = 0.2
+quick-terminal-autohide = false
