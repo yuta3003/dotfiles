@@ -1,25 +1,32 @@
-![logo](./images/logo.png)
-![Author](https://img.shields.io/badge/Author-yuta3003-blue)
-[![OSX CI](https://github.com/yuta3003/dotfiles/actions/workflows/osx.yml/badge.svg)](https://github.com/yuta3003/dotfiles/actions/workflows/osx.yml)
-[![linux CI](https://github.com/yuta3003/dotfiles/actions/workflows/linux.yml/badge.svg)](https://github.com/yuta3003/dotfiles/actions/workflows/linux.yml)
-
-
 # DotFiles
 
+![Author](https://img.shields.io/badge/Author-yuta3003-blue)
+
 ## Supported OS
-- macOS
+- macOS (Apple Silicon)
 - Ubuntu
 
+## Requirements
+- [chezmoi](https://www.chezmoi.io/)
+
 ## Installation
-設定ファイルのシンボリックリンクを作成しデプロイします。
-
 
 ```sh
+brew install chezmoi
 git clone https://github.com/yuta3003/dotfiles.git ~/dotfiles
-cd ~/dotfiles/etc/scripts
-./deploy.sh
+ln -s ~/dotfiles ~/.local/share/chezmoi
+chezmoi init --apply
 ```
-<!--
+
+## Usage
+
 ```sh
-/bin/bash -c "$(curl https://raw.githubusercontent.com/yuta3003/dotfiles/main/etc/scripts/install.sh)"
-``` -->
+# 差分を確認
+chezmoi diff
+
+# 設定を適用
+chezmoi apply
+
+# デプロイ先の変更をソースに反映
+chezmoi re-add
+```
