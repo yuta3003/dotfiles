@@ -94,6 +94,9 @@ alias myip="curl ifconfig.io -4"
 
 alias dot-reload="source ${HOME}/.zshrc"
 
+#  tmux IDE layout
+alias ide='~/.config/tmux/.tmux/bin/ide'
+
 if type BluetoothConnector >/dev/null 2>&1; then
   # Bluetooth
   alias connectmk2="BluetoothConnector 28-FF-3C-E6-07-4F --notify" # Magic Keyboard 2
