@@ -93,7 +93,7 @@ alias myip="curl ifconfig.io -4"
 # kubernetes
 #alias kubectl="microk8s kubectl"
 
-alias dot-reload="source ${HOME}/.zshrc && source ${ZDOTDIR}/.zaliases"
+alias dot-reload="source ${ZDOTDIR}/.zshrc && source ${ZDOTDIR}/.zaliases"
 
 #  tmux IDE layout
 alias ide='~/.config/tmux/.tmux/bin/ide'
