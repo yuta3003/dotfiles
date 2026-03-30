@@ -12,22 +12,19 @@ alias brews="brew list -1"
 #  ls系
 if type eza >/dev/null 2>&1; then
   alias e="eza --icons --git"
-  alias ls="e"
-
-  alias et="eza --icons --tree --git"
-  alias lst="et | less -R"
+  alias ls="eza --icons --git"
 
   alias el="eza -hl --icons --git"
-  alias ll=el
+  alias ll="eza -hl --icons --git"
 
   alias ee='eza -aahl --icons --git'
-  alias la=ee
+  alias la='eza -aahl --icons --git'
 
   alias et='eza -T -L 3 -a -I "node_modules|.git|.cache" --icons'
-  alias lt=et
+  alias lt='eza -T -L 3 -a -I "node_modules|.git|.cache" --icons'
 
   alias eta='eza -T -a -I "node_modules|.git|.cache" --color=always --icons | less -r'
-  alias lta=eta
+  alias lta='eza -T -a -I "node_modules|.git|.cache" --color=always --icons | less -r'
 else
   alias la="ls -lhAG"
 fi
@@ -50,7 +47,11 @@ alias rm="rm -i"
 
 #  git系
 alias gitst="git status"
-alias git-log="git l | emojify | less -R"
+if type emojify >/dev/null 2>&1; then
+  alias git-log="git l | emojify | less -R"
+else
+  alias git-log="git l | less -R"
+fi
 #alias git-log="git log --oneline --graph --all"
 # alias git-log="git log --graph --pretty=oneline"
 alias git-root='git rev-parse --is-inside-work-tree && cd `git rev-parse --show-toplevel`'
@@ -59,7 +60,7 @@ alias git-sub-update="git submodule foreach 'git pull origin main'"
 
 if type docker >/dev/null 2>&1; then
   #  docker系
-  alias docker-compose-down="docker-compose down --rmi all --volumes --remove-orphans"
+  alias docker-compose-down="docker compose down --rmi all --volumes --remove-orphans"
 fi
 
 #  Python3
@@ -89,10 +90,10 @@ alias safari='open -a Safari'
 #  ip
 alias myip="curl ifconfig.io -4"
 
-# kubenetis
+# kubernetes
 #alias kubectl="microk8s kubectl"
 
-alias dot-reload="source ${HOME}/.zshrc"
+alias dot-reload="source ${HOME}/.zshrc && source ${ZDOTDIR}/.zaliases"
 
 #  tmux IDE layout
 alias ide='~/.config/tmux/.tmux/bin/ide'
@@ -110,7 +111,7 @@ fi
 # cd - ls after cd
 alias cd="ls_after_cd"
 ls_after_cd(){
-  builtin cd $@ && ls;
+  builtin cd "$@" && ls;
 }
 
 # fbr - switch git branch
@@ -122,9 +123,9 @@ fbr() {
   git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
 }
 
-# fd - cd to selected directory
+# fcd - cd to selected directory
 ## fzf
-fd() {
+fcd() {
   local dir
   dir=$(find ${1:-.} -path '*/\.*' -prune \
                   -o -type d -print 2> /dev/null | fzf +m) &&
@@ -150,9 +151,3 @@ alias light='_light_mode'
 _light_mode() {
   osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to false'
 }
-
-alias awsotp='oathtool --totp --base32 "GVCS3YDEFFDRNDJ7QCBPF5D3BVZ6QJRGCJ4DF7Q7QXXSBDPPYF7KMYSQ6NX4NIH7" | pbcopy && echo "ワンタイムパスワードがコピーされました"'
-
-
-
-alias awsotp1='oathtool --totp --base32 "Q2DMZ6GTVAIURQXFTZIROG4YAH6XK6VQQ35FGUDOKNTVSF6WUZ6GP5QWU73OCXUF" | pbcopy && echo "ワンタイムパスワードがコピーされました"'

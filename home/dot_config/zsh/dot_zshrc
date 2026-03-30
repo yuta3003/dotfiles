@@ -6,11 +6,11 @@
 # zsh-completions
 fpath=(/usr/local/share/zsh-completions $fpath)
 if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-  source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-  source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-  autoload -Uz compinit
-  compinit
+  _brew_prefix=$(brew --prefix)
+  FPATH=${_brew_prefix}/share/zsh-completions:$FPATH
+  source ${_brew_prefix}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source ${_brew_prefix}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  unset _brew_prefix
 fi
 
 #################################################
@@ -85,9 +85,6 @@ HISTFILE=$HOME/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
 
-#  ヒストリの一覧を読みやすい形に変更
-HISTTIMEFORMAT="[%Y/%M/%D %H:%M:%S] "
-
 #  補完リストが多いときに尋ねない
 LISTMAX=1000
 
@@ -123,8 +120,6 @@ setopt AUTO_RESUME
 setopt rm_star_silent
 #  ファイル名の展開でディレクトリにマッチした場合末尾に / を付加する
 setopt MARK_DIRS
-#  明確なドットの指定なしで.から始まるファイルをマッチ
-setopt GLOBDOTS
 #  行の末尾がバッククォートでも無視する
 setopt SUN_KEYBOARD_HACK
 #  ~hoge以外にマッチする機能を使わない
@@ -137,10 +132,6 @@ setopt NO_BEEP
 setopt ALWAYS_LAST_PROMPT
 #  cd kotaで/home/kotaに移動する
 setopt CDABLE_VARS
-#  クォートされていない変数拡張が行われたあとで、フィールド分割
-setopt SH_WORD_SPLIT
-#  定義された全ての変数は自動的にexportする
-setopt ALL_EXPORT
 #  ディレクトリ名を補完すると、末尾がスラッシュになる。
 setopt AUTO_PARAM_SLASH
 #  普通のcdでもスタックに入れる
@@ -217,8 +208,6 @@ setopt NO_PROMPTCR
 setopt SHORT_LOOPS
 #  コマンドラインがどのように展開され実行されたかを表示する
 unsetopt XTRACE
-#  ディレクトリの最後のスラッシュを自動で削除
-unsetopt AUTOREMOVESLASH
 #  シンボリックリンクは実体を追うようになる
 unsetopt CHASE_LINKS
 #  $0 にスクリプト名/シェル関数名を格納
@@ -269,4 +258,6 @@ eval "$(direnv hook zsh)"
 
 # for asdf setting
 #. /opt/homebrew/opt/asdf/libexec/asdf.sh
-export DOCKER_HOST=unix://$HOME/.lima/docker/sock/docker.sock
+if [[ -S "$HOME/.lima/docker/sock/docker.sock" ]]; then
+  export DOCKER_HOST=unix://$HOME/.lima/docker/sock/docker.sock
+fi
