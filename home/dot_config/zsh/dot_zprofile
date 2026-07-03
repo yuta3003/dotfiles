@@ -16,9 +16,6 @@
 #
 
 {{ if eq .chezmoi.os "linx" -}}
-  export GTK_IM_MODULE=fcitx
-  export QT_IM_MODULE=fcitx
-  export XMODIFIERS=@im=fcitx
 {{ end -}}
 
 {{ if eq .chezmoi.os "darwin" -}}
