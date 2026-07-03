@@ -1,19 +1,16 @@
 {{ if ne .chezmoi.os "darwin" }}
-# macOS専用
-.zaliases
-.zprofile
-.zshrc
-.zshenv
-.hammerspoon/**
-.config/ghostty/**
-Library/**
+  # macOS専用
+  .hammerspoon/**
+  .config/ghostty/**
+  Library/**
 {{ end }}
 
 {{ if ne .chezmoi.os "linux" }}
-# Ubuntu専用
+  # Linux専用
+  .config/Code/**
+{{ end }}
+
 .bashrc
 .bash_profile
 .bash_aliases
 .profile
-.config/Code/**
-{{ end }}

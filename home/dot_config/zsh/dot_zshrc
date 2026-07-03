@@ -68,9 +68,11 @@ bindkey '^S' history-incremental-pattern-search-forward
 #-----------------------------------------------
 #  starship
 #-----------------------------------------------
+if type starship >/dev/null 2>&1; then
+  # https://starship.rs/ja-JP
+  eval "$(starship init zsh)"
+fi
 
-# https://starship.rs/ja-JP
-eval "$(starship init zsh)"
 
 autoload -Uz promptinit
 colors
@@ -252,9 +254,11 @@ zstyle ':completion:*' group-name ''
 #
 #  PLUGIN Setting
 
-# Setting direnv
-# Reference site: https://qiita.com/kompiro/items/5fc46089247a56243a62
-eval "$(direnv hook zsh)"
+if type direnv >/dev/null 2>&1; then
+  # Setting direnv
+  # Reference site: https://qiita.com/kompiro/items/5fc46089247a56243a62S
+  eval "$(direnv hook zsh)"
+fi
 
 # for asdf setting
 #. /opt/homebrew/opt/asdf/libexec/asdf.sh

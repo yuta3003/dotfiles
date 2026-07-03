@@ -2,46 +2,61 @@
 #
 #  Start-up Setting
 #
+{{ if eq .chezmoi.os "linux" -}}
+{{ end -}}
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+{{ if eq .chezmoi.os "darwin" -}}
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+{{ end -}}
+
 
 #################################################
 #
 #  PATH setting
 #
 
-#  Default
-export USR_LOCAL_HOME="/usr/local"
-# for openssl
-export OPENSSL="$(brew --prefix openssl)"
-# for pyenv
-export PYENV_ROOT="${HOME}/.anyenv/envs/pyenv"
-# for poetry
-export POETRY_ROOT="${HOME}/.poetry"
-# for asdf - node plugins
-export GAWK_ROOT="/opt/homebrew/opt/gawk"
-# for starship
-export STARSHIP_CONFIG="${HOME}/.config/starship/starship.toml"
-# /usr/bin/python3 -- system Python
-# $(brew --prefix) python -v -- Homebrew Python
-# ${HOME}/.anyenv/envs/pyenv/shims/python3 -- pyenv Python
+{{ if eq .chezmoi.os "linx" -}}
+  export GTK_IM_MODULE=fcitx
+  export QT_IM_MODULE=fcitx
+  export XMODIFIERS=@im=fcitx
+{{ end -}}
 
-# for binutils
-export BINUTIL_ROOT="${HOMEBREW_PREFIX}/opt/binutils"
+{{ if eq .chezmoi.os "darwin" -}}
+  #  Default
+  export USR_LOCAL_HOME="/usr/local"
+  # for openssl
+  export OPENSSL="$(brew --prefix openssl)"
+  # for pyenv
+  export PYENV_ROOT="${HOME}/.anyenv/envs/pyenv"
+  # for poetry
+  export POETRY_ROOT="${HOME}/.poetry"
+  # for asdf - node plugins
+  export GAWK_ROOT="/opt/homebrew/opt/gawk"
+  # for starship
+  export STARSHIP_CONFIG="${HOME}/.config/starship/starship.toml"
+  # /usr/bin/python3 -- system Python
+  # $(brew --prefix) python -v -- Homebrew Python
+  # ${HOME}/.anyenv/envs/pyenv/shims/python3 -- pyenv Python
 
-path=(
-  "$OPENSSL/bin"(N-/)
-  "$USR_LOCAL_HOME/bin"(N-/)
-  "$USR_LOCAL_HOME/sbin"(N-/)
-  "$PYENV_ROOT/bin"(N-/)
-  "$POETRY_ROOT/bin"(N-/)
-  "$GAWK_ROOT/libexec/gnubin"(N-/)
-  "$BINUTIL_ROOT/bin"(N-/)
-  "$path[@]"
-)
+  # for binutils
+  export BINUTIL_ROOT="${HOMEBREW_PREFIX}/opt/binutils"
 
-# pathの重複排除: ユニーク属性を追加
-typeset -U path cdpath fpath manpath
+  path=(
+    "$OPENSSL/bin"(N-/)
+    "$USR_LOCAL_HOME/bin"(N-/)
+    "$USR_LOCAL_HOME/sbin"(N-/)
+    "$PYENV_ROOT/bin"(N-/)
+    "$POETRY_ROOT/bin"(N-/)
+    "$GAWK_ROOT/libexec/gnubin"(N-/)
+    "$BINUTIL_ROOT/bin"(N-/)
+    "$path[@]"
+  )
+
+  # pathの重複排除: ユニーク属性を追加
+  typeset -U path cdpath fpath manpath
+{{ end -}}
+
+
 
 #################################################
 #
